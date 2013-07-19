@@ -1,0 +1,46 @@
+## Mac OS
+.DS_Store
+
+## App
+.bundle
+.rbenv-version
+.rbenv-gemsets
+.ruby-version
+bin
+db/*.sqlite3
+db/sphinx
+db/structure.sql
+config/*.sphinx.conf
+config/database.yml
+config/fozzie.yml
+coverage/
+log/*.log
+log/*.pid
+tmp/
+vendor/bundle/ruby
+vendor/ruby
+
+## Public
+public/assets
+public/stylesheets/*
+public/system
+public/uploads
+
+## Sass
+.sass-cache/
+
+## Tools
+.pt
+.project
+
+## Environment
+.env
+.powenv
+config/local
+.rvmrc
+
+## Documentation
+.yardoc
+_yardoc
+doc/
+
