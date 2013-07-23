@@ -22,32 +22,14 @@
 
   .row#global-container
     .large-12.columns
-      .row.padded-row#global-header
-        .large-5.large-centered.columns
-          .row.margin-bottom-15
-            .large-12.columns
-              #logo
-                = link_to image_tag('logo-horizontal.png'), root_path
-          .row.margin-bottom-15
-            .large-12.columns
-              %ul.button-group.text-center#global-nav
-                %li= link_to 'Home', root_path, class: 'small button success'
-                %li= link_to 'Shop', '#', class: 'small button success'
-                %li= link_to 'About', about_path, class: 'small button success'
-                %li= link_to 'Contact', '#', class: 'small button success'
-                %li= link_to 'Blog', '#', class: 'small button success'
-      .row.margin-bottom-15
-        .large-12.large-centered.columns
-          = image_tag 'divider.png'
+
+      = render 'shared/global_header'
+
       .row#global-content
         .large-12.columns
           = yield
-      .row.margin-bottom-15.margin-top-15
-        .large-12.large-centered.columns
-          = image_tag 'divider.png'
-      .row#global-footer
-        .large-12.columns
-          %p.small.text-center Copyright &copy; 2013 Tushies &amp; Tantrums, Inc.
+
+      = render 'shared/global_footer'
 
   = javascript_include_tag "application"
 
