@@ -51,6 +51,7 @@ TushiesandtantrumsCom::Application.routes.draw do
   # root :to => 'welcome#index'
   #
   root to: 'welcome#index'
+  get '/about' => 'welcome#about', as: :about
 
   # See how all your routes lay out with "rake routes"
 

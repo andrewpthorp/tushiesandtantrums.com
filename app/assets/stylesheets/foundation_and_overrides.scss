@@ -70,7 +70,7 @@ $body-font-family: Georgia, serif;
 // $primary-color: #2ba6cb;
 // $secondary-color: #e9e9e9;
 // $alert-color: #c60f13;
-// $success-color: #5da423;
+$success-color: $color_green;
 
 // Make sure border radius matches unless we want it different.
 
@@ -357,7 +357,7 @@ $body-font-family: Georgia, serif;
 // We use these to control button text styles.
 
 // $button-font-family: inherit;
-// $button-font-color: #fff;
+$button-font-color: $color_white;
 // $button-font-color-alt: #333;
 // $button-font-med: emCalc(16);
 // $button-font-tny: emCalc(11);
