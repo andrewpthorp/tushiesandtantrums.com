@@ -7,7 +7,7 @@ p
 
 // .margin-10, .margin-top-10, .padding-left-5, etc.
 @each $type in margin, padding
-  @for $i from 0 through 25
+  @for $i from 0 through 10
     .#{$type}-#{$i * 5}
       #{$type}: $i * 5px !important
     @each $side in top, right, bottom, left
@@ -16,7 +16,7 @@ p
 
 // Negative margin helpers
 // .negative-margin-top-10, .negative-margin-right-5, etc.
-@for $i from 0 through 25
+@for $i from 0 through 50
   @each $side in top, right, bottom, left
-    .negative-margin-#{$side}-#{$i * 5}
-      margin-#{$side}: -$i * 5px !important
+    .negative-margin-#{$side}-#{$i}
+      margin-#{$side}: -#{$i}px !important

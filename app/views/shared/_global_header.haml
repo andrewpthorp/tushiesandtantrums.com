@@ -4,15 +4,15 @@
       .large-12.columns
         #logo
           = link_to image_tag('logo-horizontal.png'), root_path
-    .row.margin-bottom-15
+    .row.negative-margin-bottom-27
       .large-12.columns
         %ul.button-group.text-center#global-nav
           %li= link_to 'Home', root_path, class: 'small button success'
           %li= link_to 'Shop', '#', class: 'small button success'
-          %li= link_to 'About', about_path, class: 'small button success'
+          %li= link_to 'About', about_path, class: 'small button success current'
           %li= link_to 'Contact', '#', class: 'small button success'
           %li= link_to 'Blog', '#', class: 'small button success'
 
-.row.margin-bottom-15
+.row.margin-bottom-35.divider
   .large-12.large-centered.columns
     = image_tag 'divider.png'
