@@ -15,15 +15,27 @@
   %title= content_for?(:title) ? "Tushies And Tantrums – #{yield(:title)}" : "Tushies And Tantrums"
 
   = stylesheet_link_tag "application"
+  = javascript_include_tag "vendor/custom.modernizr"
   = csrf_meta_tag
 
 %body
 
-  .main-container
-    = image_tag 'logo-round.png'
+  .row#global-container
+    .large-12.columns
+      .row#global-header
+        .large-5.large-centered.columns
+          = image_tag 'logo-horizontal.png'
+      .row.margin-top-25.margin-bottom-25
+        .large-12.large-centered.columns
+          = image_tag 'divider.png'
+      .row#global-content
+        .large-12.columns
+          = yield
+      .row.margin-bottom-25.margin-top-25
+        .large-12.large-centered.columns
+          = image_tag 'divider.png'
 
-    .main-content
-      = yield
+  = javascript_include_tag "application"
 
 :plain
   </html>
