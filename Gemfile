@@ -18,9 +18,7 @@ gem 'zurb-foundation'
 gem 'jquery-rails'
 gem 'haml'
 gem 'sass'
-gem 'compass'
-gem 'compass-rails'
-gem 'sassy-buttons'
+gem 'bourbon'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.5'
