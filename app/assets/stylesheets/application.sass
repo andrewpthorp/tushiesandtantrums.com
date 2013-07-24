@@ -38,11 +38,11 @@ body
       font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif
 
 .picture-frame
+  +box-sizing(border-box)
   position: relative
   border: 5px solid $color_brown_desaturated
   border-bottom: 35px solid $color_brown_desaturated
   padding: 3px
-  +box-sizing(border-box)
   footer
     position: absolute
     bottom: -30px
@@ -52,3 +52,13 @@ body
       margin-bottom: 0px
       font-style: italic
       text-shadow: 1px 1px 1px $color_black
+
+.content-box
+  +box-sizing(border-box)
+  +box-shadow(0px 0px 5px rgba($color_brown, 0.5))
+  padding: 15px
+  background: rgba($color_brown, 0.05)
+
+ul
+  list-style-type: none
+  margin-left: 0px

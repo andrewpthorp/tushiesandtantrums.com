@@ -1,0 +1,6 @@
+.row.padded-row
+  .large-4.columns
+    %ul
+      - @products.each do |product|
+        %li= link_to product.name, product
+
