@@ -1,6 +1,13 @@
 .row.padded-row
-  .large-4.columns
-    %ul
-      - @products.each do |product|
-        %li= link_to product.name, product
-
+  - if @products.any?
+    .large-12.columns
+      %ul
+        - @products.each do |product|
+          %li= link_to product.name, product
+  - else
+    .large-8.large-centered.columns
+      .content-box.text-center
+        %p
+          Whoops! You haven't created any products yet.
+        %p.margin-bottom-0
+          = link_to 'Create a Product!', new_product_path, class: 'button small margin-bottom-5'
