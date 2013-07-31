@@ -34,6 +34,11 @@ describe ProductsController do
   end
 
   describe 'GET index' do
+    it 'should set @active_navigation' do
+      get :index
+      assigns(:active_navigation).should == 'shop'
+    end
+
     it 'should set @products' do
       get :index
       assigns(:products).should == [@mock_product]
@@ -41,6 +46,11 @@ describe ProductsController do
   end
 
   describe 'GET show' do
+    it 'should set @active_navigation' do
+      get :show, id: 1
+      assigns(:active_navigation).should == 'shop'
+    end
+
     it 'should set @product' do
       get :show, id: 1
       assigns(:product).should == @mock_product
@@ -48,6 +58,11 @@ describe ProductsController do
   end
 
   describe 'GET edit' do
+    it 'should set @active_navigation' do
+      get :edit, id: 1
+      assigns(:active_navigation).should == 'shop'
+    end
+
     it 'should set @product' do
       get :edit, id: 1
       assigns(:product).should == @mock_product
@@ -55,6 +70,11 @@ describe ProductsController do
   end
 
   describe 'PUT update' do
+    it 'should set @active_navigation' do
+      do_update
+      assigns(:active_navigation).should == 'shop'
+    end
+
     it 'should set @product' do
       do_update
       assigns(:product).should == @mock_product
@@ -95,6 +115,11 @@ describe ProductsController do
   end
 
   describe 'GET new' do
+    it 'should set @active_navigation' do
+      get :new
+      assigns(:active_navigation).should == 'shop'
+    end
+
     it 'should set @product' do
       get :new
       assigns(:product).should == @mock_product
@@ -108,6 +133,11 @@ describe ProductsController do
   end
 
   describe 'POST create' do
+    it 'should set @active_navigation' do
+      do_create
+      assigns(:active_navigation).should == 'shop'
+    end
+
     it 'should set @product' do
       do_create
       assigns(:product).should == @mock_product

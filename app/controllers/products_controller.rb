@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_filter :set_active_navigation
 
   # GET /products
   def index
@@ -54,6 +55,12 @@ class ProductsController < ApplicationController
       flash[:error] = "There was a problem deleting that Product. Please try again."
       redirect_to @product
     end
+  end
+
+private
+
+  def set_active_navigation
+    @active_navigation = 'shop'
   end
 
 end

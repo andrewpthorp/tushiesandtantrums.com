@@ -5,6 +5,10 @@ p
 .make-block
   display: block !important
 
+@for $i from 0 through 100
+  .width-#{$i}
+    width: #{$i}% !important
+
 // .margin-10, .margin-top-10, .padding-left-5, etc.
 @each $type in margin, padding
   @for $i from 0 through 50

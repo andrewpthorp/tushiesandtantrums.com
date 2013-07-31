@@ -1,0 +1,28 @@
+#global-nav
+  +clearfix
+  margin-top: 25px
+  margin-bottom: 0px
+  width: 100%
+  border: 1px solid darken($color_green, 15%)
+  border-bottom: 0px none
+  li
+    display: block
+    float: left
+    margin: 0px
+    width: 20%
+    a
+      border-right: 1px solid darken($color_green, 15%)
+      +box-sizing(border-box)
+      +box-shadow(inset 0px -10px 5px -5px rgba(0, 0, 0, 0.15))
+      +transition(background 0.25s ease-in-out)
+      text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.25)
+      padding: 10px 0px
+      width: 100%
+      display: block
+      background: $color_green
+      margin-bottom: 0px
+      color: #fff
+      &:hover, &.active
+        background: darken($color_green, 15%)
+    &:last-child a
+      border-right: 0px none
