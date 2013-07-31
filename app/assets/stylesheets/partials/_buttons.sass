@@ -1,0 +1,33 @@
+.button
+  display: inline-block
+  +box-sizing(border-box)
+  +transition(background 0.1s linear)
+  font-size: 16px
+  line-height: 1.4
+  margin: 0px
+  border: 0px solid transparent
+  border-radius: 2px
+  padding: 5px 10px
+  background: $color_green
+  color: $color_white
+  &.small
+    font-size: 0.85em
+    padding: 3px 5px
+  &:hover
+    color: $color_white
+    background: darken($color_green, 15%)
+  &:active
+    position: relative
+    top: 1px
+  &.yellow
+    background: $color_yellow
+    color: $color_brown
+    &:hover
+      color: $color_brown
+      background: darken($color_yellow, 15%)
+  &.gray
+    background: $color_gray
+    color: $color_black
+    &:hover
+      background: darken($color_gray, 15%)
+      color: $color_black
