@@ -10,5 +10,5 @@
       %li= link_to 'Home', root_path, class: home_class
       %li= link_to 'Shop', products_path, class: shop_class
       %li= link_to 'About', about_path, class: about_class
-      %li= link_to 'Contact', '#', class: contact_class
-      %li= link_to 'Blog', '#', class: blog_class
+      %li.contact= link_to 'Contact', '#', class: contact_class
+      %li.blog= link_to 'Blog', '#', class: blog_class
