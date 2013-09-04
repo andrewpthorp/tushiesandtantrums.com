@@ -43,6 +43,19 @@ describe ProductsController do
       get :index
       assigns(:products).should == [@mock_product]
     end
+
+    context 'when passing a category' do
+      it 'should get products for that category' do
+        Product.should_receive(:tagged_with).with('boys')
+        get :index, category: 'boys'
+      end
+
+      it 'should set all products for that category' do
+        Product.stub(:tagged_with).and_return([@mock_product])
+        get :index, category: 'boys'
+        assigns(:products).should == [@mock_product]
+      end
+    end
   end
 
   describe 'GET show' do

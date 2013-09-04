@@ -1,5 +1,6 @@
 class Product < ActiveRecord::Base
-  attr_accessible :name, :description, :price, :price_in_cents, :image
+  attr_accessible :name, :description, :price, :price_in_cents, :image, :tag_list
+  acts_as_taggable
 
   validates :description, presence: true
   validates :price_in_cents, presence: true

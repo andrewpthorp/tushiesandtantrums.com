@@ -3,7 +3,11 @@ class ProductsController < ApplicationController
 
   # GET /products
   def index
-    @products = Product.all
+    if params[:category]
+      @products = Product.tagged_with(params[:category])
+    else
+      @products = Product.all
+    end
   end
 
   # GET /products/:id

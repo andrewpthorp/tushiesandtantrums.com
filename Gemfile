@@ -20,6 +20,7 @@ gem 'haml'
 gem 'sass'
 gem 'bourbon'
 gem 'money-rails'
+gem 'acts-as-taggable-on'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.5'
