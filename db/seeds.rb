@@ -5,3 +5,19 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+if Rails.env.development?
+
+  puts "Destroying #{Product.count.to_s} products..."
+  Product.destroy_all
+  puts "Done."
+
+  puts "Creating 10 products..."
+  10.times do
+    product = FactoryGirl.create(:product)
+    puts "Created #{product.name}."
+  end
+  puts "Done."
+
+
+end
