@@ -13,37 +13,37 @@
 - if @products.any?
   %section#products.margin-bottom-25
     %header.with-arrow.row
-      .large-2.columns.text
+      .small-2.columns.text
         %h3 Products
-      .large-10.columns.arrow
+      .small-10.columns.arrow
         %div
 
     .row
-      .large-3.columns
+      .small-3.columns
         - unless @products[0].blank?
           = render 'products/widget', product: @products[0]
-      .large-3.columns
+      .small-3.columns
         - unless @products[1].blank?
           = render 'products/widget', product: @products[1]
-      .large-3.columns
+      .small-3.columns
         - unless @products[2].blank?
           = render 'products/widget', product: @products[2]
-      .large-3.columns
+      .small-3.columns
         - unless @products[3].blank?
           = render 'products/widget', product: @products[3]
 
 %section#about.margin-bottom-25
   %header.with-arrow.row
-    .large-2.columns.text
+    .small-2.columns.text
       %h3 About Us
-    .large-10.columns.arrow
+    .small-10.columns.arrow
       %div
 
   .row
-    .large-4.columns
+    .small-4.columns
       .picture-box
         = image_tag 'family-photo.png'
-    .large-8.columns
+    .small-8.columns
       %p
         Bacon ipsum dolor sit amet ham jerky corned beef pork chop pastrami
         biltong flank fatback sirloin tail t-bone ribeye. Leberkas chicken
