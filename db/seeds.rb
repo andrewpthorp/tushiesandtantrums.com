@@ -19,5 +19,4 @@ if Rails.env.development?
   end
   puts "Done."
 
-
 end
