@@ -52,8 +52,8 @@ $em-base: 16 !default;
 $default-float: left;
 
 $body-bg: url('layout/green-herringbone.png') 0px 0px repeat;
-$body-font-color: $color_brown;
-$body-font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$body-font-color: $color_dark_gray;
+$body-font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
 // $body-font-weight: normal;
 // $body-font-style: normal;
 
@@ -161,10 +161,10 @@ $include-html-button-classes: false;
 
 // Control header font styles
 
-// $header-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$header-font-family: 'Josefin Slab', serif;
+$header-font-color: $color_dark_gray;
 // $header-font-weight: bold;
 // $header-font-style: normal;
-// $header-font-color: #222;
 // $header-line-height: 1.4;
 // $header-top-margin: .2em;
 // $header-bottom-margin: .5em;
@@ -189,14 +189,14 @@ $include-html-button-classes: false;
 
 // A general <small> styling
 
-// $small-font-size: 60%;
+$small-font-size: 70%;
 // $small-font-color: lighten($header-font-color, 30%);
 
 // Style paragraphs
 
 // $paragraph-font-family: inherit;
 // $paragraph-font-weight: normal;
-// $paragraph-font-size: 1em;
+$paragraph-font-size: 0.85em;
 // $paragraph-line-height: 1.6;
 // $paragraph-margin-bottom: emCalc(20);
 // $paragraph-aside-font-size: emCalc(14);

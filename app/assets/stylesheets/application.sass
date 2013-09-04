@@ -8,11 +8,32 @@
 @import 'sections/global_chrome'
 
 #main-content
-  padding: 25px 80px
-  min-height: 2000px
+  padding: 25px 60px
   background: $color_white
   +box-shadow(0px -2px 4px rgba(0, 0, 0, 0.15), 0px 2px 4px rgba(0, 0, 0, 0.25))
 
 ul
   list-style-type: none
   margin-left: 0px
+
+header.with-arrow
+  .text
+    overflow: visible
+  .arrow
+    position: relative
+    top: 23px
+    padding-left: 0px !important
+    div
+      padding: 0px
+      height: 2px
+      background: $color_green
+      &:before
+        content: url('layout/arrow-left.png')
+        position: absolute
+        left: -12px
+        top: -9px
+      &:after
+        content: url('layout/arrow-right.png')
+        position: absolute
+        right: 11px
+        top: -9px
