@@ -12,4 +12,12 @@ describe Product do
       monetize(:price_in_cents).as(:price).should be_true
     end
   end
+
+  describe '.scopes' do
+    describe '.random' do
+      it 'should order random from the database' do
+        Product.random.to_sql.should =~ /ORDER BY RANDOM/
+      end
+    end
+  end
 end

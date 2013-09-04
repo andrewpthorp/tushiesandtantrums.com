@@ -5,6 +5,8 @@ class Product < ActiveRecord::Base
   validates :price_in_cents, presence: true
   validates :image, presence: true
 
+  scope :random, order('RANDOM()')
+
   mount_uploader :image, ImageUploader
   monetize :price_in_cents, as: "price"
 end
