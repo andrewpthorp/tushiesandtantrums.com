@@ -20,19 +20,6 @@
 
 %body
 
-  = render 'shared/global_navigation'
-
-  .row#global-container
-    .large-12.columns
-
-      = render 'shared/global_header'
-
-      .row#global-content
-        .large-12.columns
-          = yield
-
-      = render 'shared/global_footer'
-
   = javascript_include_tag "application"
 
 :plain
