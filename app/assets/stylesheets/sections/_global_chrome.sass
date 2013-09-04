@@ -1,0 +1,61 @@
+.global-navigation
+  margin-bottom: 0px
+  li
+    display: inline-block
+    margin-right: 25px
+    &:last-child
+      margin-right: 0px
+    a
+      color: $color_brown
+      font-size: emCalc(16px)
+      font-family: 'Josefin Slab'
+      font-weight: bold
+      text-transform: uppercase
+      &.active, &:hover
+        color: darken($color_brown, 15%)
+        text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.15)
+
+.social-links
+  margin-bottom: 0px
+  text-align: right
+  li
+    display: inline-block
+    width: 21px
+    height: 21px
+    margin-left: 5px
+    a
+      display: block
+      width: 100%
+      height: 100%
+      background: url('sprites/social-links.png') 0px 0px no-repeat
+      &.facebook
+        background-position: 0px 0px
+      &.twitter
+        background-position: -25px 0px
+      &.etsy
+        background-position: -50px 0px
+
+#global-header
+  .row
+    &.logo
+      margin-bottom: 25px
+    &.shadow
+      margin-bottom: -10px
+
+  .global-navigation
+    text-align: center
+
+#global-footer
+  margin-top: 50px
+  padding-top: 15px
+  border-top: 1px solid $color_gray
+  .columns
+    &.logo
+      padding-left: 0px !important
+      padding-right: 0px !important
+      .logo-circle
+        position: relative
+        top: -40px
+        +transform(rotate(-15deg))
+    &.social
+      padding-right: 0px !important
