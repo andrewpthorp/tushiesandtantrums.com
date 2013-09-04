@@ -55,6 +55,11 @@ describe ProductsController do
         get :index, category: 'boys'
         assigns(:products).should == [@mock_product]
       end
+
+      it 'should set @category' do
+        get :index, category: 'boys'
+        assigns(:category).should == 'boys'
+      end
     end
   end
 

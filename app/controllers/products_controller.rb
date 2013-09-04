@@ -3,8 +3,10 @@ class ProductsController < ApplicationController
 
   # GET /products
   def index
-    if params[:category]
-      @products = Product.tagged_with(params[:category])
+    @category = params[:category]
+
+    if @category
+      @products = Product.tagged_with(@category)
     else
       @products = Product.all
     end

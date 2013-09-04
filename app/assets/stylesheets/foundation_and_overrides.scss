@@ -1075,10 +1075,10 @@ $button-font-color: $color_white;
 
 // We use these to control link styles.
 
-// $side-nav-link-color: $primary-color;
-// $side-nav-link-color-active: lighten(#000, 30%);
-// $side-nav-font-size: emCalc(14);
-// $side-nav-font-weight: bold;
+$side-nav-link-color: $color_green;
+$side-nav-link-color-active: darken($color_green, 30%);
+$side-nav-font-size: emCalc(16);
+$side-nav-font-weight: normal;
 
 // We use these to control border styles
 
