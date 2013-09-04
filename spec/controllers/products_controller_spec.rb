@@ -36,7 +36,7 @@ describe ProductsController do
   describe 'GET index' do
     it 'should set @active_navigation' do
       get :index
-      assigns(:active_navigation).should == 'shop'
+      assigns(:active_navigation).should == 'products'
     end
 
     it 'should set @products' do
@@ -48,7 +48,7 @@ describe ProductsController do
   describe 'GET show' do
     it 'should set @active_navigation' do
       get :show, id: 1
-      assigns(:active_navigation).should == 'shop'
+      assigns(:active_navigation).should == 'products'
     end
 
     it 'should set @product' do
@@ -60,7 +60,7 @@ describe ProductsController do
   describe 'GET edit' do
     it 'should set @active_navigation' do
       get :edit, id: 1
-      assigns(:active_navigation).should == 'shop'
+      assigns(:active_navigation).should == 'products'
     end
 
     it 'should set @product' do
@@ -72,7 +72,7 @@ describe ProductsController do
   describe 'PUT update' do
     it 'should set @active_navigation' do
       do_update
-      assigns(:active_navigation).should == 'shop'
+      assigns(:active_navigation).should == 'products'
     end
 
     it 'should set @product' do
@@ -117,7 +117,7 @@ describe ProductsController do
   describe 'GET new' do
     it 'should set @active_navigation' do
       get :new
-      assigns(:active_navigation).should == 'shop'
+      assigns(:active_navigation).should == 'products'
     end
 
     it 'should set @product' do
@@ -135,7 +135,7 @@ describe ProductsController do
   describe 'POST create' do
     it 'should set @active_navigation' do
       do_create
-      assigns(:active_navigation).should == 'shop'
+      assigns(:active_navigation).should == 'products'
     end
 
     it 'should set @product' do

@@ -60,7 +60,7 @@ class ProductsController < ApplicationController
 private
 
   def set_active_navigation
-    @active_navigation = 'shop'
+    @active_navigation = 'products'
   end
 
 end
