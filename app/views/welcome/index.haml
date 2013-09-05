@@ -18,19 +18,11 @@
       .small-10.columns.arrow
         %div
 
-    .row
-      .small-3.columns
-        - unless @products[0].blank?
-          = render 'products/widget', product: @products[0]
-      .small-3.columns
-        - unless @products[1].blank?
-          = render 'products/widget', product: @products[1]
-      .small-3.columns
-        - unless @products[2].blank?
-          = render 'products/widget', product: @products[2]
-      .small-3.columns
-        - unless @products[3].blank?
-          = render 'products/widget', product: @products[3]
+    - @products.in_groups_of(4) do |products|
+      .row
+        - products.each do |product|
+          .small-3.columns
+            = render 'products/widget', product: product unless product.nil?
 
 %section#about.margin-bottom-25
   %header.with-arrow.row
