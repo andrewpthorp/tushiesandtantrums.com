@@ -1,7 +1,7 @@
 .row.margin-top-25
   .large-2.columns
     %h4.margin-bottom-0 Categories
-    = product_categories
+    = product_categories(@category)
 
   .large-10.columns
     - @products.in_groups_of(3) do |products|
