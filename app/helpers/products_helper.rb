@@ -19,4 +19,25 @@ module ProductsHelper
     end
   end
 
+  # Public: Get a link to the correct category.
+  #
+  # product - A Product with 0, 1, or many Tags (optional).
+  #
+  # Returns an ActiveSupport::SafeBuffer.
+  def category_link(product=nil)
+
+    if product.nil? || product.tags.size == 0 || product.tags.size > 1
+      url = products_path
+      text = 'View All Bedding'
+    elsif product.tag_list.include? 'girls'
+      url = girls_products_path
+      text = 'View Girls Bedding'
+    elsif product.tag_list.include? 'boys'
+      url = boys_products_path
+      text = 'View Boys Bedding'
+    end
+
+    link_to text, url, class: 'back-button'
+  end
+
 end
