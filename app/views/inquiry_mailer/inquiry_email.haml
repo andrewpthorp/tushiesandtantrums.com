@@ -1,0 +1,28 @@
+!!! 5
+
+%head
+  %meta{ content: 'text/html; charset=UTF-8', :'http-equiv' => 'Content-Type' }
+
+%body
+
+  %p
+    %strong
+      New Message from #{@inquiry.name} &lt;#{@inquiry.email}&gt;
+
+  %p
+    %strong Subject:
+    = @inquiry.subject
+
+  %p
+    %strong Message:
+    = @inquiry.body
+
+  %p
+    Sincerely,
+    %br
+    Your Website.
+
+  %p P.S. You stink.
+
+:plain
+  </html>

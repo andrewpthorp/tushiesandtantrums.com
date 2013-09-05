@@ -29,6 +29,7 @@ group :assets do
 end
 
 group :development do
+  gem 'letter_opener'
   gem 'guard'
   gem 'guard-livereload'
   gem 'guard-rspec'

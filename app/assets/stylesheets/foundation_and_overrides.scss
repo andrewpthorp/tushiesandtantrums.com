@@ -67,9 +67,9 @@ $body-font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
 
 // Colors
 
-// $primary-color: #2ba6cb;
+$primary-color: $color_green;
 // $secondary-color: #e9e9e9;
-// $alert-color: #c60f13;
+$alert-color: $color_red;
 $success-color: $color_green;
 
 // Make sure border radius matches unless we want it different.
@@ -93,7 +93,6 @@ $success-color: $color_green;
 // $include-html-grid-classes: $include-html-classes;
 // $include-html-visibility-classes: $include-html-classes;
 // $include-html-button-classes: $include-html-classes;
-$include-html-button-classes: false;
 // $include-html-form-classes: $include-html-classes;
 // $include-html-custom-form-classes: $include-html-classes;
 // $include-html-media-classes: $include-html-classes;
@@ -359,6 +358,7 @@ $paragraph-font-size: 0.85em;
 
 // $button-font-family: inherit;
 $button-font-color: $color_white;
+$button-font-color-alt: $color_white;
 // $button-font-color-alt: #333;
 // $button-font-med: emCalc(16);
 // $button-font-tny: emCalc(11);
@@ -991,6 +991,7 @@ $button-font-color: $color_white;
 
 // We use these to control the style of the reveal overlay.
 
+$reveal-overlay-bg: rgba(darken($color_green, 15%), 0.35);
 // $reveal-overlay-bg: rgba(#000, .45);
 // $reveal-overlay-bg-old: #000;
 
@@ -998,6 +999,7 @@ $button-font-color: $color_white;
 
 // $reveal-modal-bg: #fff;
 // $reveal-position-top: 50px;
+$reveal-default-width: 60%;
 // $reveal-default-width: 80%;
 // $reveal-modal-padding: emCalc(20);
 // $reveal-box-shadow: 0 0 10px rgba(#000,.4);

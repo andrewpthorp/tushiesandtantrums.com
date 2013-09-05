@@ -11,4 +11,6 @@ TushiesandtantrumsCom::Application.routes.draw do
     end
   end
 
+  resources :inquiries, only: [:create]
+
 end

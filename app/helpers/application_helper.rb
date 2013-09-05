@@ -9,7 +9,7 @@ module ApplicationHelper
     links = [
       link_to('Home', root_path, class: curr == 'home' ? 'active' : ''),
       link_to('Shop', products_path, class: curr == 'products' ? 'active' : ''),
-      link_to('Contact', '#', class: curr == 'contact' ? 'active' : ''),
+      link_to('Contact', '#', data: { :'reveal-id' => 'contact' }),
       link_to('Blog', '#', class: curr == 'blog' ? 'active' : '')
     ]
 

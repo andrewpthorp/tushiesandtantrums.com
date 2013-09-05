@@ -16,10 +16,13 @@ describe ApplicationHelper do
       expect(helper.navigation).to have_selector('a.active', text: 'Home')
     end
 
+    it 'should set the data-reveal-id on the Contact link' do
+      expect(helper.navigation).to have_selector("a[data-reveal-id='contact']", text: 'Contact')
+    end
+
     [
       { section: 'home', text: 'Home', url: '/' },
       { section: 'products', text: 'Shop', url: '/products' },
-      { section: 'contact', text: 'Contact', url: '#' },
       { section: 'blog', text: 'Blog', url: '#' }
     ].each do |p|
       context "when passing #{p[:section]}" do
