@@ -6,6 +6,10 @@
         = link_to raw('&larr; Back'), :back, class: 'back'
         %h3.name= @product.name
         %p.price= number_to_currency(@product.price)
+        %ul
+          %li.strong Overview
+          %li.dotted Handmade Item
+          %li.dotted Made to Order
         = link_to 'Buy Now', '#', class: 'buy-button'
       .background= image_tag @product.image
       .blur= image_tag @product.image
@@ -13,5 +17,10 @@
 
 .row
   .small-8.columns
+    %h2 Product Description
     %p= raw(@product.description)
   .small-4.columns
+    %h3 Shipping Information
+    %ul.dotted
+      %li Only ships to USA from Nashville, TN.
+      %li Shipping cost is $50
