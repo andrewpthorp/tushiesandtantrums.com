@@ -1,13 +1,12 @@
 #masthead.margin-top-25.margin-bottom-25
   .curved-border
     .border.top
-    .image
-      .content
+    .content
+      .text
         %h1.color-white.littledays.margin-bottom-0 A Children's Boutique
-        %p
-          = link_to 'Shop Boys Bedding', boys_products_path, class: 'hollow-button margin-right-25'
-          = link_to 'Shop Girls Bedding', girls_products_path, class: 'hollow-button'
-      .background= image_tag 'masthead.jpg'
+        = link_to 'Shop Boys Bedding', boys_products_path, class: 'hollow-button margin-right-15'
+        = link_to 'Shop Girls Bedding', girls_products_path, class: 'hollow-button'
+      .background.full= image_tag 'masthead.jpg'
     .border.bottom
 
 - if @products.any?

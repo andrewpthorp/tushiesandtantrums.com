@@ -1,8 +1,17 @@
 #masthead.margin-top-25.margin-bottom-25
   .curved-border
     .border.top
-    .image
-      .content
-      .background
-        = image_tag @product.image
+    .content
+      .text.right
+        = link_to raw('&larr; Back'), :back, class: 'back'
+        %h3.name= @product.name
+        %p.price= number_to_currency(@product.price)
+        = link_to 'Buy Now', '#', class: 'buy-button'
+      .background= image_tag @product.image
+      .blur= image_tag @product.image
     .border.bottom
+
+.row
+  .small-8.columns
+    %p= raw(@product.description)
+  .small-4.columns

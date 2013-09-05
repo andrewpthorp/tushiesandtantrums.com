@@ -1,7 +1,7 @@
 .hollow-button
   +transition(all 0.1s ease-in-out)
   display: inline-block
-  padding: 5px 10px
+  padding: 10px 20px
   border: 3px solid $color_white
   border-radius: 10px
   color: $color_white
@@ -16,4 +16,19 @@
     position: relative
     top: 1px
     left: 1px
+    +box-shadow(0px 0px 0px transparent)
+
+.buy-button
+  +transition(all 0.1s ease-in-out)
+  display: inline-block
+  padding: 15px 50px
+  border-radius: 10px
+  color: $color_white
+  +box-shadow(0px 3px 0px darken($color_bright_green, 25%))
+  background: $color_bright_green
+  &:hover
+    color: $color_white
+  &:active
+    position: relative
+    top: 2px
     +box-shadow(0px 0px 0px transparent)
