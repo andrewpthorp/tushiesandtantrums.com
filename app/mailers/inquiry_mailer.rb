@@ -2,14 +2,14 @@
 class InquiryMailer < ActionMailer::Base
 
   # Public: The default address emails are sent from.
-  default from: 'ashleyeosman+website@gmail.com'
+  default from: 'tushiesandtantrums+website@gmail.com'
 
   # Public: Send the email for an Inquiry.
   #
   # Returns a Mail::Message.
   def inquiry_email(inquiry)
     @inquiry = inquiry
-    mail(to: 'ashleyeosman@gmail.com',
+    mail(to: 'tushiesandtantrums@gmail.com',
          subject: 'New Message from your Website')
   end
 

@@ -13,11 +13,11 @@ describe InquiryMailer do
     end
 
     it 'should send the email to the right person' do
-      @mail.to.should eq(['ashleyeosman@gmail.com'])
+      @mail.to.should eq(['tushiesandtantrums@gmail.com'])
     end
 
     it 'should set the sender to the right email' do
-      @mail.from.should eq(['ashleyeosman+website@gmail.com'])
+      @mail.from.should eq(['tushiesandtantrums+website@gmail.com'])
     end
 
     it 'should assign @inquiry' do
