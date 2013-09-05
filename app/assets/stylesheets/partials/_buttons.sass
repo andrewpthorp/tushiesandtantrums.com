@@ -32,3 +32,21 @@
     position: relative
     top: 2px
     +box-shadow(0px 0px 0px transparent)
+
+.back-button
+  display: inline-block
+  position: relative
+  padding-left: 18px
+  font-size: emCalc(13px)
+  color: #777
+  &:before
+    position: absolute
+    left: 0px
+    content: url('layout/back-arrow.png')
+    display: block
+    width: 12px
+    height: 11px
+  &:hover
+    color: #414141
+    &:before
+      content: url('layout/back-arrow-dark.png')

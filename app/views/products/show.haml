@@ -3,7 +3,7 @@
     .border.top
     .content
       .text.right
-        = link_to raw('&larr; Back'), :back, class: 'back'
+        = link_to 'View Products', :back, class: 'back-button margin-bottom-25'
         %h3.name= @product.name
         %p.price= number_to_currency(@product.price)
         %ul
