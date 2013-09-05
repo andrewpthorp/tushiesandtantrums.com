@@ -1,13 +1,7 @@
 .row.margin-top-25
   .large-2.columns
     %h4.margin-bottom-0 Categories
-    %ul.side-nav
-      %li{class: @category.nil? ? 'active' : ''}
-        = link_to 'Shop All Bedding', products_path
-      %li{class: @category == 'boys' ? 'active' : ''}
-        = link_to 'Shop Boys Bedding', boys_products_path
-      %li{class: @category == 'girls' ? 'active' : ''}
-        = link_to 'Shop Girls Bedding', girls_products_path
+    = product_categories
 
   .large-10.columns
     - @products.in_groups_of(3) do |products|
