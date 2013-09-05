@@ -13,6 +13,10 @@ describe InquiriesController do
     end
 
     context 'when an inquiry saves' do
+      before do
+        Inquiry.any_instance.stub(:save).and_return(true)
+      end
+
       it 'should set the flash message header' do
         do_create
         response.headers['Flash-Message'].should match(/Success/)
@@ -26,9 +30,7 @@ describe InquiriesController do
 
     context 'when an inquiry fails to save' do
       before do
-        @inquiry = FactoryGirl.build(:inquiry)
-        Inquiry.stub(:new).and_return(@inquiry)
-        @inquiry.stub(:save).and_return(false)
+        Inquiry.any_instance.stub(:save).and_return(false)
       end
 
       it 'should set the flash message header' do

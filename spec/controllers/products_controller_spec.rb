@@ -1,16 +1,11 @@
 require 'spec_helper'
 
-def valid_params(opts={})
-  {
-    'name' => opts[:name] || "Product Name",
-    'description' => opts[:description] || "Product Description",
-    'price' => opts[:price] || "$285.50",
-    'image' => opts[:image] || "foobar"
-  }
+def valid_params
+  @valid_params ||= FactoryGirl.attributes_for(:product).stringify_keys
 end
 
 def do_update
-  put :update, id: 1, product: valid_params
+  put :update, id: @product.id, product: valid_params
 end
 
 def do_create
@@ -18,19 +13,12 @@ def do_create
 end
 
 def do_destroy
-  delete :destroy, id: 1
+  delete :destroy, id: @product.id
 end
 
 describe ProductsController do
   before do
-    @mock_product = mock_model(Product)
-    @mock_product.stub(:update_attributes).and_return(true)
-    @mock_product.stub(:save).and_return(true)
-    @mock_product.stub(:destroy).and_return(true)
-
-    Product.stub(:find).and_return(@mock_product)
-    Product.stub(:all).and_return([@mock_product])
-    Product.stub(:new).and_return(@mock_product)
+    @product = FactoryGirl.create(:product)
   end
 
   describe 'GET index' do
@@ -41,7 +29,7 @@ describe ProductsController do
 
     it 'should set @products' do
       get :index
-      assigns(:products).should == [@mock_product]
+      assigns(:products).should == [@product]
     end
 
     context 'when passing a category' do
@@ -51,9 +39,9 @@ describe ProductsController do
       end
 
       it 'should set all products for that category' do
-        Product.stub(:tagged_with).and_return([@mock_product])
+        Product.stub(:tagged_with).and_return([@product])
         get :index, category: 'boys'
-        assigns(:products).should == [@mock_product]
+        assigns(:products).should == [@product]
       end
 
       it 'should set @category' do
@@ -65,25 +53,25 @@ describe ProductsController do
 
   describe 'GET show' do
     it 'should set @active_navigation' do
-      get :show, id: 1
+      get :show, id: @product.id
       assigns(:active_navigation).should == 'products'
     end
 
     it 'should set @product' do
-      get :show, id: 1
-      assigns(:product).should == @mock_product
+      get :show, id: @product.id
+      assigns(:product).should == @product
     end
   end
 
   describe 'GET edit' do
     it 'should set @active_navigation' do
-      get :edit, id: 1
+      get :edit, id: @product.id
       assigns(:active_navigation).should == 'products'
     end
 
     it 'should set @product' do
-      get :edit, id: 1
-      assigns(:product).should == @mock_product
+      get :edit, id: @product.id
+      assigns(:product).should == @product
     end
   end
 
@@ -95,18 +83,19 @@ describe ProductsController do
 
     it 'should set @product' do
       do_update
-      assigns(:product).should == @mock_product
+      assigns(:product).should == @product
     end
 
     it 'should update attributes' do
-      @mock_product.should_receive(:update_attributes).with(valid_params)
+      Product.stub(:find).and_return(@product)
+      @product.should_receive(:update_attributes)
       do_update
     end
 
     context 'when update succeeds' do
       it 'should redirect to the product' do
         do_update
-        response.should redirect_to(@mock_product)
+        response.should redirect_to(@product)
       end
 
       it 'should set the flash appropriately' do
@@ -117,7 +106,8 @@ describe ProductsController do
 
     context 'when update fails' do
       before do
-        @mock_product.stub(:update_attributes).and_return(false)
+        Product.stub(:find).and_return(@product)
+        @product.stub(:update_attributes).and_return(false)
       end
 
       it 'should set the flash appropriately' do
@@ -140,12 +130,11 @@ describe ProductsController do
 
     it 'should set @product' do
       get :new
-      assigns(:product).should == @mock_product
+      assigns(:product).should be_a(Product)
     end
 
     it 'should not persist @product' do
-      Product.should_receive(:new).and_return(@mock_product)
-      @mock_product.should_not_receive(:save)
+      @product.should_not_receive(:save)
       get :new
     end
   end
@@ -158,19 +147,23 @@ describe ProductsController do
 
     it 'should set @product' do
       do_create
-      assigns(:product).should == @mock_product
+      assigns(:product).should be_a(Product)
     end
 
-    it 'should build a new product' do
-      Product.should_receive(:new).and_return(@mock_product)
-      @mock_product.should_receive(:save)
+    it 'should build a new product and persist it' do
+      Product.should_receive(:new).and_return(@product)
+      @product.should_receive(:save)
       do_create
     end
 
     context 'when save succeeds' do
+      before do
+        Product.stub(:new).and_return(@product)
+      end
+
       it 'should redirect to the product' do
         do_create
-        response.should redirect_to(@mock_product)
+        response.should redirect_to(@product)
       end
 
       it 'should set the flash appropriately' do
@@ -181,7 +174,8 @@ describe ProductsController do
 
     context 'when save fails' do
       before do
-        @mock_product.stub(:save).and_return(false)
+        Product.stub(:new).and_return(@product)
+        @product.stub(:save).and_return(false)
       end
 
       it 'should set the flash appropriately' do
@@ -199,7 +193,7 @@ describe ProductsController do
   describe 'DELETE destroy' do
     it 'should set @product' do
       do_destroy
-      assigns(:product).should == @mock_product
+      assigns(:product).should == @product
     end
 
     context 'when destroy succeeds' do
@@ -216,7 +210,8 @@ describe ProductsController do
 
     context 'when destroy fails' do
       before do
-        @mock_product.stub(:destroy).and_return(false)
+        Product.stub(:find).and_return(@product)
+        @product.stub(:destroy).and_return(false)
       end
 
       it 'should set the flash appropriately' do
@@ -226,7 +221,7 @@ describe ProductsController do
 
       it 'should redirect to the product' do
         do_destroy
-        response.should redirect_to(@mock_product)
+        response.should redirect_to(@product)
       end
     end
   end
