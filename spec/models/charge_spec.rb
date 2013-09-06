@@ -24,4 +24,53 @@ describe Charge do
     it { should_not allow_value('@gmail.com').for(:email) }
   end
 
+  describe '#methods' do
+    before do
+      @charge = FactoryGirl.create(:charge)
+    end
+
+    describe '#valid_without_stripe' do
+      context 'with no errors' do
+        it 'should return true' do
+          expect(@charge.valid_without_stripe?).to be_true
+        end
+      end
+
+      context 'with errors' do
+        context 'and it is only one on :stripe_charge_id' do
+          it 'should return false' do
+            @charge.stripe_charge_id = nil
+            expect(@charge.valid_without_stripe?).to be_true
+          end
+        end
+
+        context 'and at least one of them is not :stripe_charge_id' do
+          it 'should return true' do
+            @charge.email = nil
+            @charge.stripe_charge_id = nil
+            expect(@charge.valid_without_stripe?).to be_false
+          end
+        end
+      end
+    end
+
+    describe '#stripe' do
+      before do
+        @charge = FactoryGirl.create(:charge)
+        @charge.stripe_charge_id = Stripe::Charge.create.id
+      end
+
+      it 'should fetch the object from Stripe' do
+        Stripe::Charge.should_receive(:retrieve).with(@charge.stripe_charge_id)
+        @charge.stripe
+      end
+
+      it 'should only fetch the object once' do
+        @charge.stripe
+        Stripe::Charge.should_not_receive(:retrieve)
+        @charge.stripe
+      end
+    end
+  end
+
 end

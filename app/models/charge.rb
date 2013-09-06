@@ -39,4 +39,20 @@ class Charge < ActiveRecord::Base
 
   # Internal: Validates format of email.
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+
+  # Public: Get the Stripe::Charge object from Stripe's API.
+  #
+  # Returns a Stripe::Charge.
+  def stripe
+    @stripe ||= Stripe::Charge.retrieve(self.stripe_charge_id)
+  end
+
+  # Public: Validates the Charge except for Stripe integration.
+  #
+  # Returns a Boolean.
+  def valid_without_stripe?
+    self.valid?
+    self.errors.delete(:stripe_charge_id)
+    return !self.errors.any?
+  end
 end
