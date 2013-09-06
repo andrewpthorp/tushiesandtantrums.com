@@ -6,6 +6,7 @@ require 'rspec/autorun'
 require 'money-rails/test_helpers'
 require 'capybara/rails'
 require 'capybara/rspec'
+require 'stripe_mock'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -38,4 +39,7 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
+  config.before(:each) { StripeMock.start }
+  config.after(:each) { StripeMock.stop }
 end

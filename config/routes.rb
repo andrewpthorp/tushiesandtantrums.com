@@ -13,4 +13,10 @@ TushiesandtantrumsCom::Application.routes.draw do
 
   resources :inquiries, only: [:create]
 
+  resources :charges, only: [:create] do
+    collection do
+      get 'new/product/:product_id', to: 'charges#new', as: :new_product
+    end
+  end
+
 end
