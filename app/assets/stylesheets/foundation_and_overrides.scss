@@ -285,11 +285,15 @@ $paragraph-font-size: 0.85em;
 // $form-label-pointer: pointer;
 // $form-label-font-size: emCalc(14);
 // $form-label-font-weight: 500;
+$form-label-font-weight: normal;
 // $form-label-font-color: lighten(#000, 30%);
+$form-label-font-color: darken($color_gray, 35%);
 // $form-label-bottom-margin: emCalc(3);
+$form-label-bottom-margin: emCalc(7);
 // $input-font-family: inherit;
 // $input-font-color: rgba(0,0,0,0.75);
 // $input-font-size: emCalc(14);
+$input-font-size: emCalc(16);
 // $input-bg-color: #fff;
 // $input-focus-bg-color: darken(#fff, 2%);
 // $input-border-color: darken(#fff, 20%);
@@ -298,6 +302,7 @@ $paragraph-font-size: 0.85em;
 // $input-border-width: 1px;
 // $input-disabled-bg: #ddd;
 // $input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+$input-include-glowing-effect: false;
 // $input-include-glowing-effect: true;
 
 // We use these to style the fieldset border and spacing.
@@ -615,13 +620,14 @@ $button-font-color-alt: $color_white;
 
 // We use these to control the style of the custom select dropdown element.
 
-// $custom-dropdown-height: 200px;
+$custom-dropdown-height: 150px;
 // $custom-dropdown-bg: #fff;
 // $custom-dropdown-border-color: darken(#fff, 20%);
 // $custom-dropdown-border-width: 1px;
 // $custom-dropdown-border-style: solid;
 // $custom-dropdown-font-color: #555;
 // $custom-dropdown-font-size: emCalc(14);
+$custom-dropdown-font-size: emCalc(16);
 // $custom-dropdown-color-selected: #eeeeee;
 // $custom-dropdown-font-color-selected: #000;
 // $custom-dropdown-shadow: 0 2px 2px 0px rgba(0,0,0,0.1);
