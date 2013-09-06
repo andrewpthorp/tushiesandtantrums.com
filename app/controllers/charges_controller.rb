@@ -10,6 +10,11 @@ class ChargesController < ApplicationController
     @charge = Charge.new(params[:charge])
     @product = @charge.product
 
+    unless @charge.valid_without_stripe?
+      flash.now[:error] = 'Oops! Make sure you filled out the whole form.'
+      render :new and return
+    end
+
     begin
       charge = Stripe::Charge.create(
         :amount => @product.price.fractional,

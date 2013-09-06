@@ -63,6 +63,22 @@ describe ChargesController do
       expect(flash[:notice]).to match(/Success/)
     end
 
+    context 'with invalid data that does not include Stripe' do
+      before do
+        Charge.any_instance.stub(:valid_without_stripe?).and_return(false)
+      end
+
+      it 'should render the charge form' do
+        do_create
+        response.should render_template(:new)
+      end
+
+      it 'should set the flash' do
+        do_create
+        flash.now[:error].should eq('Oops! Make sure you filled out the whole form.')
+      end
+    end
+
     context 'when the credit card is declined' do
       before do
         StripeMock.prepare_card_error(:incorrect_number)
