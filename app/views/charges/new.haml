@@ -2,7 +2,7 @@
   .large-centered.large-12.columns
     .row
       .large-centered.large-2.columns
-        = image_tag @product.image
+        = link_to image_tag(@product.image), @product
     .row
       .large-12.columns
         %h3.text-center.name= @product.name
@@ -13,6 +13,13 @@
     = form_for @charge, html: { id: 'payment-form', class: 'custom' } do |f|
       = f.hidden_field :product_id
 
+      -# Global Flashes
+      .row.margin-bottom-0
+        .large-12.columns
+          - flash.each do |key, value|
+            %p.flash{class: key}= value
+
+      -# Stripe Errors
       .row.margin-bottom-0
         .large-12.columns
           %p.payment-errors.flash.error.hide
