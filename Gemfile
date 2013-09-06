@@ -44,6 +44,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'stripe-ruby-mock', '>= 1.8.4.9'
   gem 'capybara'
   gem 'database_cleaner', '>= 0.6.7'
   gem 'shoulda-matchers'
