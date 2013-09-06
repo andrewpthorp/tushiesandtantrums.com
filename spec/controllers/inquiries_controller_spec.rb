@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-def do_create
-  xhr :post, :create, inquiry: FactoryGirl.attributes_for(:inquiry)
-end
-
 describe InquiriesController do
+
+  def do_create
+    xhr :post, :create, inquiry: FactoryGirl.attributes_for(:inquiry)
+  end
 
   describe 'POST create' do
     it 'should assign @inquiry' do

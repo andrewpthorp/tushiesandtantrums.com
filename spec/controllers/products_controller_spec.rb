@@ -1,22 +1,23 @@
 require 'spec_helper'
 
-def valid_params
-  @valid_params ||= FactoryGirl.attributes_for(:product).stringify_keys
-end
-
-def do_update
-  put :update, id: @product.id, product: valid_params
-end
-
-def do_create
-  post :create, product: valid_params
-end
-
-def do_destroy
-  delete :destroy, id: @product.id
-end
-
 describe ProductsController do
+
+  def valid_params
+    @valid_params ||= FactoryGirl.attributes_for(:product).stringify_keys
+  end
+
+  def do_update
+    put :update, id: @product.id, product: valid_params
+  end
+
+  def do_create
+    post :create, product: valid_params
+  end
+
+  def do_destroy
+    delete :destroy, id: @product.id
+  end
+
   before do
     @product = FactoryGirl.create(:product)
   end

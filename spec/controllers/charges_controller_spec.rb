@@ -1,18 +1,19 @@
 require 'spec_helper'
 
-def do_get
-  @product = FactoryGirl.create(:product)
-  get :new, product_id: @product.id
-end
-
-def do_create
-  @charge = FactoryGirl.build(:charge)
-  @product = @charge.product
-  Charge.stub(:new).and_return(@charge)
-  post :create, charge: FactoryGirl.attributes_for(:charge)
-end
-
 describe ChargesController do
+
+  def do_get
+    @product = FactoryGirl.create(:product)
+    get :new, product_id: @product.id
+  end
+
+  def do_create(valid_without_stripe=true)
+    @charge = FactoryGirl.build(:charge)
+    @product = @charge.product
+    Charge.stub(:new).and_return(@charge)
+    @charge.stub(:valid_without_stripe?).and_return(valid_without_stripe)
+    post :create, charge: FactoryGirl.attributes_for(:charge)
+  end
 
   describe 'GET new' do
     it 'should assign @product' do
@@ -64,17 +65,13 @@ describe ChargesController do
     end
 
     context 'with invalid data that does not include Stripe' do
-      before do
-        Charge.any_instance.stub(:valid_without_stripe?).and_return(false)
-      end
-
       it 'should render the charge form' do
-        do_create
+        do_create(false)
         response.should render_template(:new)
       end
 
       it 'should set the flash' do
-        do_create
+        do_create(false)
         flash.now[:error].should eq('Oops! Make sure you filled out the whole form.')
       end
     end
