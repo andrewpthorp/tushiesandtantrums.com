@@ -9,7 +9,7 @@ describe InquiriesController do
   describe 'POST create' do
     it 'should assign @inquiry' do
       do_create
-      assigns(:inquiry).should be_a(Inquiry)
+      expect(assigns(:inquiry)).to be_a(Inquiry)
     end
 
     context 'when an inquiry saves' do
@@ -17,14 +17,19 @@ describe InquiriesController do
         Inquiry.any_instance.stub(:save).and_return(true)
       end
 
+      it 'should set the ajax header' do
+        do_create
+        expect(response.headers['Ajax-Type']).to eq('flash')
+      end
+
       it 'should set the flash message header' do
         do_create
-        response.headers['Flash-Message'].should match(/Success/)
+        expect(response.headers['Flash-Message']).to match(/Success/)
       end
 
       it 'should set the flash message type header' do
         do_create
-        response.headers['Flash-Message-Type'].should eq('success')
+        expect(response.headers['Flash-Message-Type']).to eq('success')
       end
     end
 
@@ -33,20 +38,25 @@ describe InquiriesController do
         Inquiry.any_instance.stub(:save).and_return(false)
       end
 
+      it 'should set the ajax header' do
+        do_create
+        expect(response.headers['Ajax-Type']).to eq('flash')
+      end
+
       it 'should set the flash message header' do
         do_create
-        response.headers['Flash-Message'].should match(/problem sending/)
+        expect(response.headers['Flash-Message']).to match(/problem sending/)
       end
 
       it 'should set the flash message type header' do
         do_create
-        response.headers['Flash-Message-Type'].should eq('error')
+        expect(response.headers['Flash-Message-Type']).to eq('error')
       end
     end
 
     it 'should be successful' do
       do_create
-      response.should be_success
+      expect(response).to be_success
     end
   end
 

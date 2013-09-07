@@ -5,6 +5,7 @@ class ChargesController < ApplicationController
     @charge = Charge.new(product_id: @product.id)
 
     if request.xhr?
+      set_headers 'popup'
       render layout: 'popup'
     else
       render layout: 'minimal'

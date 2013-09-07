@@ -40,6 +40,11 @@ describe ChargesController do
         do_get(true)
         expect(response).to render_template(layout: 'layouts/popup')
       end
+
+      it 'should set the ajax header' do
+        do_get(true)
+        expect(response.headers['Ajax-Type']).to eq('popup')
+      end
     end
 
     context 'when the request is not xhr?' do
