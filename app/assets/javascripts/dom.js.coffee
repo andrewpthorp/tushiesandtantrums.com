@@ -8,11 +8,11 @@ class DomView extends Backbone.View
 
   # widgetMouseout - handle when a user mouses over a product widget.
   widgetMouseover: (ev) ->
-    $(ev.currentTarget).find('.overlay').removeClass('hide')
+    $(ev.currentTarget).find('.overlay').removeClass 'hide'
 
   # widgetMouseout - handle when a user mouses out from a product widget.
   widgetMouseout: (ev) ->
-    $(ev.currentTarget).find('.overlay').addClass('hide')
+    $(ev.currentTarget).find('.overlay').addClass 'hide'
 
   # ajaxComplete - figure out what the ajax was for, and execute it.
   ajaxComplete: (xhr, status) =>
@@ -35,7 +35,7 @@ class DomView extends Backbone.View
       $flash.addClass 'error'
 
     $flash.text status.getResponseHeader('Flash-Message')
-    $flash.show()
+    $flash.removeClass 'hide'
 
   # ajaxPopup - when an ajax request is complete, if it is for a poup, show it.
   ajaxPopup: (xhr, status) =>
@@ -54,7 +54,7 @@ class DomView extends Backbone.View
     $contact = $ '#contact'
     $contact.foundation 'reveal', 'close'
 
-    $flash.hide()
+    $flash.addClass 'hide'
     $flash.text ''
     $contact.find('input[type=text]').val ''
     $contact.find('textarea').val ''
