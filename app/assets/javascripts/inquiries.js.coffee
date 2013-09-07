@@ -20,6 +20,8 @@ $ ->
   $(document).on 'ajax:complete', (xhr, status) ->
     $flash = $ '.flash'
 
+    return unless status.getResponseHeader('Flash')
+
     if status.getResponseHeader('Flash-Message-Type') == 'success'
       $flash.removeClass 'error'
       $flash.addClass 'success'

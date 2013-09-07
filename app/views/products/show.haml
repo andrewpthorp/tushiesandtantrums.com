@@ -11,7 +11,7 @@
           %li.strong Overview
           %li.dotted Handmade Item
           %li.dotted Made to Order
-        = link_to 'Buy Now', new_product_charges_path(@product), class: 'buy-button'
+        = link_to 'Buy Now', new_product_charges_path(@product), class: 'buy-button', remote: true
       .background= image_tag @product.image
       .blur= image_tag @product.image
     .border.bottom

@@ -15,6 +15,7 @@
   %title= content_for?(:title) ? "Tushies And Tantrums – #{yield(:title)}" : "Tushies And Tantrums"
 
   = stylesheet_link_tag "application"
+  = javascript_include_tag "https://js.stripe.com/v2/"
   = javascript_include_tag "vendor/custom.modernizr"
   = csrf_meta_tag
 
@@ -34,3 +35,7 @@
 
   = javascript_include_tag "application"
   = render 'inquiries/new'
+
+:coffeescript
+  $ ->
+    Stripe.setPublishableKey("#{ENV['STRIPE_PUBLIC_KEY']}")
