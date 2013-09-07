@@ -18,9 +18,12 @@
   = javascript_include_tag "vendor/custom.modernizr"
   = csrf_meta_tag
 
-%body.charges
+%body.minimal
 
-  #charges-content
+  %header#global-header
+    = link_to image_tag('logo-circle.png'), root_path, id: 'logo'
+
+  #main-content
     = yield
 
   = javascript_include_tag "application"

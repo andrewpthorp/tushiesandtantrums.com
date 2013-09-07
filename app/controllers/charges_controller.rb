@@ -1,9 +1,14 @@
 class ChargesController < ApplicationController
-  layout 'charges'
 
   def new
     @product = Product.find(params[:product_id])
     @charge = Charge.new(product_id: @product.id)
+
+    if request.xhr?
+      render layout: 'popup'
+    else
+      render layout: 'minimal'
+    end
   end
 
   def create

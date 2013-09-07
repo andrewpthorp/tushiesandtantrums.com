@@ -1,0 +1,12 @@
+.popup-wrapper
+  = link_to 'X', '#', class: 'popup-close-button'
+  .popup
+    = yield
+
+:javascript
+  $(function(){
+    $('.popup-close-button').on('click', function(){
+      $(this).closest('.popup-wrapper').remove();
+    });
+  });
+

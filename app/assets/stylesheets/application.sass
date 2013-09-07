@@ -11,12 +11,51 @@
 @import 'sections/inquiries'
 @import 'sections/charges'
 
+body.minimal
+  background: lighten($color_gray, 5%)
+  #global-header
+    position: relative
+    width: 100%
+    background: $color_white
+    height: 75px
+    overflow: visible
+    border-bottom: 5px solid darken($color_gray, 5%)
+    #logo
+      display: block
+      width: 130px
+      margin: 0px auto
+      position: relative
+      top: 15px
+      border-radius: 65px
+      border: 5px solid darken($color_gray, 5%)
+  #main-content
+    padding: 0px
+    margin: 90px auto
+    background: transparent
+    +box-shadow(0px 0px 0px transparent)
+
 #main-content
   z-index: 1
   position: relative
   padding: 25px 120px 0px
   background: $color_white
   +box-shadow(0px -2px 4px rgba(0, 0, 0, 0.15), 0px 2px 4px rgba(0, 0, 0, 0.25))
+
+.popup-wrapper
+  background: rgba($color_gray, 0.9)
+  padding-top: 75px
+  z-index: 1000
+  position: absolute
+  top: 0px
+  left: 0px
+  width: 100%
+  height: 100%
+  .popup-close-button
+    position: absolute
+    top: 25px
+    right: 25px
+    color: $color_white
+    font-weight: bold
 
 ul
   list-style-type: none

@@ -2,9 +2,13 @@ require 'spec_helper'
 
 describe ChargesController do
 
-  def do_get
+  def do_get(use_xhr=false)
     @product = FactoryGirl.create(:product)
-    get :new, product_id: @product.id
+    if use_xhr
+      xhr :get, :new, product_id: @product.id
+    else
+      get :new, product_id: @product.id
+    end
   end
 
   def do_create(valid_without_stripe=true)
@@ -29,6 +33,20 @@ describe ChargesController do
     it 'should set the product on @charge' do
       do_get
       expect(assigns(:charge).product).to eq(@product)
+    end
+
+    context 'when the request is xhr?' do
+      it 'should use the popup layout' do
+        do_get(true)
+        expect(response).to render_template(layout: 'layouts/popup')
+      end
+    end
+
+    context 'when the request is not xhr?' do
+      it 'should use the minimal layout' do
+        do_get
+        expect(response).to render_template(layout: 'layouts/minimal')
+      end
     end
   end
 
