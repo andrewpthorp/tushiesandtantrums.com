@@ -3,7 +3,7 @@ class DomView extends Backbone.View
 
   events:
     'mouseover .product-widget'     : 'widgetMouseover'
-    'mouseout .product-widget'      : 'widgetMousetout'
+    'mouseout .product-widget'      : 'widgetMouseout'
     'ajax:complete'                 : 'ajaxComplete'
     'click .popup-close-button'     : 'closePopup'
 
