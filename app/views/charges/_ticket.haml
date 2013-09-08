@@ -1,0 +1,24 @@
+%section
+  .price-table
+    %dl.details
+      .clearfix
+        %dt Price:
+        %dd= number_to_currency(product.price)
+
+      .clearfix
+        %dt Shipping:
+        %dd= number_to_currency(product.shipping)
+
+      .clearfix.tax.hide
+        %dt Tax (TN only):
+        %dd= number_to_currency(product.price * 0.0095)
+
+      .clearfix.total
+        %dt.strong Total:
+        %dd.strong{ data: { withtax: number_to_currency(product.total(include_tax: true)), withoutTax: number_to_currency(product.total) } }
+          = number_to_currency(product.total)
+    %hr
+    %p.mute.small.margin-bottom-0
+      %span.strong Note:
+      Charges will show on statement from
+      %span.strong.italic Tushies &amp; Tantrums, Inc.
