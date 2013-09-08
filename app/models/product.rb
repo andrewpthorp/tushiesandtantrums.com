@@ -1,6 +1,10 @@
 class Product < ActiveRecord::Base
-  attr_accessible :name, :description, :price, :price_in_cents, :image, :tag_list
+  extend FriendlyId
+
+  friendly_id :name, use: :slugged
   acts_as_taggable
+
+  attr_accessible :name, :description, :price, :price_in_cents, :image, :tag_list
 
   validates :description, presence: true
   validates :price_in_cents, presence: true

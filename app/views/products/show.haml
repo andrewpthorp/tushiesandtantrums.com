@@ -24,8 +24,8 @@
     %h3 Shipping Information
     %ul.dotted
       %li Only ships to USA from Nashville, TN.
-      %li Shipping cost is $50
+      %li Shipping cost is #{number_to_currency(@product.shipping)}
     .gray-box.margin-top-25
       %header
         %h1 Share this Product
-
+        = render 'shared/share_buttons'

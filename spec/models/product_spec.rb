@@ -28,6 +28,13 @@ describe Product do
     end
   end
 
+  describe '.friendly_id' do
+    it 'should set a slug' do
+      product = FactoryGirl.create(:product)
+      product.slug.should_not be_nil
+    end
+  end
+
   describe '#methods' do
     describe '#total' do
       before do
