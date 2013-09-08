@@ -23,7 +23,7 @@ class Product < ActiveRecord::Base
   # opts  - Hash used to modify the results (default: {}, optional).
   #         :include_tax - Boolean whether to include tax in the total.
   #
-  # Returns a Number.
+  # Returns an instance of Money.
   def total(opts={})
     if opts[:include_tax] ||= false
       price + tax + shipping
@@ -34,7 +34,7 @@ class Product < ActiveRecord::Base
 
   # Public: Get the tax, which is only applied when selling to Tennessee.
   #
-  # Returns a Number.
+  # Returns an instance of Money.
   def tax
     price * 0.0095
   end

@@ -3,6 +3,34 @@ require 'spec_helper'
 describe ApplicationHelper do
   include Devise::TestHelpers
 
+  describe '#markdown' do
+    before do
+      @renderer = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
+      Redcarpet::Markdown.stub(:new).and_return(@renderer)
+    end
+
+    it 'should use the right options' do
+      Redcarpet::Markdown.should_receive(:new)
+        .with(Redcarpet::Render::HTML, autolink: true,
+              space_after_headers: true)
+        .and_return(@renderer)
+      helper.markdown('foobar')
+    end
+
+    it 'should render markdown' do
+      text = '<b>foobar</b>'
+      @renderer.should_receive(:render).with(text).and_return(String.new)
+      helper.markdown(text)
+    end
+
+    it 'should render html_safe' do
+      new_string = String.new
+      @renderer.stub(:render).and_return(new_string)
+      new_string.should_receive(:html_safe)
+      helper.markdown('foobar')
+    end
+  end
+
   describe '#navigation' do
 
     it 'should return an unordered list' do

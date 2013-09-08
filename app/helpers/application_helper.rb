@@ -1,5 +1,16 @@
 module ApplicationHelper
 
+  # Public: Render markdown for a given String.
+  #
+  # text  - The String to render as markdown.
+  #
+  # Returns a String.
+  def markdown(text)
+    Redcarpet::Markdown.new(
+      Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true
+    ).render(text).html_safe
+  end
+
   # Public: Get the Global Navigation UL.
   #
   # curr  - The current section (default: 'home').
