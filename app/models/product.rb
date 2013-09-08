@@ -15,8 +15,22 @@ class Product < ActiveRecord::Base
 
   # Public: Get the total, which is the :price plus the shipping.
   #
+  # opts  - Hash used to modify the results (default: {}, optional).
+  #         :include_tax - Boolean whether to include tax in the total.
+  #
   # Returns a Number.
-  def total
-    price + shipping
+  def total(opts={})
+    if opts[:include_tax] ||= false
+      price + tax + shipping
+    else
+      price + shipping
+    end
+  end
+
+  # Public: Get the tax, which is only applied when selling to Tennessee.
+  #
+  # Returns a Number.
+  def tax
+    price * 0.0095
   end
 end

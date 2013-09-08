@@ -30,9 +30,26 @@ describe Product do
 
   describe '#methods' do
     describe '#total' do
+      before do
+        @product = FactoryGirl.create(:product, price_in_cents: 10000,
+                                      shipping_in_cents: 2000)
+      end
+
       it 'should add the price and shipping' do
-        product = FactoryGirl.create(:product)
-        product.total.should eq(product.price + product.shipping)
+        @product.total.fractional.should eq(12000)
+      end
+
+      context 'when including the tax' do
+        it 'should add the tax into the total' do
+          @product.total(include_tax: true).fractional.should eq(12095)
+        end
+      end
+    end
+
+    describe '#tax' do
+      it 'should calculate correctly' do
+        product = FactoryGirl.create(:product, price_in_cents: 10000)
+        product.tax.fractional.should eq(95)
       end
     end
   end
