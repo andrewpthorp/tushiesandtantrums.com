@@ -2,9 +2,9 @@ class DomView extends Backbone.View
   el: 'body'
 
   events:
-    'ajax:complete'                 : 'ajaxComplete'
     'mouseover .product-widget'     : 'widgetMouseover'
     'mouseout .product-widget'      : 'widgetMousetout'
+    'ajax:complete'                 : 'ajaxComplete'
 
   # widgetMouseout - handle when a user mouses over a product widget.
   widgetMouseover: (ev) ->
