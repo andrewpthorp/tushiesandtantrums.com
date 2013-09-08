@@ -2,7 +2,7 @@
   .large-2.columns.logo
     = image_tag 'logo-circle.png', class: 'logo-circle'
   .large-7.columns.navigation
-    .margin-bottom-15= navigation(@active_navigation)
+    .margin-bottom-15= navigation(@active_navigation, include_admin: true)
     %p.small.mute
       Copyright &copy; Tushies &amp; Tantrums, Inc.
   .large-3.columns.social

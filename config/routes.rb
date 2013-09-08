@@ -1,5 +1,7 @@
 TushiesandtantrumsCom::Application.routes.draw do
 
+  devise_for :admins
+
   # Basic Views
   root to: 'welcome#index'
 

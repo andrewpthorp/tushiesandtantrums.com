@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe ApplicationHelper do
+  include Devise::TestHelpers
 
   describe '#navigation' do
 
@@ -29,6 +30,21 @@ describe ApplicationHelper do
         it "should set the current section to #{p[:text]}" do
           expect(helper.navigation(p[:section]))
             .to have_selector("a.active[href='#{p[:url]}']", text: p[:text])
+        end
+      end
+    end
+
+    context 'when passing include_admin' do
+      context 'and a user is signed in' do
+        it 'should include a link to sign out' do
+          sign_in_admin
+          expect(helper.navigation('home', include_admin: true)).to have_selector('a', text: 'Sign out')
+        end
+      end
+
+      context 'and a user is not signed in' do
+        it 'should include a link to sign in' do
+          expect(helper.navigation('home', include_admin: true)).to have_selector('a', text: 'Sign in')
         end
       end
     end

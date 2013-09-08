@@ -42,4 +42,7 @@ RSpec.configure do |config|
 
   config.before(:each) { StripeMock.start }
   config.after(:each) { StripeMock.stop }
+
+  config.include DeviseMacros
+  config.include Devise::TestHelpers, :type => :controller
 end

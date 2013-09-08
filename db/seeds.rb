@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-if Rails.env.development?
+if Rails.env.development? && !ENV['SKIP_PRODUCTS']
 
   puts "Destroying #{Product.count.to_s} products..."
   Product.destroy_all
@@ -19,4 +19,13 @@ if Rails.env.development?
   end
   puts "Done."
 
+end
+
+unless Admin.any? || ENV['ADMIN_EMAIL'].blank? || ENV['ADMIN_PASS'].blank?
+  puts "Creating Admin."
+  admin = Admin.new
+  admin.email = ENV['ADMIN_EMAIL'].dup
+  admin.password = ENV['ADMIN_PASS'].dup
+  admin.save!
+  puts "Done."
 end
