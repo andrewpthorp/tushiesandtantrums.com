@@ -1,0 +1,29 @@
+body.minimal
+  background: lighten($color_gray, 5%)
+  #global-header
+    position: relative
+    width: 100%
+    background: $color_white
+    height: 75px
+    overflow: visible
+    border-bottom: 5px solid darken($color_gray, 5%)
+    #logo
+      display: block
+      width: 130px
+      margin: 0px auto
+      position: relative
+      top: 15px
+      border-radius: 65px
+      border: 5px solid darken($color_gray, 5%)
+  #main-content
+    padding: 0px
+    margin: 90px auto
+    background: transparent
+    +box-shadow(0px 0px 0px transparent)
+  section
+    +box-sizing(border-box)
+    background: $color_white
+    border: 5px solid darken($color_gray, 5%)
+    border-radius: 5px
+    padding: 25px
+

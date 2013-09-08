@@ -1,4 +1,4 @@
-p, li
+p, li, span, dl, dd
   &.small
     font-size: $small-font-size
   &.big
@@ -7,6 +7,11 @@ p, li
     color: lighten($body-font-color, 15%)
   &.strong
     font-weight: bold
+  &.italic
+    font-style: italic
+
+.clearfix
+  +clearfix
 
 .hide
   display: none !important

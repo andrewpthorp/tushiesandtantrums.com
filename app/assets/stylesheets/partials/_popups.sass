@@ -1,0 +1,40 @@
+.popup-wrapper
+  background: rgba($color_gray, 0.9)
+  padding-top: 75px
+  z-index: 1000
+  position: absolute
+  top: 0px
+  left: 0px
+  width: 100%
+  min-height: 100%
+
+  .popup
+    margin-bottom: 75px
+
+    section
+      +box-sizing(border-box)
+      background: $color_white
+      border: 5px solid darken($color_gray, 5%)
+      border-radius: 5px
+      padding: 25px
+
+  .popup-close-button
+    +transition(all 0.1s linear)
+    position: absolute
+    top: 15px
+    right: 15px
+    color: $color_white
+    padding: 5px 10px
+    border: 2px solid $color_white
+    border-radius: 12px
+    &:hover
+      +box-shadow(0px 0px 6px rgba(0, 0, 0, 0.5))
+      background: $color_white
+      color: $color_gray
+    &:active
+      background: transparent
+      color: $color_white
+      +box-shadow(inset 0px 0px 6px rgba(0, 0, 0, 0.5))
+
+
+

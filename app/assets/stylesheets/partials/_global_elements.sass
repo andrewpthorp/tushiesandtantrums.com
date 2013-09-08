@@ -95,3 +95,26 @@
       font-size: emCalc(18px)
       font-weight: bold
       text-align: center
+
+header.with-arrow
+  .text
+    overflow: visible
+  .arrow
+    position: relative
+    top: 23px
+    padding-left: 0px !important
+    div
+      padding: 0px
+      height: 2px
+      background: $color_green
+      width: 99%
+      &:before
+        content: url('layout/arrow-left.png')
+        position: absolute
+        left: -12px
+        top: -9px
+      &:after
+        content: url('layout/arrow-right.png')
+        position: absolute
+        right: 10px
+        top: -9px
