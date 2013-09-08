@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130906190511) do
+ActiveRecord::Schema.define(:version => 20130907194706) do
 
   create_table "charges", :force => true do |t|
     t.string   "stripe_charge_id"
@@ -41,8 +41,9 @@ ActiveRecord::Schema.define(:version => 20130906190511) do
     t.text     "description"
     t.integer  "price_in_cents"
     t.string   "image"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.integer  "shipping_in_cents"
   end
 
   create_table "taggings", :force => true do |t|
