@@ -90,7 +90,7 @@ describe ChargesController do
     context 'with invalid data that does not include Stripe' do
       it 'should render the charge form' do
         do_create(false)
-        response.should render_template(:new)
+        response.should render_template(:new, layout: 'minimal')
       end
 
       it 'should set the flash' do

@@ -18,7 +18,7 @@ class ChargesController < ApplicationController
 
     unless @charge.valid_without_stripe?
       flash.now[:error] = 'Oops! Make sure you filled out the whole form.'
-      render :new and return
+      render :new, layout: 'minimal' and return
     end
 
     begin
