@@ -22,6 +22,7 @@ gem 'bourbon'
 gem 'money-rails'
 gem 'acts-as-taggable-on'
 gem 'stripe'
+gem 'carmen-rails'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.5'
