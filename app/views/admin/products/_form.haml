@@ -1,0 +1,32 @@
+%section
+  = form_for [:admin, product] do |f|
+    .row
+      .large-12.columns
+        = f.label :name
+        = f.text_field :name
+
+    .row
+      .large-12.columns
+        = f.label :price
+        = f.text_field :price
+
+    .row
+      .large-12.columns
+        = f.label :shipping
+        = f.text_field :shipping
+
+    .row
+      .large-12.columns
+        = f.label :image
+        = f.file_field :image
+
+    .row
+      .large-12.columns
+        = f.label :description
+        = f.text_area :description
+
+    .row
+      .large-6.columns
+        = link_to 'Cancel', admin_products_path, class: 'button gray margin-bottom-0'
+      .large-6.columns.text-right
+        = f.submit "Save", class: 'button margin-bottom-0'

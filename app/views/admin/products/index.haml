@@ -1,0 +1,21 @@
+.row
+  .large-6.columns.large-centered
+    %h3.text-center All Products
+
+.row
+  .large-6.columns.large-centered
+    %section
+      %ul
+        - @products.each do |product|
+          %li.row.border-bottom.margin-bottom-10.padding-bottom-10
+            .large-2.columns
+              = image_tag product.image
+            .large-7.columns.margin-top-15
+              = link_to product.name, product
+            .large-3.columns.text-right.margin-top-15
+              = link_to 'Edit', edit_admin_product_path(product)
+              &mdash;
+              = link_to 'Delete', admin_product_path(product), method: :delete, confirm: 'Are you sure?'
+
+      %p.text-right.margin-bottom-0
+        = link_to 'New Product', new_admin_product_path

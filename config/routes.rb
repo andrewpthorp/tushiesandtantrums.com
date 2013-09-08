@@ -21,4 +21,9 @@ TushiesandtantrumsCom::Application.routes.draw do
     end
   end
 
+  # Admin Routes
+  namespace :admin do
+    resources :products, except: [:show]
+  end
+
 end
