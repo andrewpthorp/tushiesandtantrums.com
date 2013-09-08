@@ -12,11 +12,12 @@ class StripeIntegration extends Backbone.View
     @$button.prop 'disabled', true
     Stripe.createToken @$el, (status, response) =>
       if response.error
-        @$flash.text(response.error.message).show()
+        @$flash.text response.error.message
+        @$flash.removeClass 'hide'
         @$button.prop 'disabled', false
       else
-        token = response.id
-        @$el.append($('<input type="hidden" name="stripeToken" />').val(token))
+        $input = $('<input type="hidden" name="stripeToken" />').val response.id
+        @$el.append $input
         @$el.get(0).submit()
     false
 
