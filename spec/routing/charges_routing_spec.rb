@@ -6,7 +6,7 @@ describe 'charge routes' do
     it 'should route correctly' do
       product = FactoryGirl.create(:product)
       expect({ get: new_product_charges_path(product) }).to(
-        route_to(controller: 'charges', action: 'new', product_id: product.id.to_s)
+        route_to(controller: 'charges', action: 'new', product_id: product.slug)
       )
     end
   end

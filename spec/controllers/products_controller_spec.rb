@@ -7,6 +7,7 @@ describe ProductsController do
   end
 
   def do_update
+    Product.stub(:find).and_return(@product)
     put :update, id: @product.id, product: valid_params
   end
 
