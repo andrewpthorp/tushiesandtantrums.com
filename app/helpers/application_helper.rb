@@ -47,7 +47,6 @@ module ApplicationHelper
   # Returns an ActiveSupport::SafeBuffer.
   def admin_navigation
     elements = [
-      content_tag(:span, 'Admin:', class: 'strong'),
       link_to('Products', admin_products_path),
       link_to('Orders', admin_charges_path),
       link_to('Inquiries', '#'),

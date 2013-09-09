@@ -35,21 +35,15 @@
         .margin-bottom-5= @charge.address_line_1
         - unless @charge.address_line_2.blank?
           .margin-bottom-5= @charge.address_line_2
-        .margin-bottom-5
+        .margin-bottom-25
           = "#{@charge.city}, #{@charge.state} #{@charge.zip}"
 
       %hr
 
       .row
-        .large-5.columns
+        .large-5.columns.large-offset-7
           = form_for [:admin, @charge], html: { class: 'edit_charge custom' } do |f|
-            .row
-              .large-4.columns
-                = f.label :status, class: 'inline'
-              .large-8.columns
-                = f.select :status, Charge::VALID_STATUSES
-        .large-7.columns
-          %p.text-right.margin-bottom-0= link_to 'View All Orders', admin_charges_path
+            = f.select :status, Charge::VALID_STATUSES.each.map { |val| [val.capitalize, val] }
 
 :coffeescript
   new ChargesView(el: '.edit_charge')
