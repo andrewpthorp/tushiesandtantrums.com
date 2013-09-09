@@ -22,7 +22,11 @@ class Admin::ChargesController < Admin::BaseController
       flash[:error] = 'Oops! There was a problem updating that order.'
     end
 
-    redirect_to admin_charge_path(@charge)
+    if params[:return_to]
+      redirect_to params[:return_to]
+    else
+      redirect_to admin_charge_path(@charge)
+    end
   end
 
 end

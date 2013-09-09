@@ -52,6 +52,13 @@ describe Admin::ChargesController do
       expect(response).to redirect_to(admin_charge_path(@charge))
     end
 
+    context 'when passing a return_to param' do
+      it 'should redirect to the return_to' do
+        put :update, id: @charge.id, charge: {}, return_to: '/foo'
+        expect(response).to redirect_to('/foo')
+      end
+    end
+
     context 'when the charge is successfully updated' do
       it 'should set the flash correctly' do
         @charge.stub(:update_attributes).and_return(true)

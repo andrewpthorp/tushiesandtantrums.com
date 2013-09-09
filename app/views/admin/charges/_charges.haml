@@ -12,7 +12,14 @@
           %li.row.border-bottom.margin-bottom-10.padding-bottom-10
             .large-2.columns
               = image_tag charge.product.image
-            .large-10.columns
+            .large-7.columns
               .padding-top-5
                 %p.margin-bottom-0= link_to charge.product.name, admin_charge_path(charge)
                 %p.margin-bottom-0.mute= charge.created_at.to_s(:pretty)
+            .large-3.columns.margin-top-5
+              = form_for [:admin, charge], html: { class: 'edit_charge custom' } do |f|
+                = hidden_field_tag :return_to, admin_charges_path
+                = f.select :status, Charge::VALID_STATUSES.each.map { |val| [val.capitalize, val] }
+
+:coffeescript
+  new ChargesView(el: '.edit_charge')
