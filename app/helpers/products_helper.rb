@@ -6,6 +6,8 @@ module ProductsHelper
   #
   # Returns an ActiveSupport::SafeBuffer.
   def product_categories(curr='all')
+    curr = 'all' if curr.blank?
+
     list_items = [
       content_tag(:li, link_to('All Bedding', products_path), class: curr == 'all' ? 'active' : ''),
       content_tag(:li, link_to('Boys Bedding', boys_products_path), class: curr == 'boys' ? 'active' : ''),
