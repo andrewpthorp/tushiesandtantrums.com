@@ -19,6 +19,16 @@
     .flash
       +box-shadow(none)
 
+    .stripe-image
+      +background-image-retina('stripe', 'png', 100%, 100%)
+      opacity: 0.75
+      display: block
+      width: 119px
+      height: 26px
+      position: fixed
+      bottom: 15px
+      left: 15px
+
     section
       +box-sizing(border-box)
       background: $color_white
@@ -43,6 +53,3 @@
       background: transparent
       color: $color_white
       +box-shadow(inset 0px 0px 6px rgba(0, 0, 0, 0.5))
-
-
-

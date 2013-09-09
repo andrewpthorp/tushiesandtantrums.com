@@ -17,6 +17,8 @@
     .large-6.columns.large-offset-2.pull-3
       = render 'form', charge: @charge
 
+= link_to '', 'http://stripe.com', target: '_blank', class: 'stripe-image'
+
 :coffeescript
   $ ->
     new ChargesView
