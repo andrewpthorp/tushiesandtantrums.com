@@ -6,9 +6,9 @@
           = link_to image_tag(@product.image), @product
       .row
         .large-12.columns
-          %h3.text-center.name= @product.name
-          %p.text-center.price
-            = number_to_currency(@product.price)
+          %header.popup-header
+            %h3.text-center.name= @product.name
+            %p.text-center.price= number_to_currency(@product.price)
 
   .row
     .large-3.push-9.columns

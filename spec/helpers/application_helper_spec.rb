@@ -44,8 +44,8 @@ describe ApplicationHelper do
       expect(helper.navigation).to have_selector('a.active', text: 'Home')
     end
 
-    it 'should set the data-reveal-id on the Contact link' do
-      expect(helper.navigation).to have_selector("a[data-reveal-id='contact']", text: 'Contact')
+    it 'should have a link to contact' do
+      expect(helper.navigation).to have_link('Contact', href: '/inquiries/new')
     end
 
     [
@@ -70,17 +70,17 @@ describe ApplicationHelper do
         end
 
         it 'should include a link to admin' do
-          expect(results).to have_selector('a', text: 'Admin')
+          expect(results).to have_link('Admin')
         end
 
         it 'should include a link to sign out' do
-          expect(results).to have_selector('a', text: 'Sign out')
+          expect(results).to have_link('Sign out')
         end
       end
 
       context 'and a user is not signed in' do
         it 'should include a link to sign in' do
-          expect(results).to have_selector('a', text: 'Sign in')
+          expect(results).to have_link('Sign in')
         end
       end
     end

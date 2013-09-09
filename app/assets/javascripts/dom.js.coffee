@@ -29,8 +29,8 @@ class DomView extends Backbone.View
     if status.getResponseHeader('Flash-Message-Type') == 'success'
       $flash.removeClass 'error'
       $flash.addClass 'success'
-      @delay 1500, ->
-        @resetReveal()
+      @delay 1500, =>
+        @closePopup()
     else
       $flash.removeClass 'success'
       $flash.addClass 'error'
@@ -50,19 +50,5 @@ class DomView extends Backbone.View
   # delay - makes working with setTimeout in CoffeeScript easier.
   delay: (time, fn, args...) ->
     setTimeout fn, time, args...
-
-  # resetReveal - resets the Inquiry form.
-  #
-  # TODO: If we ever want to use reveals elswehere, need to generalize this.
-  resetReveal: ->
-    $flash = $ '.flash'
-    $contact = $ '#contact'
-    $contact.foundation 'reveal', 'close'
-
-    $flash.addClass 'hide'
-    $flash.text ''
-    $contact.find('input[type=text]').val ''
-    $contact.find('textarea').val ''
-
 
 window.DomView = DomView

@@ -1,5 +1,16 @@
 class InquiriesController < ApplicationController
 
+  def new
+    @inquiry = Inquiry.new
+
+    if request.xhr?
+      set_headers 'popup'
+      render layout: 'popup'
+    else
+      render layout: 'minimal'
+    end
+  end
+
   def create
     @inquiry = Inquiry.new(params[:inquiry])
 

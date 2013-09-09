@@ -1,0 +1,49 @@
+.row
+  .large-6.large-centered.columns
+    %header.popup-header
+      %h3.margin-left-30 Send me a message
+
+.row
+  .large-6.large-centered.columns
+    %section
+      = form_for @inquiry, html: { class: 'margin-bottom-0' }, remote: true do |f|
+
+        .row.margin-bottom-0
+          .large-12.columns
+            %p.flash.hide.margin-bottom-20
+
+        .row
+          .large-12.columns
+            .row
+              .large-2.columns
+                = f.label :name, class: 'right inline'
+              .large-10.columns
+                = f.text_field :name, autofocus: true
+
+        .row
+          .large-12.columns
+            .row
+              .large-2.columns
+                = f.label :email, class: 'right inline'
+              .large-10.columns
+                = f.email_field :email
+
+        .row
+          .large-12.columns
+            .row
+              .large-2.columns
+                = f.label :subject, class: 'right inline'
+              .large-10.columns
+                = f.text_field :subject
+
+        .row
+          .large-12.columns
+            .row
+              .large-2.columns
+                = f.label :body, 'Message', class: 'right inline'
+              .large-10.columns
+                = f.text_area :body
+
+        .row
+          .large-12.columns
+            = button_tag 'Send Message', class: 'buy-button right block margin-bottom-0'

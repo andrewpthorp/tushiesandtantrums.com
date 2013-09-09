@@ -6,6 +6,32 @@ describe InquiriesController do
     xhr :post, :create, inquiry: FactoryGirl.attributes_for(:inquiry)
   end
 
+  describe 'GET new' do
+    it 'should assign @inquiry' do
+      get :new
+      expect(assigns(:inquiry)).to be_a(Inquiry)
+    end
+
+    context 'when the request is xhr?' do
+      it 'should set the ajax header' do
+        xhr :get, :new
+        expect(response.headers['Ajax-Type']).to eq('popup')
+      end
+
+      it 'should use the popup layout' do
+        xhr :get, :new
+        expect(response).to render_template(layout: 'layouts/popup')
+      end
+    end
+
+    context 'when the request is not xhr?' do
+      it 'should use the minimal layout' do
+        get :new
+        expect(response).to render_template(layout: 'layouts/minimal')
+      end
+    end
+  end
+
   describe 'POST create' do
     it 'should assign @inquiry' do
       do_create

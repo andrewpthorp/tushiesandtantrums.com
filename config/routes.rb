@@ -13,7 +13,7 @@ TushiesandtantrumsCom::Application.routes.draw do
     end
   end
 
-  resources :inquiries, only: [:create]
+  resources :inquiries, only: [:new, :create]
 
   resources :charges, only: [:create] do
     collection do
