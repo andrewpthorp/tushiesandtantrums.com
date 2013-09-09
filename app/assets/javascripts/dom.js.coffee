@@ -42,6 +42,7 @@ class DomView extends Backbone.View
   ajaxPopup: (xhr, status) =>
     $popup = $(status.responseText)
     @$el.append($popup)
+    window.scrollTo 0, 0
 
   # closePopup - close out any popup that is currently on the screen.
   closePopup: ->
