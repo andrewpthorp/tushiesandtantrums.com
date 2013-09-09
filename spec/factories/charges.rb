@@ -10,6 +10,7 @@ FactoryGirl.define do
     city                { Faker::Address.city }
     state               { Faker::Address.state_abbr }
     zip                 { Faker::Address.zip }
+    status              'ordered'
     product
   end
 end

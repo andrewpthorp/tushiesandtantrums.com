@@ -24,6 +24,7 @@ TushiesandtantrumsCom::Application.routes.draw do
   # Admin Routes
   namespace :admin do
     resources :products, except: [:show]
+    resources :charges, only: [:index, :show, :update]
   end
 
 end

@@ -6,8 +6,11 @@
 # this model handles personal and shipping information as well.
 class Charge < ActiveRecord::Base
 
+  # Internal: Valid States for a Charge.
+  VALID_STATUSES = %w(ordered shipped completed)
+
   # Internal: Allow mass-assignment.
-  attr_accessible :stripe_charge_id, :email, :name, :product_id,
+  attr_accessible :stripe_charge_id, :email, :name, :product_id, :status,
                   :address_line_1, :address_line_2, :city, :state, :zip
 
   # Public: Each Carge belongs to a Product.
@@ -40,6 +43,27 @@ class Charge < ActiveRecord::Base
   # Internal: Validates format of email.
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
 
+  # Internal: Validates :status is a good state.
+  validates :status, inclusion: { in: VALID_STATUSES }
+
+  # Internal: Set default status.
+  before_validation :set_default_status
+
+  # Public: get all charges with a status of 'ordered'.
+  #
+  # returns an ActiveRecord::Relation.
+  scope :ordered, where(status: 'ordered')
+
+  # Public: get all charges with a status of 'shipped'.
+  #
+  # returns an ActiveRecord::Relation.
+  scope :shipped, where(status: 'shipped')
+
+  # Public: get all charges with a status of 'completed'.
+  #
+  # returns an ActiveRecord::Relation.
+  scope :completed, where(status: 'completed')
+
   # Public: Get the Stripe::Charge object from Stripe's API.
   #
   # Returns a Stripe::Charge.
@@ -54,5 +78,36 @@ class Charge < ActiveRecord::Base
     self.valid?
     self.errors.delete(:stripe_charge_id)
     return !self.errors.any?
+  end
+
+  # Public: Determine if the current status of the Charge is ordered.
+  #
+  # Returns a Boolean.
+  def ordered?
+    self.status == 'ordered'
+  end
+
+  # Public: Determine if the current status of the Charge is shipped.
+  #
+  # Returns a Boolean.
+  def shipped?
+    self.status == 'shipped'
+  end
+
+  # Public: Determine if the current status of the Charge is commplete.
+  #
+  # Returns a Boolean.
+  def completed?
+    self.status == 'completed'
+  end
+
+private
+
+  # Internal: Set the default status on a charge. If the status is blank, it
+  # will be set to 'ordered.' If the status is not blank, it will be left as is.
+  #
+  # Returns nothing.
+  def set_default_status
+    self[:status] = 'ordered' if self[:status].blank?
   end
 end

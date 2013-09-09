@@ -1,0 +1,8 @@
+- if @ordered.any?
+  = render 'charges', collection: @ordered
+
+- if @shipped.any?
+  = render 'charges', collection: @shipped, header_text: 'Shipped Orders'
+
+- if @completed.any?
+  = render 'charges', collection: @completed, header_text: 'Completed Orders'

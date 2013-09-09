@@ -4,6 +4,7 @@ class ChargesView extends Backbone.View
   events:
     'submit #payment-form'    : 'submitForm'
     'change #charge_state'    : 'stateChanged'
+    'change #charge_status'   : 'statusChanged'
 
   initialize: ->
     @$tax = @$ '.tax'
@@ -33,5 +34,9 @@ class ChargesView extends Backbone.View
     else
       @$tax.addClass 'hide'
       $totalValue.text $totalValue.data('withouttax')
+
+  # statusChanged - used in the admin view.
+  statusChanged: (ev) =>
+    $(ev.currentTarget).closest('form').submit()
 
 window.ChargesView = ChargesView

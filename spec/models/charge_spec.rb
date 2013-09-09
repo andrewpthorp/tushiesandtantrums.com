@@ -22,6 +22,62 @@ describe Charge do
     it { should_not allow_value('andrewpthorp@gmail').for(:email) }
     it { should_not allow_value('andrewpthorp@gmail.').for(:email) }
     it { should_not allow_value('@gmail.com').for(:email) }
+
+    it { should allow_value('ordered').for(:status) }
+    it { should allow_value('shipped').for(:status) }
+    it { should allow_value('completed').for(:status) }
+    it { should_not allow_value('foobar').for(:status) }
+  end
+
+  describe '.callbacks' do
+    describe '.set_default_status' do
+      before do
+        @charge = FactoryGirl.build(:charge)
+      end
+
+      it 'should run the callback before validation' do
+        @charge.should_receive(:set_default_status)
+        @charge.run_callbacks(:validation)
+      end
+
+      it 'should set the status if it is blank' do
+        @charge.status = ''
+        @charge.send(:set_default_status)
+        expect(@charge.status).to eq('ordered')
+      end
+
+      it 'should not change the status if it is not blank' do
+        @charge.status = 'shipped'
+        @charge.send(:set_default_status)
+        expect(@charge.status).to eq('shipped')
+      end
+    end
+  end
+
+  describe '.scopes' do
+    before do
+      @charge = FactoryGirl.create(:charge, status: 'ordered')
+    end
+
+    describe '.ordered' do
+      it 'should return the correct charges' do
+        expect(Charge.ordered).to eq([@charge])
+      end
+    end
+
+    describe '.shipped' do
+      it 'should return the correct charges' do
+        @charge.update_attributes(status: 'shipped')
+        expect(Charge.shipped).to eq([@charge])
+      end
+    end
+
+    describe '.completed' do
+      it 'should return the correct charges' do
+        @charge.update_attributes(status: 'completed')
+        expect(Charge.completed).to eq([@charge])
+      end
+    end
   end
 
   describe '#methods' do
@@ -69,6 +125,54 @@ describe Charge do
         @charge.stripe
         Stripe::Charge.should_not_receive(:retrieve)
         @charge.stripe
+      end
+    end
+
+    describe '#ordered?' do
+      context 'when the status is ordered' do
+        it 'should be true' do
+          @charge.status = 'ordered'
+          expect(@charge).to be_ordered
+        end
+      end
+
+      context 'when the status is not ordered' do
+        it 'should be false' do
+          @charge.status = 'shipped'
+          expect(@charge).not_to be_ordered
+        end
+      end
+    end
+
+    describe '#shipped?' do
+      context 'when the status is shipped' do
+        it 'should be true' do
+          @charge.status = 'shipped'
+          expect(@charge).to be_shipped
+        end
+      end
+
+      context 'when the status is not shipped' do
+        it 'should be false' do
+          @charge.status = 'ordered'
+          expect(@charge).not_to be_shipped
+        end
+      end
+    end
+
+    describe '#completed?' do
+      context 'when the status is completed' do
+        it 'should be true' do
+          @charge.status = 'completed'
+          expect(@charge).to be_completed
+        end
+      end
+
+      context 'when the status is not completed' do
+        it 'should be false' do
+          @charge.status = 'shipped'
+          expect(@charge).not_to be_completed
+        end
       end
     end
   end

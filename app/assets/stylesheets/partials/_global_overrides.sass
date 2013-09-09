@@ -7,6 +7,12 @@ ul
   li
     &.border-bottom
       border-bottom: 1px solid $color_gray
+      &:last-child
+        border-bottom: 0px none
+  &.margin-bottom-0
+    li:last-child
+      margin-bottom: 0px !important
+      padding-bottom: 0px !important
 
 textarea
   height: 150px

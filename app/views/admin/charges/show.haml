@@ -1,0 +1,55 @@
+.row
+  .large-6.columns.large-centered
+    %h3.text-center #{@charge.name}'s Order
+
+.row
+  .large-6.columns.large-centered
+    %section
+      %h3 Who ordered this?
+
+      %dl.row
+        .large-6.columns
+          %dt Name
+          %dd= @charge.name
+
+        .large-6.columns
+          %dt Email
+          %dd= @charge.email
+
+      %hr
+
+      %h3 What did they order?
+
+      .row
+        .large-6.columns
+          = image_tag @charge.product.image
+        .large-6.columns
+          %p.strong.margin-bottom-5= @charge.product.name
+          %p= number_to_currency(@charge.product.total)
+
+      %hr
+
+      %h3 Where to ship it?
+
+      %p
+        .margin-bottom-5= @charge.address_line_1
+        - unless @charge.address_line_2.blank?
+          .margin-bottom-5= @charge.address_line_2
+        .margin-bottom-5
+          = "#{@charge.city}, #{@charge.state} #{@charge.zip}"
+
+      %hr
+
+      .row
+        .large-5.columns
+          = form_for [:admin, @charge], html: { class: 'edit_charge custom' } do |f|
+            .row
+              .large-4.columns
+                = f.label :status, class: 'inline'
+              .large-8.columns
+                = f.select :status, Charge::VALID_STATUSES
+        .large-7.columns
+          %p.text-right.margin-bottom-0= link_to 'View All Orders', admin_charges_path
+
+:coffeescript
+  new ChargesView(el: '.edit_charge')
