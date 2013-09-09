@@ -5,7 +5,7 @@ describe ProductsHelper do
   describe '#product_categories' do
 
     it 'should return an unordered list' do
-      expect(helper.product_categories).to have_selector('ul.side-nav')
+      expect(helper.product_categories).to have_selector('ul.categories.side-nav')
     end
 
     it 'should have 3 links' do

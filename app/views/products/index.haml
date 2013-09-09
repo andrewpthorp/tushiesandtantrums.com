@@ -1,11 +1,11 @@
 .row.margin-top-25
   .large-2.columns
-    %h4.margin-bottom-0 Categories
+    %h4.margin-bottom-0.hide-for-small Categories
     = product_categories(@category)
 
   .large-10.columns
     - @products.in_groups_of(3) do |products|
-      .row.margin-bottom-20
+      %ul.large-block-grid-3
         - products.each do |p|
-          .large-4.columns
+          %li
             = render 'widget', product: p unless p.nil?

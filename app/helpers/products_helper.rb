@@ -14,7 +14,7 @@ module ProductsHelper
       content_tag(:li, link_to('Girls Bedding', girls_products_path), class: curr == 'girls' ? 'active' : '')
     ]
 
-    content_tag :ul, class: 'side-nav' do
+    content_tag :ul, class: 'categories side-nav' do
       list_items.map do |list_item|
         concat(list_item)
       end

@@ -1,3 +1,18 @@
+@media only screen and (max-width: 768px)
+  ul.categories.side-nav
+    li
+      a
+        display: block
+        padding: 5px
+        background: $color_green
+        color: $color_white
+        text-align: center
+      &.active a
+        background: $color_bright_green
+        font-weight: bold
+        color: $color_white
+
+
 .product-widget
   position: relative
   border: 1px solid $color_gray

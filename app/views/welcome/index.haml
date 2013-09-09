@@ -8,8 +8,7 @@
           = link_to 'Shop Boys Bedding', boys_products_path, class: 'hollow-button margin-right-15'
           = link_to 'Shop Girls Bedding', girls_products_path, class: 'hollow-button'
         .show-for-small.hide-for-medium-up
-          %p.margin-bottom-15= link_to 'Shop Boys Bedding', boys_products_path, class: 'hollow-button margin-right-15'
-          %p= link_to 'Shop Girls Bedding', girls_products_path, class: 'hollow-button'
+          = link_to 'Shop Our Products', products_path, class: 'hollow-button'
       .background.full= image_tag 'masthead.jpg'
     .border.bottom
 
@@ -22,12 +21,11 @@
         %div.hide-for-small
 
     - @products.in_groups_of(4) do |products|
-      .row
+      %ul.large-block-grid-4
         - products.each do |product|
-          .large-3.columns.margin-bottom-20
-            = render 'products/widget', product: product unless product.nil?
+          %li= render 'products/widget', product: product unless product.nil?
 
-%section#about.margin-bottom-25
+%section#about
   %header.with-arrow.row
     .large-2.columns.text
       %h3 About Us

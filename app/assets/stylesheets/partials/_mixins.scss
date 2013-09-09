@@ -15,3 +15,11 @@
     }
   }
 }
+
+@mixin blur($val) {
+  -webkit-filter: blur($val);
+  -moz-filter: blur($val);
+  -o-filter: blur($val);
+  -msn-filter: blur($val);
+  filter: blur($val);
+}
