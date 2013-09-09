@@ -60,6 +60,7 @@
       padding-left: 0px !important
       padding-right: 0px !important
       .logo-circle
+        display: block
         +transition(all 0.15s ease-in-out)
         position: relative
         top: -40px
@@ -68,3 +69,13 @@
           +transform(rotate(-35deg))
     &.social
       padding-right: 0px !important
+
+@media only screen and (max-width: 768px)
+  #global-footer
+    border-top: 0px none
+    .columns
+      &.logo
+        .logo-circle
+          +transform(none)
+          max-width: 200px
+          margin: 0px auto

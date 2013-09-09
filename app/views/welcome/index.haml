@@ -12,29 +12,29 @@
 - if @products.any?
   %section#products.margin-bottom-25
     %header.with-arrow.row
-      .small-2.columns.text
+      .large-2.columns.text
         %h3 Products
-      .small-10.columns.arrow
-        %div
+      .large-10.columns.arrow
+        %div.hide-for-small
 
     - @products.in_groups_of(4) do |products|
       .row
         - products.each do |product|
-          .small-3.columns
+          .large-3.columns.margin-bottom-20
             = render 'products/widget', product: product unless product.nil?
 
 %section#about.margin-bottom-25
   %header.with-arrow.row
-    .small-2.columns.text
+    .large-2.columns.text
       %h3 About Us
-    .small-10.columns.arrow
-      %div
+    .large-10.columns.arrow
+      %div.hide-for-small
 
   .row
-    .small-4.columns
-      .picture-box
+    .large-4.columns
+      .picture-box.margin-bottom-20
         = image_tag 'family-photo.jpg'
-    .small-8.columns
+    .large-8.columns
       %p
         Bacon ipsum dolor sit amet ham jerky corned beef pork chop pastrami
         biltong flank fatback sirloin tail t-bone ribeye. Leberkas chicken
