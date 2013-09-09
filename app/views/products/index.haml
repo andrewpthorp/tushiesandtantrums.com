@@ -5,7 +5,7 @@
 
   .large-10.columns
     - @products.in_groups_of(3) do |products|
-      .row.margin-bottom-35
+      .row.margin-bottom-20
         - products.each do |p|
           .large-4.columns
             = render 'widget', product: p unless p.nil?
