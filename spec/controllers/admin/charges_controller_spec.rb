@@ -24,9 +24,9 @@ describe Admin::ChargesController do
       expect(assigns(:completed)).to eq([@charge])
     end
 
-    it 'should render the minimal layout' do
+    it 'should render the admin layout' do
       get :index
-      expect(response).to render_template(layout: 'layouts/minimal')
+      expect(response).to render_template(layout: 'layouts/admin')
     end
   end
 
@@ -36,9 +36,9 @@ describe Admin::ChargesController do
       expect(assigns(:charge)).to eq(@charge)
     end
 
-    it 'should render the minimal layout' do
+    it 'should render the admin layout' do
       get :show, id: @charge.id
-      expect(response).to render_template(layout: 'layouts/minimal')
+      expect(response).to render_template(layout: 'layouts/admin')
     end
   end
 

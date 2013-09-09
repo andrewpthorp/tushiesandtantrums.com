@@ -49,19 +49,24 @@ class Charge < ActiveRecord::Base
   # Internal: Set default status.
   before_validation :set_default_status
 
-  # Public: get all charges with a status of 'ordered'.
+  # Public: Order Charges by created_at ASC.
   #
-  # returns an ActiveRecord::Relation.
+  # Returns an ActiveRecord::Relation.
+  scope :by_date, order('created_at ASC')
+
+  # Public: Get all charges with a status of 'ordered'.
+  #
+  # Returns an ActiveRecord::Relation.
   scope :ordered, where(status: 'ordered')
 
-  # Public: get all charges with a status of 'shipped'.
+  # Public: Get all charges with a status of 'shipped'.
   #
-  # returns an ActiveRecord::Relation.
+  # Returns an ActiveRecord::Relation.
   scope :shipped, where(status: 'shipped')
 
-  # Public: get all charges with a status of 'completed'.
+  # Public: Get all charges with a status of 'completed'.
   #
-  # returns an ActiveRecord::Relation.
+  # Returns an ActiveRecord::Relation.
   scope :completed, where(status: 'completed')
 
   # Public: Get the Stripe::Charge object from Stripe's API.

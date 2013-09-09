@@ -28,6 +28,7 @@ module ApplicationHelper
 
     if opts[:include_admin] ||= false
       if admin_signed_in?
+        links << link_to('Admin', admin_products_path)
         links << link_to('Sign out', destroy_admin_session_path, method: :delete)
       else
         links << link_to('Sign in', new_admin_session_path)
@@ -36,6 +37,26 @@ module ApplicationHelper
 
     content_tag :ul, class: 'global-navigation' do
       links.map do |link|
+        concat(content_tag(:li, link))
+      end
+    end
+  end
+
+  # Public: Get the Admin Navigation UL.
+  #
+  # Returns an ActiveSupport::SafeBuffer.
+  def admin_navigation
+    elements = [
+      content_tag(:span, 'Admin:', class: 'strong'),
+      link_to('Products', admin_products_path),
+      link_to('Orders', admin_charges_path),
+      link_to('Inquiries', '#'),
+      link_to('Blog', '#'),
+      link_to('Return to Site', root_path)
+    ]
+
+    content_tag :ul, class: 'global-navigation admin-navigation' do
+      elements.map do |link|
         concat(content_tag(:li, link))
       end
     end

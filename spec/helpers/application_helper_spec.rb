@@ -32,7 +32,6 @@ describe ApplicationHelper do
   end
 
   describe '#navigation' do
-
     it 'should return an unordered list' do
       expect(helper.navigation).to have_selector('ul.global-navigation')
     end
@@ -63,20 +62,56 @@ describe ApplicationHelper do
     end
 
     context 'when passing include_admin' do
+      let(:results) { helper.navigation('home', include_admin: true) }
+
       context 'and a user is signed in' do
-        it 'should include a link to sign out' do
+        before do
           sign_in_admin
-          expect(helper.navigation('home', include_admin: true)).to have_selector('a', text: 'Sign out')
+        end
+
+        it 'should include a link to admin' do
+          expect(results).to have_selector('a', text: 'Admin')
+        end
+
+        it 'should include a link to sign out' do
+          expect(results).to have_selector('a', text: 'Sign out')
         end
       end
 
       context 'and a user is not signed in' do
         it 'should include a link to sign in' do
-          expect(helper.navigation('home', include_admin: true)).to have_selector('a', text: 'Sign in')
+          expect(results).to have_selector('a', text: 'Sign in')
         end
       end
     end
+  end
 
+  describe '#admin_navigation' do
+    let(:results) { helper.admin_navigation }
+
+    it 'should return an unordered list' do
+      expect(results).to have_selector('ul.global-navigation.admin-navigation')
+    end
+
+    it 'should have a link to products' do
+      expect(results).to have_selector('a[href="/admin/products"]', text: 'Products')
+    end
+
+    it 'should have a link to orders' do
+      expect(results).to have_selector('a[href="/admin/charges"]', text: 'Orders')
+    end
+
+    it 'should have a link to inquiries' do
+      expect(results).to have_selector('a[href="#"]', text: 'Inquiries')
+    end
+
+    it 'should have a link to blog' do
+      expect(results).to have_selector('a[href="#"]', text: 'Blog')
+    end
+
+    it 'should have a link to home' do
+      expect(results).to have_selector('a[href="/"]', text: 'Return to Site')
+    end
   end
 
   describe '#social_links' do
@@ -99,7 +134,6 @@ describe ApplicationHelper do
     it 'should have a link to etsy' do
       expect(@links).to have_selector('a.etsy')
     end
-
   end
 
 end

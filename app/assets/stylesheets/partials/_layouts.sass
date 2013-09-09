@@ -1,4 +1,4 @@
-body.minimal
+body.minimal, body.admin
   background: lighten($color_gray, 5%)
   #global-header
     position: relative
@@ -27,3 +27,13 @@ body.minimal
     border-radius: 5px
     padding: 25px
 
+body.admin
+  a
+    font-weight: bold
+    color: $color_dark_gray
+  #global-header
+    .admin-navigation
+      position: relative
+      top: 25px
+  #main-content
+    margin: 25px auto 50px

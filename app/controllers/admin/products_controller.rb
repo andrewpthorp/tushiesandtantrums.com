@@ -1,5 +1,4 @@
 class Admin::ProductsController < Admin::BaseController
-  layout 'minimal'
 
   # GET /admin/products
   def index

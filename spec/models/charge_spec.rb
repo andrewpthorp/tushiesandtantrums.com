@@ -59,6 +59,12 @@ describe Charge do
       @charge = FactoryGirl.create(:charge, status: 'ordered')
     end
 
+    describe '.by_date' do
+      it 'should order charges correctly' do
+        expect(Charge.by_date.to_sql).to match(/ORDER BY created_at ASC/)
+      end
+    end
+
     describe '.ordered' do
       it 'should return the correct charges' do
         expect(Charge.ordered).to eq([@charge])

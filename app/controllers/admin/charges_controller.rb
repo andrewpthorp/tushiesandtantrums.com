@@ -1,11 +1,10 @@
 class Admin::ChargesController < Admin::BaseController
-  layout 'minimal'
 
   # GET /admin/charges
   def index
-    @ordered = Charge.ordered
-    @shipped = Charge.shipped
-    @completed = Charge.completed
+    @ordered = Charge.ordered.by_date
+    @shipped = Charge.shipped.by_date
+    @completed = Charge.completed.by_date
   end
 
   # GET /admin/charges/:id
