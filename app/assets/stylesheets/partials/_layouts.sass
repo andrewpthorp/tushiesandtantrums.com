@@ -1,33 +1,31 @@
 body.minimal, body.admin
   background: lighten($color_gray, 2%)
-  #global-header
-    position: relative
-    width: 100%
-    background: $color_white
-    height: 75px
-    overflow: visible
-    border-bottom: 5px solid darken($color_gray, 5%)
+  #main-content
+    padding: 25px 0px
+    background: transparent
+    +box-shadow(0px 0px 0px transparent)
     #logo
+      position: fixed
+      bottom: 15px
+      right: 15px
       display: block
-      width: 160px
-      height: 160px
-      margin: 0px auto
-      position: relative
-      top: 15px
-      border-radius: 80px
-      background: darken($color_gray, 5%)
+      width: 120px
+      height: 120px
+      border-radius: 60px
+      background: darken($color_gray, 3%)
+      +box-shadow(0px 0px 5px rgba(255, 255, 255, 1))
       img
+        +transition(all 0.15s ease-in-out)
         display: block
-        width: 150px
-        height: 150px
+        width: 110px
+        height: 110px
         position: relative
         left: 5px
         top: 5px
-  #main-content
-    padding: 0px
-    margin: 120px auto
-    background: transparent
-    +box-shadow(0px 0px 0px transparent)
+        &:hover
+          +transform(rotate(-25deg))
+        &:active
+          +transform(rotate(15deg))
     h1, h2, h3, h4, h5, h6
       text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5)
   section
