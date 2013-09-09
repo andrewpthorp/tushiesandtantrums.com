@@ -17,7 +17,7 @@
 
     .row
       .large-6.columns
-        = f.label :name
+        = f.label :name, autofocus: true
         = f.text_field :name
       .large-6.columns
         = f.label :email
@@ -29,25 +29,31 @@
 
     .row
       .large-12.columns
-        = label_tag 'name', 'Name on card'
-        = text_field_tag 'name', '', data: { stripe: 'name' }
+        = label_tag do
+          %span Name on card
+          = text_field_tag nil, '', data: { stripe: 'name' }
     .row
       .large-9.columns
-        = label_tag 'card-number', 'Card number'
-        = text_field_tag 'card-number', '', data: { stripe: 'number' }
+        = label_tag do
+          %span Card number
+          = text_field_tag nil, '', data: { stripe: 'number' }
       .large-3.columns
-        = label_tag 'cvc', 'CVC'
-        = text_field_tag 'cvc', '', data: { stripe: 'cvc' }
+        = label_tag do
+          %span CVC
+          = text_field_tag nil, '', data: { stripe: 'cvc' }
     .row
       .large-4.columns
-        = label_tag 'expiration_month', 'Expiration month'
-        = select_month 1, { use_month_numbers: true }, data: { stripe: 'exp_month' }
+        = label_tag do
+          %span Expiration month
+          = select_month 1, { use_month_numbers: true }, data: { stripe: 'exp_month' }, name: nil
       .large-4.columns
-        = label_tag 'expiration_year', 'Expiration year'
-        = select_year Date.today, { use_year_numbers: true, start_year: Date.today.year, end_year: 2030 }, data: { stripe: 'exp_year' }
+        = label_tag do
+          %span Expiration year
+          = select_year Date.today, { use_year_numbers: true, start_year: Date.today.year, end_year: 2030 }, data: { stripe: 'exp_year' }, name: nil
       .large-4.columns
-        = label_tag 'zip', 'Billing zip'
-        = text_field_tag 'zip', '', data: { stripe: 'address_zip' }
+        = label_tag do
+          %span Billing zip
+          = text_field_tag nil, '', data: { stripe: 'address_zip' }
 
     %hr
 
