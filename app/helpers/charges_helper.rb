@@ -2,7 +2,10 @@
 # all helpers are application-wide, it makes sense to put them here for clarity.
 module ChargesHelper
 
-  # Public: Get the status updates for a given Charge.
+  # Public: Get the status updates for a given Charge. If the Charge has simply
+  # been ordered, it will only have that status. If the Charge has been shipped,
+  # it will have the ordered and shipped status. If the Charge has been
+  # completed, it will have the ordered and completed status.
   #
   # charge - The Charge to get status updates for.
   #
