@@ -7,6 +7,7 @@ class DomView extends Backbone.View
     'ajax:complete'                 : 'ajaxComplete'
     'click .popup-close-button'     : 'closePopup'
     'click .popup-wrapper'          : 'popupWrapperClick'
+    'keydown'                       : 'keydown'
 
   # widgetMouseout - handle when a user mouses over a product widget.
   widgetMouseover: (ev) ->
@@ -52,8 +53,12 @@ class DomView extends Backbone.View
   # popupWrapperClick - crude implementation of clicking around popup to close.
   popupWrapperClick: (ev) =>
     $target = $(ev.target)
-    if $target[0].className in ["popup-wrapper", "row"]
-      @closePopup()
+    @closePopup() if $target[0].className in ["popup-wrapper", "row"]
+
+  # keydown - crude implementation of closing popups by hitting ESC.
+  keydown: (ev) =>
+    return unless @$('.popup-wrapper').length
+    @closePopup() if ev.keyCode == 27
 
   # delay - makes working with setTimeout in CoffeeScript easier.
   delay: (time, fn, args...) ->
