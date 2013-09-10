@@ -6,7 +6,7 @@ TushiesandtantrumsCom::Application.routes.draw do
   root to: 'welcome#index'
 
   # Resources
-  resources :products do
+  resources :products, only: [:index, :show] do
     collection do
       get 'boys', to: 'products#index', as: :boys, defaults: { category: 'boys' }
       get 'girls', to: 'products#index', as: :girls, defaults: { category: 'girls' }
