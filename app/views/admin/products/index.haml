@@ -9,14 +9,14 @@
 .row
   .large-6.columns.large-centered
     %section
-      %ul.margin-bottom-0
+      %ul#products.admin-list
         - @products.each do |product|
-          %li.row.border-bottom.margin-bottom-10.padding-bottom-10
+          %li.row
             .large-2.columns
               = image_tag product.image
             .large-7.columns.padding-top-5
-              %p.margin-bottom-0= link_to product.name, product
-              %p.margin-bottom-0.mute= number_to_currency(product.price)
+              %p= link_to product.name, product
+              %p.mute= number_to_currency(product.price)
             .large-3.columns.padding-top-5
               = link_to 'Actions', '#', class: 'button dropdown small right secondary', data: { dropdown: 'actions' }
               %ul#actions.f-dropdown

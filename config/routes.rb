@@ -54,6 +54,9 @@ TushiesandtantrumsCom::Application.routes.draw do
 
     # Public: Admin routes for Charges.
     resources :charges, only: [:index, :show, :update]
+
+    # Public: Admin routes for Inquiries.
+    resources :inquiries, only: [:index, :show, :destroy]
   end
 
 end

@@ -1,0 +1,37 @@
+.row
+  .large-6.columns.large-centered
+    %h3.margin-bottom-0 All Messages
+
+.row
+  .large-6.columns.large-centered
+    %section
+      %ul#inquiries.admin-list
+        - @inquiries.each do |inquiry|
+          %li.row
+            .large-10.columns
+              .row
+                .large-3.columns
+                  %p.strong From
+                .large-9.columns
+                  %p.mute= link_to inquiry.name, admin_inquiry_path(inquiry)
+              .row
+                .large-3.columns
+                  %p.strong Subject
+                .large-9.columns
+                  %p.mute= inquiry.subject
+              .row
+                .large-3.columns
+                  %p.strong Sent
+                .large-9.columns
+                  %p.mute= inquiry.created_at.localtime.to_s(:pretty)
+            .large-2.columns
+              = link_to 'Actions', '#', class: 'button dropdown small right secondary', data: { dropdown: 'actions' }
+              %ul#actions.f-dropdown
+                %li= link_to 'View', admin_inquiry_path(inquiry)
+                %li= link_to 'Respond', "mailto:#{inquiry.email}"
+                %li= link_to 'Delete', admin_inquiry_path(inquiry), method: :delete, confirm: 'Are you sure?'
+
+      - unless @inquiries.total_pages == 1
+        %hr
+        .text-right
+          = paginate @inquiries

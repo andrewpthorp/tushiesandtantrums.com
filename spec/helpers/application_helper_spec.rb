@@ -102,7 +102,7 @@ describe ApplicationHelper do
     end
 
     it 'should have a link to inquiries' do
-      expect(results).to have_selector('a[href="#"]', text: 'Inquiries')
+      expect(results).to have_selector('a[href="/admin/inquiries"]', text: 'Inquiries')
     end
 
     it 'should have a link to blog' do

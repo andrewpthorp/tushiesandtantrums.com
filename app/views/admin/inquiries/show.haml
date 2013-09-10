@@ -1,0 +1,33 @@
+.row
+  .large-6.large-centered.columns
+    %h3 Message from #{@inquiry.name}
+
+.row
+  .large-6.large-centered.columns
+    %section
+
+      .row
+        .large-2.columns
+          %p.strong Name
+        .large-10.columns
+          %p= @inquiry.name
+
+      .row
+        .large-2.columns
+          %p.strong Email
+        .large-10.columns
+          %p= link_to @inquiry.email, "mailto:#{@inquiry.email}"
+
+      .row
+        .large-2.columns
+          %p.strong Subject
+        .large-10.columns
+          %p= @inquiry.subject
+
+      .gray-box.margin-bottom-25
+        %p= @inquiry.body
+
+      .row
+        .large-12.columns
+          = link_to 'Respond', "mailto:#{@inquiry.email}", class: 'small action-button color-white right'
+          = link_to 'Delete', admin_inquiry_path(@inquiry), method: :delete, class: 'small action-button gray right margin-right-15', confirm: 'Are you sure?'

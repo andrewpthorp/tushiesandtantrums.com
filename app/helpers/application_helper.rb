@@ -1,3 +1,6 @@
+# Public: All helpers that are to be used application-wide are in here. Even
+# though all helpers are application-wide, it makes sense to put them here for
+# clarity.
 module ApplicationHelper
 
   # Public: Render markdown for a given String.
@@ -49,7 +52,7 @@ module ApplicationHelper
     elements = [
       link_to('Products', admin_products_path),
       link_to('Orders', admin_charges_path),
-      link_to('Inquiries', '#'),
+      link_to('Inquiries', admin_inquiries_path),
       link_to('Blog', '#')
     ]
 
