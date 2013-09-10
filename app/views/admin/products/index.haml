@@ -1,8 +1,11 @@
 .row
   .large-6.columns.large-centered
-    %h3.margin-left-30
-      All Products
-      %span.strong= link_to '(New)', new_admin_product_path
+    .row
+      .large-8.columns
+        %h3
+          All Products
+      .large-4.columns
+        = link_to 'Create New', new_admin_product_path, class: 'action-button green small right'
 
 .row
   .large-6.columns.large-centered

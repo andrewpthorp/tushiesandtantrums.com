@@ -28,15 +28,19 @@ body.minimal, body.admin
       text-shadow: none
 
 body.admin
-  a
-    font-weight: bold
-    color: $color_dark_gray
   #global-header
+    height: 75px
+    background: $color_white
+    border-bottom: 5px solid darken($color_gray, 5%)
     .admin-navigation
       position: relative
       top: 25px
   #main-content
     margin: 25px auto 50px
+    section
+      a
+        font-weight: bold
+        color: $color_dark_gray
 
 @media only screen and (max-width: 768px)
   body.minimal, body.admin

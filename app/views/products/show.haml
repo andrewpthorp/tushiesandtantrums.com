@@ -11,14 +11,14 @@
           %li.strong Overview
           %li.dotted Handmade Item
           %li.dotted Made to Order
-        = link_to 'Buy Now', new_product_charges_path(@product), class: 'buy-button', remote: true
+        = link_to 'Buy Now', new_product_charges_path(@product), class: 'action-button', remote: true
       .background= image_tag @product.image
       .blur= image_tag @product.image
     .content.show-for-small.hide-for-medium-up
       .text.white-background
         %h3.name-2.name= @product.name
         %p.strong.price= number_to_currency(@product.price)
-        = link_to 'Buy Now', new_product_charges_path(@product), class: 'buy-button', remote: true
+        = link_to 'Buy Now', new_product_charges_path(@product), class: 'action-button', remote: true
       .background.full= image_tag @product.image
     .border.bottom
 
