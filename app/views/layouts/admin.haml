@@ -25,15 +25,15 @@
   %header#global-header
     = admin_navigation
 
+    %h3.left.hide-for-small.negative-margin-top-5.margin-left-15.margin-bottom-0 Admin
+
     -# TODO: Clean these up.
     %p.right.margin-right-20.negative-margin-top-7.hide-for-small
       = link_to 'Sign Out', destroy_admin_session_path, class: 'button secondary color-dark-gray', method: :delete
-      = link_to 'Return to Site', root_path, class: 'button secondary color-dark-gray'
 
   -# TODO: Clean these up.
   %p.text-center.margin-top-15.margin-bottom-0.show-for-small.hide-for-medium-up
     = link_to 'Sign Out', destroy_admin_session_path, class: 'button secondary color-dark-gray margin-bottom-0', method: :delete
-    = link_to 'Return to Site', root_path, class: 'button secondary color-dark-gray margin-bottom-0'
 
   #main-content
     = yield
