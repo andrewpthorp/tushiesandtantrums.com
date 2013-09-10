@@ -38,6 +38,8 @@
             font-size: 1.2rem
             margin-bottom: 15px
       .blur
+        +backface-visibility(hidden)
+        +perspective(1000)
         position: absolute
         z-index: -1
         right: 0px
