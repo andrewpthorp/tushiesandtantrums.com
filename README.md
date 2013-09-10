@@ -14,8 +14,8 @@ website at http://tushiesandtantrums.com.
 
 ## Stack
 
-* **heroku** (_simple hosting_)
-* **gandi.net** (_dns_)
+* **heroku** _(simple hosting)_
+* **gandi.net** _(dns)_
 * **rails**
 * **postgresql**
 * **sass**
@@ -23,20 +23,20 @@ website at http://tushiesandtantrums.com.
 
 ## Dependencies
 
-* **rspec** (_specs for testing_)
-* **carrierwave** (_image uploads_)
-* **devise** (_single user system_)
-* **fog** (_upload files to S3_)
-* **faker** (_dummy data_)
-* **factory girl** (_factores, not fixtures_)
-* **zurb-foundation** (_tons of UI stuff_)
-* **bourbon** (_MOAR UI stuff_)
-* **money-rails** (_easily handle monetizing integers_)
-* **acts-as-taggable-on** (_categorize (tag) products_)
-* **stripe** (_payments for developers_)
-* **carmen-rails** (_where in the world is carmen san diego? state select_)
-* **friendly id** (_slugs-slugs-and-more-slugs_)
-* **redcarpet** (_markdown support_)
+* **rspec** _(specs for testing)_
+* **carrierwave** _(image uploads)_
+* **devise** _(single user system)_
+* **fog** _(upload files to S3)_
+* **faker** _(dummy data)_
+* **factory girl** _(factores, not fixtures)_
+* **zurb-foundation** _(tons of UI stuff)_
+* **bourbon** _(MOAR UI stuff)_
+* **money-rails** _(easily handle monetizing integers)_
+* **acts-as-taggable-on** _(categorize (tag) products)_
+* **stripe** _(payments for developers)_
+* **carmen-rails** _(where in the world is carmen san diego? state select)_
+* **friendly id** _(slugs-slugs-and-more-slugs)_
+* **redcarpet** _(markdown support)_
 
 ## Attribution
 
