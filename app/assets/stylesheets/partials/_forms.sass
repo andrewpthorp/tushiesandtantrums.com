@@ -2,3 +2,20 @@
   form
     input[type=submit]
       width: 100%
+
+form.custom
+  .checkbox
+    +box-sizing(border-box)
+    padding: 0px !important
+    border: 1px solid #ccc
+    width: 22px
+    height: 22px
+    &.checked
+      &:before
+        background: $color_bright_green
+        margin: 0px !important
+        top: 3px !important
+        left: 3px !important
+        content: "" !important
+        width: 14px
+        height: 14px
