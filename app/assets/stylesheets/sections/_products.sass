@@ -1,18 +1,3 @@
-@media only screen and (max-width: 768px)
-  ul.categories.side-nav
-    li
-      a
-        display: block
-        padding: 5px
-        background: $color_green
-        color: $color_white
-        text-align: center
-      &.active a
-        background: $color_bright_green
-        font-weight: bold
-        color: $color_white
-
-
 .product-widget
   position: relative
   border: 1px solid $color_gray
@@ -58,3 +43,35 @@
       color: $color_white
       &:hover
         background: $color_salmon
+
+.sidebar
+  ul.side-nav.categories
+    padding-top: 0px
+    li
+      a
+        +box-sizing(border-box)
+        background: $color_gray
+        border-right: 3px solid transparent
+        color: $color_dark_gray
+        display: block
+        font-weight: bold
+        padding: 5px 5px 5px 10px
+        text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5)
+      &.active a
+        background: $color_bright_green
+        border-color: darken($color_bright_green, 35%)
+        color: $color_white
+        text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.25)
+
+@media only screen and (max-width: #{$small-screen})
+  ul.widgets
+    margin: 0px
+    li.widget
+      float: none
+      .product-widget
+        width: 100%
+        .image
+          height: 210px
+          width: 100%
+          img
+            width: 100%

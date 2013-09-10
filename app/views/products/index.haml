@@ -1,13 +1,14 @@
 .row.margin-top-25
   .large-2.columns
-    %h4.margin-bottom-0.hide-for-small Categories
-    = product_categories(@category)
+    .sidebar
+      %h4.hide-for-small Categories
+      = product_categories(@category)
 
   .large-10.columns
     - @products.in_groups_of(3) do |products|
-      %ul.large-block-grid-3
+      %ul.large-block-grid-3.widgets
         - products.each do |p|
-          %li
+          %li.widget
             = render 'widget', product: p unless p.nil?
 
     = paginate @products

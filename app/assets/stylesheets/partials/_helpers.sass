@@ -25,7 +25,7 @@ p, li, span, dl, dd
 @for $i from 0 through 100
   .width-#{$i}
     width: #{$i}% !important
-  @media only screen and (max-width: 768px)
+  @media only screen and (max-width: #{$small-screen})
     .small-width-#{$i}
       width: #{$i}% !important
 
@@ -34,13 +34,13 @@ p, li, span, dl, dd
   @for $i from 0 through 50
     .#{$type}-#{$i}
       #{$type}: #{$i}px !important
-    @media only screen and (max-width: 768px)
+    @media only screen and (max-width: #{$small-screen})
       .small-#{$type}-#{$i}
         #{$type}: #{$i}px !important
     @each $side in top, right, bottom, left
       .#{$type}-#{$side}-#{$i}
         #{$type}-#{$side}: #{$i}px !important
-      @media only screen and (max-width: 768px)
+      @media only screen and (max-width: #{$small-screen})
         .small-#{$type}-#{$side}-#{$i}
           #{$type}-#{$side}: #{$i}px !important
 
