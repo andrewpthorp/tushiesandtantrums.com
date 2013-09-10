@@ -25,15 +25,24 @@ p, li, span, dl, dd
 @for $i from 0 through 100
   .width-#{$i}
     width: #{$i}% !important
+  @media only screen and (max-width: 768px)
+    .small-width-#{$i}
+      width: #{$i}% !important
 
 // .margin-10, .margin-top-10, .padding-left-5, etc.
 @each $type in margin, padding
   @for $i from 0 through 50
     .#{$type}-#{$i}
       #{$type}: #{$i}px !important
+    @media only screen and (max-width: 768px)
+      .small-#{$type}-#{$i}
+        #{$type}: #{$i}px !important
     @each $side in top, right, bottom, left
       .#{$type}-#{$side}-#{$i}
         #{$type}-#{$side}: #{$i}px !important
+      @media only screen and (max-width: 768px)
+        .small-#{$type}-#{$side}-#{$i}
+          #{$type}-#{$side}: #{$i}px !important
 
 // Negative margin helpers
 // .negative-margin-top-10, .negative-margin-right-5, etc.

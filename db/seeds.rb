@@ -15,7 +15,30 @@ if Rails.env.development? && !ENV['SKIP_PRODUCTS']
   puts "Creating 10 products..."
   10.times do
     product = FactoryGirl.create(:product)
-    puts "Created #{product.name}."
+    puts "  -> Created #{product.name}."
+  end
+  puts "Done."
+
+  puts "Destroying #{Charge.count.to_s} charges..."
+  Charge.destroy_all
+  puts "Done."
+
+  puts "Creating 20 orders..."
+  20.times do
+    charge = FactoryGirl.create(:charge, product: Product.random.first)
+    puts "  -> Created order for #{charge.product.name}."
+  end
+  puts "Done."
+
+  puts "Shipping 6 orders..."
+  6.times do
+    Charge.ordered.order('RANDOM()').first.update_column(:status, 'shipped')
+  end
+  puts "Done."
+
+  puts "Completing 3 orders..."
+  3.times do
+    Charge.ordered.order('RANDOM()').first.update_column(:status, 'completed')
   end
   puts "Done."
 

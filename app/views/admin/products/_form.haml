@@ -1,5 +1,5 @@
 %section
-  = form_for [:admin, product] do |f|
+  = form_for [:admin, product], html: { class: 'custom margin-bottom-0 product-form' } do |f|
     .row
       .large-12.columns
         = f.label :name
