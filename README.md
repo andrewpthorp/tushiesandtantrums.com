@@ -14,29 +14,29 @@ website at http://tushiesandtantrums.com.
 
 ## Stack
 
-* heroku _simple hosting_
-* gandi.net _dns_
-* rails
-* postgresql
-* sass
-* coffeescript
+* **heroku** (_simple hosting_)
+* **gandi.net** (_dns_)
+* **rails**
+* **postgresql**
+* **sass**
+* **coffeescript**
 
 ## Dependencies
 
-* rspec _specs for testing_
-* carrierwave _image uploads_
-* devise _single user system_
-* fog _upload files to S3_
-* faker _dummy data_
-* factory girl _factores, not fixtures_
-* zurb-foundation _tons of UI stuff_
-* bourbon _MOAR UI stuff_
-* money-rails _easily handle monetizing integers_
-* acts-as-taggable-on _categorize (tag) products_
-* stripe _payments for developers_
-* carmen-rails _where in the world is carmen san diego? state select_
-* friendly id _slugs-slugs-and-more-slugs_
-* redcarpet _markdown support_
+* **rspec** (_specs for testing_)
+* **carrierwave** (_image uploads_)
+* **devise** (_single user system_)
+* **fog** (_upload files to S3_)
+* **faker** (_dummy data_)
+* **factory girl** (_factores, not fixtures_)
+* **zurb-foundation** (_tons of UI stuff_)
+* **bourbon** (_MOAR UI stuff_)
+* **money-rails** (_easily handle monetizing integers_)
+* **acts-as-taggable-on** (_categorize (tag) products_)
+* **stripe** (_payments for developers_)
+* **carmen-rails** (_where in the world is carmen san diego? state select_)
+* **friendly id** (_slugs-slugs-and-more-slugs_)
+* **redcarpet** (_markdown support_)
 
 ## Attribution
 
