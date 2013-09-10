@@ -15,4 +15,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # Internal: Override the default Devise after_sign_in_path_for.
+  #
+  # Returns a String.
+  def after_sign_in_path_for(resource)
+    admin_products_path
+  end
+
 end
