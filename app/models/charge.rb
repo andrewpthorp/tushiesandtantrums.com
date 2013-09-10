@@ -54,17 +54,17 @@ class Charge < ActiveRecord::Base
   # Returns an ActiveRecord::Relation.
   scope :by_date, order('created_at ASC')
 
-  # Public: Get all charges with a status of 'ordered'.
+  # Public: Get all Charges with a status of 'ordered'.
   #
   # Returns an ActiveRecord::Relation.
   scope :ordered, where(status: 'ordered')
 
-  # Public: Get all charges with a status of 'shipped'.
+  # Public: Get all Charges with a status of 'shipped'.
   #
   # Returns an ActiveRecord::Relation.
   scope :shipped, where(status: 'shipped')
 
-  # Public: Get all charges with a status of 'completed'.
+  # Public: Get all Charges with a status of 'completed'.
   #
   # Returns an ActiveRecord::Relation.
   scope :completed, where(status: 'completed')
@@ -108,7 +108,7 @@ class Charge < ActiveRecord::Base
 
 private
 
-  # Internal: Set the default status on a charge. If the status is blank, it
+  # Internal: Set the default status on a Charge. If the status is blank, it
   # will be set to 'ordered.' If the status is not blank, it will be left as is.
   #
   # Returns nothing.

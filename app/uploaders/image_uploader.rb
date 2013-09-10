@@ -1,5 +1,7 @@
 # encoding: utf-8
 
+# Public: A CarrierWave::Uploader::Base that allows me to upload files and
+# attach them to models.
 class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
@@ -40,10 +42,26 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   process :scale => [50, 50]
   # end
 
+  # Internal: A thumbnail version of the attachment.
+  #
+  # Examples
+  #
+  #   Product.first.image.thumb.url
+  #   # => "/uploads/products/image/1/thumb_image.jpg"
+  #
+  # Returns an ImageUploader::Uploader.
   version :thumb do
     process :resize_to_fill => [50, 50]
   end
 
+  # Internal: A version of the attachment to use as featured.
+  #
+  # Examples
+  #
+  #   Product.first.image.featured.url
+  #   # => "/uploads/products/image/1/featured_image.jpg"
+  #
+  # Returns an ImageUploader::Uploader.
   version :featured do
     process :resize_to_fill => [970, 385]
   end

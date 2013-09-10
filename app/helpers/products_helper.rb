@@ -1,3 +1,5 @@
+# Public: All helpers that are to be used for Products are in here. Even though
+# all helpers are application-wide, it makes sense to put them here for clarity.
 module ProductsHelper
 
   # Public: Get the Product categories.
