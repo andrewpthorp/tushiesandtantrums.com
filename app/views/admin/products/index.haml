@@ -17,8 +17,8 @@
             .large-7.columns.padding-top-5
               %p.margin-bottom-0= link_to product.name, product
               %p.margin-bottom-0.mute= number_to_currency(product.price)
-            .large-3.columns.text-right.padding-top-5
-              %p
-                = link_to 'Edit', edit_admin_product_path(product)
-                &mdash;
-                = link_to 'Delete', admin_product_path(product), method: :delete, confirm: 'Are you sure?'
+            .large-3.columns.padding-top-5
+              = link_to 'Actions', '#', class: 'button dropdown small right secondary', data: { dropdown: 'actions' }
+              %ul#actions.f-dropdown
+                %li= link_to 'Edit', edit_admin_product_path(product)
+                %li= link_to 'Delete', admin_product_path(product), method: :delete, confirm: 'Are you sure?'
