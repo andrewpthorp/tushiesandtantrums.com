@@ -50,8 +50,7 @@ module ApplicationHelper
       link_to('Products', admin_products_path),
       link_to('Orders', admin_charges_path),
       link_to('Inquiries', '#'),
-      link_to('Blog', '#'),
-      link_to('Return to Site', root_path)
+      link_to('Blog', '#')
     ]
 
     content_tag :ul, class: 'global-navigation admin-navigation' do

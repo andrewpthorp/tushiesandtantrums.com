@@ -108,10 +108,6 @@ describe ApplicationHelper do
     it 'should have a link to blog' do
       expect(results).to have_selector('a[href="#"]', text: 'Blog')
     end
-
-    it 'should have a link to home' do
-      expect(results).to have_selector('a[href="/"]', text: 'Return to Site')
-    end
   end
 
   describe '#social_links' do
