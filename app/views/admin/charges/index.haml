@@ -2,7 +2,7 @@
   = render 'charges', collection: @ordered
 
 - if @shipped.any?
-  = render 'charges', collection: @shipped, header_text: 'Shipped Orders'
+  = render 'charges', collection: @shipped, header_text: 'Shipped Orders', param_name: :shipped_page
 
 - if @completed.any?
-  = render 'charges', collection: @completed, header_text: 'Completed Orders'
+  = render 'charges', collection: @completed, header_text: 'Completed Orders', param_name: :completed_page

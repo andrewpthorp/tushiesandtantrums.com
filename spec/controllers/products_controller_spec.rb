@@ -18,13 +18,8 @@ describe ProductsController do
     end
 
     context 'when passing a category' do
-      it 'should get products for that category' do
-        Product.should_receive(:tagged_with).with('boys')
-        get :index, category: 'boys'
-      end
-
       it 'should set all products for that category' do
-        Product.stub(:tagged_with).and_return([@product])
+        @product.update_attributes(tag_list: 'boys')
         get :index, category: 'boys'
         assigns(:products).should == [@product]
       end

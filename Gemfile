@@ -22,6 +22,7 @@ gem 'stripe'
 gem 'carmen-rails'
 gem 'friendly_id'
 gem 'redcarpet'
+gem 'kaminari'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.5'

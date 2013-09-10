@@ -13,6 +13,9 @@ class Charge < ActiveRecord::Base
   attr_accessible :stripe_charge_id, :email, :name, :product_id, :status,
                   :address_line_1, :address_line_2, :city, :state, :zip
 
+  # Internal: Only show 5 per page, by default.
+  paginates_per 5
+
   # Public: Each Carge belongs to a Product.
   belongs_to :product
 

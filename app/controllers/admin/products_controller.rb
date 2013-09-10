@@ -2,7 +2,7 @@ class Admin::ProductsController < Admin::BaseController
 
   # GET /admin/products
   def index
-    @products = Product.all
+    @products = Product.page(params[:page])
   end
 
   # GET /admin/products/:id/edit

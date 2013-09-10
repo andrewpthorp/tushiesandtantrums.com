@@ -37,6 +37,7 @@ website at http://tushiesandtantrums.com.
 * **carmen-rails** _(where in the world is carmen san diego? state select)_
 * **friendly id** _(slugs-slugs-and-more-slugs)_
 * **redcarpet** _(markdown support)_
+* **kaminari** _(pagination)_
 
 ## Attribution
 

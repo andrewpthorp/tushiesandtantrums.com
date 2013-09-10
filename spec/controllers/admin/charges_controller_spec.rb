@@ -8,20 +8,21 @@ describe Admin::ChargesController do
 
   describe 'GET index' do
     it 'should set @ordered' do
+      Charge.stub_chain(:ordered, :by_date, :page).and_return(@charge)
       get :index
-      expect(assigns(:ordered)).to eq([@charge])
+      expect(assigns(:ordered)).to eq(@charge)
     end
 
     it 'should set @shipped' do
-      @charge.update_attributes(status: 'shipped')
+      Charge.stub_chain(:shipped, :by_date, :page).and_return(@charge)
       get :index
-      expect(assigns(:shipped)).to eq([@charge])
+      expect(assigns(:shipped)).to eq(@charge)
     end
 
     it 'should set @completed' do
-      @charge.update_attributes(status: 'completed')
+      Charge.stub_chain(:completed, :by_date, :page).and_return(@charge)
       get :index
-      expect(assigns(:completed)).to eq([@charge])
+      expect(assigns(:completed)).to eq(@charge)
     end
 
     it 'should render the admin layout' do

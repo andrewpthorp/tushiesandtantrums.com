@@ -1,4 +1,5 @@
 - header_text ||= 'New Orders'
+- param_name ||= :ordered_page
 
 .row
   .large-6.columns.large-centered
@@ -20,6 +21,12 @@
               = form_for [:admin, charge], html: { class: 'edit_charge custom' } do |f|
                 = hidden_field_tag :return_to, admin_charges_path
                 = f.select :status, Charge::VALID_STATUSES.each.map { |val| [val.capitalize, val] }
+
+
+      - unless collection.last_page?
+        %hr
+        .text-right
+          = paginate collection, param_name: param_name
 
 :coffeescript
   new ChargesView(el: '.edit_charge')

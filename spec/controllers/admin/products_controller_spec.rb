@@ -24,10 +24,27 @@ describe Admin::ProductsController do
     sign_in_admin
   end
 
+  describe 'GET index' do
+    it 'should set @products' do
+      get :index
+      assigns(:products).should eq([@product])
+    end
+
+    it 'should render the admin layout' do
+      get :index
+      expect(response).to render_template(layout: 'layouts/admin')
+    end
+  end
+
   describe 'GET edit' do
     it 'should set @product' do
       get :edit, id: @product.id
       assigns(:product).should == @product
+    end
+
+    it 'should render the admin layout' do
+      get :edit, id: @product.id
+      expect(response).to render_template(layout: 'layouts/admin')
     end
   end
 
@@ -82,6 +99,11 @@ describe Admin::ProductsController do
     it 'should not persist @product' do
       @product.should_not_receive(:save)
       get :new
+    end
+
+    it 'should render the admin layout' do
+      get :new
+      expect(response).to render_template(layout: 'layouts/admin')
     end
   end
 

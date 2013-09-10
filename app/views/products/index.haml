@@ -9,3 +9,5 @@
         - products.each do |p|
           %li
             = render 'widget', product: p unless p.nil?
+
+    = paginate @products

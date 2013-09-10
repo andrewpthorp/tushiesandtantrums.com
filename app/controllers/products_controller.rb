@@ -6,9 +6,9 @@ class ProductsController < ApplicationController
     @category = params[:category]
 
     if @category
-      @products = Product.tagged_with(@category)
+      @products = Product.tagged_with(@category).page(params[:page])
     else
-      @products = Product.all
+      @products = Product.page(params[:page])
     end
   end
 

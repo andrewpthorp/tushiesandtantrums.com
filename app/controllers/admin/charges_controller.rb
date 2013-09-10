@@ -1,18 +1,15 @@
 class Admin::ChargesController < Admin::BaseController
 
-  # GET /admin/charges
   def index
-    @ordered = Charge.ordered.by_date
-    @shipped = Charge.shipped.by_date
-    @completed = Charge.completed.by_date
+    @ordered = Charge.ordered.by_date.page(params[:ordered_page])
+    @shipped = Charge.shipped.by_date.page(params[:shipped_page])
+    @completed = Charge.completed.by_date.page(params[:completed_page])
   end
 
-  # GET /admin/charges/:id
   def show
     @charge = Charge.find(params[:id])
   end
 
-  # PUT /admin/charges/:id
   def update
     @charge = Charge.find(params[:id])
 
