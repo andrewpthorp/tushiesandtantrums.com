@@ -11,7 +11,14 @@ class DomView extends Backbone.View
 
   # widgetMouseout - handle when a user mouses over a product widget.
   widgetMouseover: (ev) ->
-    $(ev.currentTarget).find('.overlay').removeClass 'hide'
+    try
+      # figure out if we are on a touch screen
+      document.createEvent 'TouchEvent'
+      # if we are on a touch screen, go to the url
+      window.location.href = $(ev.currentTarget).find('a').attr('href')
+    catch
+      # if we are not on a touch screen, show the overlay
+      $(ev.currentTarget).find('.overlay').removeClass 'hide'
 
   # widgetMouseout - handle when a user mouses out from a product widget.
   widgetMouseout: (ev) ->
