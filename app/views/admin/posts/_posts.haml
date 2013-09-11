@@ -1,0 +1,30 @@
+- show_new_link = true if show_new_link.nil?
+- header_text ||= 'Published'
+- param_name ||= :published_page
+
+.row
+  .large-6.large-centered.columns
+    %h3
+      = header_text
+      - if show_new_link
+        = link_to 'New', new_admin_post_path, class: 'action-button x-small'
+
+.row.margin-bottom-20
+  .large-6.large-centered.columns
+    %section
+      %ul.admin-list
+        - collection.each do |post|
+          %li.row
+            .large-9.columns.padding-top-5
+              %p= link_to post.title, post
+              %p.mute= "Created: #{post.created_at.localtime.to_s(:pretty)}"
+            .large-3.columns.padding-top-5
+              = link_to 'Actions', '#', class: 'button dropdown small right secondary', data: { dropdown: 'actions' }
+              %ul#actions.f-dropdown
+                %li= link_to 'Edit', edit_admin_post_path(post)
+                %li= link_to 'Delete', admin_post_path(post), method: :delete, confirm: 'Are you sure?'
+
+      - unless collection.total_pages == 1
+        %hr
+        .text-right
+          = paginate collection, param_name: param_name

@@ -25,8 +25,9 @@
         = f.label :description
         = f.text_area :description
 
-    .row
-      .large-6.columns
-        = link_to 'Cancel', admin_products_path, class: 'action-button gray margin-bottom-0'
-      .large-6.columns.text-right
-        = f.submit "Save", class: 'action-button button margin-bottom-0'
+    %footer
+      .row
+        .large-6.columns
+          = link_to 'Cancel', admin_products_path, class: 'action-button gray margin-bottom-0'
+        .large-6.columns.text-right
+          = f.submit "Save", class: 'action-button button margin-bottom-0'

@@ -1,0 +1,5 @@
+- if @drafted.any?
+  = render 'posts', collection: @drafted, show_new_link: false, header_text: 'Drafts', param_name: :draft_page
+
+- if @published.any?
+  = render 'posts', collection: @published

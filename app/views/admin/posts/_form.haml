@@ -1,0 +1,23 @@
+%section
+  = form_for [:admin, post], html: { class: 'custom margin-bottom-0 post-form' } do |f|
+    .row
+      .large-12.columns
+        = f.label :title
+        = f.text_field :title
+
+    .row
+      .large-12.columns
+        = f.label :body
+        = f.text_area :body
+
+    .row
+      .large-12.columns
+        = f.label :published do
+          #{f.check_box :published} Publish Post
+
+    %footer
+      .row
+        .large-6.columns
+          = link_to 'Cancel', admin_posts_path, class: 'action-button gray margin-bottom-0'
+        .large-6.columns.text-right
+          = f.submit "Save", class: 'action-button button margin-bottom-0'
