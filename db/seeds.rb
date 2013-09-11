@@ -44,6 +44,28 @@ if Rails.env.development? && !ENV['SKIP_PRODUCTS']
 
 end
 
+if Rails.env.development? && !ENV['SKIP_POSTS']
+
+  puts "Destroying #{Post.count.to_s} posts..."
+  Post.destroy_all
+  puts "Done."
+
+  puts "Creating 15 posts..."
+  15.times do
+    post = FactoryGirl.create(:post)
+    puts "  -> Created #{post.title}"
+  end
+  puts "Done."
+
+  puts "Creating 5 drafts..."
+  5.times do
+    draft = FactoryGirl.create(:draft)
+    puts "  -> Created (DRAFT) #{draft.title}"
+  end
+  puts "Done."
+
+end
+
 unless Admin.any? || ENV['ADMIN_EMAIL'].blank? || ENV['ADMIN_PASS'].blank?
   puts "Creating Admin."
   admin = Admin.new
