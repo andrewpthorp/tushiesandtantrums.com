@@ -8,7 +8,7 @@ class Post < ActiveRecord::Base
   friendly_id :title, use: :slugged
 
   # Internal: Allow mass-assignment.
-  attr_accessible :title, :body
+  attr_accessible :title, :body, :published
 
   # Internal: Validate presence of :title.
   validates :title, presence: true
