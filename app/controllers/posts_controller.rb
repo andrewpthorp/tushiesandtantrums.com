@@ -3,7 +3,8 @@ class PostsController < ApplicationController
 
   # GET /posts
   def index
-    @posts = Post.page(params[:page])
+    @latest = Post.latest
+    @posts = Post.published.ordered.exclude(@latest.id).page(params[:page])
   end
 
   # GET /posts/:id

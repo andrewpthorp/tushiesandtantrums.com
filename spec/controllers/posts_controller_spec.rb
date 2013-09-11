@@ -3,30 +3,38 @@ require 'spec_helper'
 describe PostsController do
 
   before do
-    @post = FactoryGirl.create(:post)
+    @latest = FactoryGirl.create(:post)
+    @old = FactoryGirl.create(:post, created_at: 5.days.ago)
+    @draft = FactoryGirl.create(:draft)
   end
 
   describe 'GET index' do
     it 'should set @active_navigation' do
       get :index
-      assigns(:active_navigation).should == 'posts'
+      expect(assigns(:active_navigation)).to eq('posts')
     end
 
-    it 'should set @posts' do
+    it 'should set @latest' do
       get :index
-      assigns(:posts).should == [@post]
+      expect(assigns(:latest)).to eq(@latest)
+    end
+
+    it 'should set @posts to ordered, published, and not include the latest' do
+      newer = FactoryGirl.create(:post, created_at: 2.days.ago)
+      get :index
+      expect(assigns(:posts)).to eq([newer, @old])
     end
   end
 
   describe 'GET show' do
     it 'should set @active_navigation' do
-      get :show, id: @post.id
-      assigns(:active_navigation).should == 'posts'
+      get :show, id: @latest
+      expect(assigns(:active_navigation)).to eq('posts')
     end
 
     it 'should set @post' do
-      get :show, id: @post.id
-      assigns(:post).should == @post
+      get :show, id: @latest
+      expect(assigns(:post)).to eq(@latest)
     end
   end
 
