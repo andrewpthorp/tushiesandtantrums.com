@@ -29,6 +29,9 @@ TushiesandtantrumsCom::Application.routes.draw do
     end
   end
 
+  # Public: Routes for Posts.
+  resources :posts, only: [:index, :show], path: 'blog'
+
   # Public: Routes for Inquiries.
   resources :inquiries, only: [:new, :create]
 
@@ -51,6 +54,9 @@ TushiesandtantrumsCom::Application.routes.draw do
 
     # Public: Admin routes for Products.
     resources :products, except: [:show]
+
+    # Public: Admin routes for Posts.
+    resources :posts, except: [:show]
 
     # Public: Admin routes for Charges.
     resources :charges, only: [:index, :show, :update]
