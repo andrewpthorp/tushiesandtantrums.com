@@ -7,6 +7,19 @@ describe Post do
     it { should validate_presence_of(:body) }
   end
 
+  describe '.friendly_id' do
+    it 'should set a slug' do
+      post = FactoryGirl.create(:post)
+      post.slug.should_not be_nil
+    end
+  end
+
+  describe '.pagination' do
+    it 'should default to 5 records per page' do
+      expect(Post.default_per_page).to eq(5)
+    end
+  end
+
   describe '.scopes' do
     let(:draft) { FactoryGirl.create(:draft) }
     let(:post) { FactoryGirl.create(:post) }
@@ -22,12 +35,25 @@ describe Post do
         expect(Post.drafted).to eq([draft])
       end
     end
-  end
 
-  describe '.friendly_id' do
-    it 'should set a slug' do
-      post = FactoryGirl.create(:post)
-      post.slug.should_not be_nil
+    describe '.ordered' do
+      it 'should order results correctly' do
+        expect(Post.ordered.to_sql).to match(/ORDER BY created_at DESC/)
+      end
+    end
+
+    describe '.exclude' do
+      it 'should not include a post with the given id' do
+        expect(Post.exclude(draft.id)).to eq([post])
+      end
+    end
+
+    describe '.latest' do
+      it 'should only get the latest post' do
+        draft.update_column(:created_at, 2.days.ago)
+        post.update_column(:created_at, 1.day.ago)
+        expect(Post.latest).to eq(post)
+      end
     end
   end
 
