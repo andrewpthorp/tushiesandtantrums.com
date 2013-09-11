@@ -21,13 +21,19 @@ describe Admin::PostsController do
 
   before do
     @post = FactoryGirl.create(:post)
+    @draft = FactoryGirl.create(:draft)
     sign_in_admin
   end
 
   describe 'GET index' do
-    it 'should set @posts' do
+    it 'should set @drafted' do
       get :index
-      assigns(:posts).should eq([@post])
+      assigns(:published).should eq([@post])
+    end
+
+    it 'should set @published' do
+      get :index
+      assigns(:drafted).should eq([@draft])
     end
   end
 

@@ -2,7 +2,8 @@ class Admin::PostsController < Admin::BaseController
 
   # GET /admin/posts
   def index
-    @posts = Post.page(params[:page])
+    @published = Post.published.page(params[:published_page])
+    @drafted = Post.drafted.page(params[:draft_page])
   end
 
   # GET /admin/posts/:id/edit
