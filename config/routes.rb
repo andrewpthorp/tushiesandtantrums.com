@@ -8,7 +8,7 @@ TushiesandtantrumsCom::Application.routes.draw do
   root to: 'welcome#index'
 
   # Public: Routes for Products.
-  resources :products, only: [:index, :show] do
+  resources :products, only: [:index, :show], path: 'shop' do
     collection do
 
       # Public: Route used to view boys Products.
