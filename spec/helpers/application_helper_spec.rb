@@ -50,8 +50,8 @@ describe ApplicationHelper do
 
     [
       { section: 'home', text: 'Home', url: '/' },
-      { section: 'products', text: 'Shop', url: '/products' },
       { section: 'blog', text: 'Blog', url: '#' }
+      { section: 'products', text: 'Shop', url: '/shop' },
     ].each do |p|
       context "when passing #{p[:section]}" do
         it "should set the current section to #{p[:text]}" do

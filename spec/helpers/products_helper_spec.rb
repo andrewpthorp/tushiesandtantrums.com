@@ -42,14 +42,14 @@ describe ProductsHelper do
 
     it 'should link back to products_path' do
       expect(helper.category_link)
-        .to have_selector("a[href='/products']", text: 'View All Bedding')
+        .to have_selector("a[href='/shop']", text: 'View All Bedding')
     end
 
     context 'when the product has multiple categories' do
       it 'should link back to products_path' do
         @product.update_attributes(tag_list: 'boys,girls')
         expect(helper.category_link(@product))
-          .to have_selector("a[href='/products']", text: 'View All Bedding')
+          .to have_selector("a[href='/shop']", text: 'View All Bedding')
       end
     end
 
@@ -57,7 +57,7 @@ describe ProductsHelper do
       it 'should link back to products_path' do
         @product.update_attributes(tag_list: '')
         expect(helper.category_link(@product))
-          .to have_selector("a[href='/products']", text: 'View All Bedding')
+          .to have_selector("a[href='/shop']", text: 'View All Bedding')
       end
     end
 
@@ -66,7 +66,7 @@ describe ProductsHelper do
         it 'should link back to boys_products_path' do
           @product.update_attributes(tag_list: 'boys')
           text = 'View Boys Bedding'
-          url = '/products/boys'
+          url = '/shop/boys'
           expect(helper.category_link(@product)).to(
             have_selector("a[href='#{url}']", text: "#{text}")
           )
@@ -77,7 +77,7 @@ describe ProductsHelper do
         it 'should link back to girls_products_path' do
           @product.update_attributes(tag_list: 'girls')
           text = 'View Girls Bedding'
-          url = '/products/girls'
+          url = '/shop/girls'
           expect(helper.category_link(@product)).to(
             have_selector("a[href='#{url}']", text: "#{text}")
           )
