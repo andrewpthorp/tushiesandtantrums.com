@@ -28,12 +28,13 @@
     %h3.left.hide-for-small.negative-margin-top-5.margin-left-15.margin-bottom-0 Admin
 
     -# TODO: Clean these up.
-    %p.right.margin-right-20.negative-margin-top-7.hide-for-small
-      = link_to 'Sign Out', destroy_admin_session_path, class: 'button secondary color-dark-gray', method: :delete
-
-  -# TODO: Clean these up.
-  %p.text-center.margin-top-15.margin-bottom-0.show-for-small.hide-for-medium-up
-    = link_to 'Sign Out', destroy_admin_session_path, class: 'button secondary color-dark-gray margin-bottom-0', method: :delete
+    %p.right.margin-right-20.negative-margin-top-9.hide-for-small
+      = link_to 'Sign Out', destroy_admin_session_path, class: 'action-button small', method: :delete
 
   #main-content
     = yield
+
+    -# TODO: Clean these up.
+    %p.text-center.show-for-small.hide-for-medium-up
+      = link_to 'Sign Out', destroy_admin_session_path, class: 'action-button small', method: :delete
+

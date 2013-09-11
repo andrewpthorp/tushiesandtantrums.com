@@ -23,12 +23,13 @@
 
   = render 'shared/flashes'
 
-  #main-content.row
+  #main-content-wrapper.row
     .large-12.columns
 
       = render 'shared/global_header'
 
-      = yield
+      #main-content
+        = yield
 
       = render 'shared/global_footer'
 
