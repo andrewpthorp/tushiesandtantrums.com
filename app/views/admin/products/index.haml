@@ -23,7 +23,7 @@
                 %li= link_to 'Edit', edit_admin_product_path(product)
                 %li= link_to 'Delete', admin_product_path(product), method: :delete, confirm: 'Are you sure?'
 
-      %hr
-
-      .text-right
-        = paginate @products
+      - unless @products.total_pages == 1
+        %hr
+        .text-right
+          = paginate @products
