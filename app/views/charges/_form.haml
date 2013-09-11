@@ -45,11 +45,13 @@
       .large-4.columns
         = label_tag do
           %span Expiration month
-          = select_month 1, { use_month_numbers: true }, data: { stripe: 'exp_month' }, name: nil
+          .styled-select
+            = select_month 1, { use_month_numbers: true }, data: { stripe: 'exp_month', customforms: 'disabled' }, name: nil
       .large-4.columns
         = label_tag do
           %span Expiration year
-          = select_year Date.today, { use_year_numbers: true, start_year: Date.today.year, end_year: 2030 }, data: { stripe: 'exp_year' }, name: nil
+          .styled-select
+            = select_year Date.today, { use_year_numbers: true, start_year: Date.today.year, end_year: 2030 }, data: { stripe: 'exp_year', customforms: 'disabled' }, name: nil
       .large-4.columns
         = label_tag do
           %span Billing zip
@@ -73,7 +75,8 @@
         = f.text_field :city
       .large-5.columns
         = f.label :state
-        = f.subregion_select :state, 'US'
+        .styled-select
+          = f.subregion_select :state, 'US', {}, data: { customforms: 'disabled' }
       .large-3.columns
         = f.label :zip
         = f.text_field :zip
