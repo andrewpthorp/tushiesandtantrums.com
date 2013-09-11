@@ -50,8 +50,8 @@ describe ApplicationHelper do
 
     [
       { section: 'home', text: 'Home', url: '/' },
-      { section: 'blog', text: 'Blog', url: '#' }
       { section: 'products', text: 'Shop', url: '/shop' },
+      { section: 'posts', text: 'Blog', url: '/blog' }
     ].each do |p|
       context "when passing #{p[:section]}" do
         it "should set the current section to #{p[:text]}" do
@@ -106,7 +106,7 @@ describe ApplicationHelper do
     end
 
     it 'should have a link to blog' do
-      expect(results).to have_selector('a[href="#"]', text: 'Blog')
+      expect(results).to have_selector('a[href="/admin/posts"]', text: 'Blog')
     end
   end
 

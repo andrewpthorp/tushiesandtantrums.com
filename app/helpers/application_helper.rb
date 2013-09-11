@@ -26,7 +26,7 @@ module ApplicationHelper
       link_to('Home', root_path, class: curr == 'home' ? 'active' : ''),
       link_to('Shop', products_path, class: curr == 'products' ? 'active' : ''),
       link_to('Contact', new_inquiry_path, remote: true),
-      link_to('Blog', '#', class: curr == 'blog' ? 'active' : '')
+      link_to('Blog', posts_path, class: curr == 'posts' ? 'active' : '')
     ]
 
     if opts[:include_admin] ||= false
@@ -53,7 +53,7 @@ module ApplicationHelper
       link_to('Products', admin_products_path),
       link_to('Orders', admin_charges_path),
       link_to('Inquiries', admin_inquiries_path),
-      link_to('Blog', '#')
+      link_to('Blog', admin_posts_path)
     ]
 
     content_tag :ul, class: 'global-navigation admin-navigation' do
