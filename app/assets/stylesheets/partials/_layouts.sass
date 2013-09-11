@@ -16,7 +16,12 @@ body.minimal, body.admin
         &:active
           +transform(rotate(15deg))
     h1, h2, h3, h4, h5, h6
-      text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5)
+      text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.25)
+      padding-left: 28px
+      a.action-button
+        position: relative
+        top: -4px
+        margin-left: 10px
   section
     +box-sizing(border-box)
     background: $color_white
@@ -26,6 +31,14 @@ body.minimal, body.admin
     margin-bottom: $column-gutter
     h1, h2, h3, h4, h5, h6
       text-shadow: none
+      padding-left: 0px !important
+    footer
+      margin: $column-gutter -25px -25px
+      padding: 25px
+      background: lighten($color_gray, 10%)
+      p
+        margin-bottom: 0px
+
 
 body.admin
   #global-header
@@ -37,12 +50,6 @@ body.admin
       top: 25px
   #main-content
     margin: 25px auto 50px
-    h1, h2, h3, h4, h5, h6
-      padding-left: 28px
-      a.action-button
-        position: relative
-        top: -4px
-        margin-left: 10px
     section
       a
         font-weight: bold

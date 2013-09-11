@@ -24,6 +24,11 @@ describe PostsController do
       get :index
       expect(assigns(:posts)).to eq([newer, @old])
     end
+
+    it 'should render the minimal layout' do
+      get :index
+      expect(response).to render_template(layout: 'layouts/minimal')
+    end
   end
 
   describe 'GET show' do
@@ -35,6 +40,11 @@ describe PostsController do
     it 'should set @post' do
       get :show, id: @latest
       expect(assigns(:post)).to eq(@latest)
+    end
+
+    it 'should render the minimal layout' do
+      get :show, id: @latest
+      expect(response).to render_template(layout: 'layouts/minimal')
     end
   end
 

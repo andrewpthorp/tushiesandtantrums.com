@@ -26,8 +26,16 @@
   = render 'shared/flashes'
 
   #main-content
-    #logo= link_to image_tag('logo.png'), root_path
+    #logo
+      = link_to image_tag('logo.png'), root_path
+
     = yield
+
+    .row
+      .large-6.large-centered.columns
+        %section.text-center
+          = navigation(@active_navigation)
+
 
 :coffeescript
   $ ->

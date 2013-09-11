@@ -1,15 +1,20 @@
-ul#posts
-  li
-    border-bottom: 1px solid $color_gray
-    margin-bottom: $column-gutter
-    &:last-child
-      border-bottom: 0px none
-    p
-      font-size: 1.25em
-      &.title a
-        display: block
-        width: 100%
-        white-space: nowrap
-        overflow: hidden
-        text-overflow: ellipsis
+.posts-section
+  padding: 0px !important
+  footer
+    margin: 0px !important
 
+ul#posts
+  margin-bottom: 0px
+  li
+    a
+      display: block
+      padding: $column-gutter
+      margin-bottom: 1px
+      border-bottom: 2px solid $color_gray
+      &:hover
+        background: $color_bright_green
+        color: $color_white
+        border-color: darken($color_bright_green, 35%)
+        text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5)
+    &:last-child a
+      margin-bottom: 0px

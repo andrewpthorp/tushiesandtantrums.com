@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_filter :set_active_navigation
+  layout 'minimal'
 
   # GET /posts
   def index

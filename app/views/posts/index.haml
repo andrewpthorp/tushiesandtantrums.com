@@ -1,0 +1,23 @@
+.row
+  .large-6.large-centered.columns
+    %h4= link_to 'Latest Post', @latest
+
+.row
+  .large-6.large-centered.columns
+    %section
+      = render 'post', post: @latest
+
+- if @posts.any?
+  .row
+    .large-6.large-centered.columns
+      %h4 Previous Posts
+
+  .row
+    .large-6.large-centered.columns
+      %section.posts-section
+        %ul#posts
+          - @posts.each do |post|
+            %li= link_to post.title, post
+        %footer
+          .text-right
+            = paginate @posts

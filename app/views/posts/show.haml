@@ -1,0 +1,10 @@
+.row
+  .large-6.large-centered.columns
+    %h4
+      A thought from Ashley...
+      = link_to 'Back', posts_path, class: 'action-button x-small'
+
+.row
+  .large-6.large-centered.columns
+    %section
+      = render 'post', post: @post
