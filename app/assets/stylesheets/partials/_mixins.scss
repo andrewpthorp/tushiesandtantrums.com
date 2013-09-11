@@ -23,3 +23,11 @@
   -msn-filter: blur($val);
   filter: blur($val);
 }
+
+@mixin text-size-adjust($val) {
+  -webkit-text-size-adjust: $val;
+  -moz-text-size-adjust: $val;
+  -msn-text-size-adjust: $val;
+  -o-text-size-adjust: $val;
+  text-size-adjust: $val;
+}
