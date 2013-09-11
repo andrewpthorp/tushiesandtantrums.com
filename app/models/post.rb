@@ -21,4 +21,9 @@ class Post < ActiveRecord::Base
   # Returns a Post::FriendlyIdActiveRecordRelation.
   scope :published, where(published: true)
 
+  # Public: Get all Posts that are in draft form.
+  #
+  # Returns a Post::FriendlyIdActiveRecordRelation.
+  scope :drafted, where(published: false)
+
 end

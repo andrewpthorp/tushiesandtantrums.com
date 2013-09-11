@@ -8,11 +8,18 @@ describe Post do
   end
 
   describe '.scopes' do
+    let(:draft) { FactoryGirl.create(:draft) }
+    let(:post) { FactoryGirl.create(:post) }
+
     describe '.published' do
       it 'should return published records from the database' do
-        FactoryGirl.create(:post)
-        FactoryGirl.create(:draft)
-        expect(Post.published.size).to eq(1)
+        expect(Post.published).to eq([post])
+      end
+    end
+
+    describe '.drafted' do
+      it 'should return records that are not published from the database' do
+        expect(Post.drafted).to eq([draft])
       end
     end
   end
