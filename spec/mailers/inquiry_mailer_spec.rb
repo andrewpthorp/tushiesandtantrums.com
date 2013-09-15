@@ -20,6 +20,10 @@ describe InquiryMailer do
       @mail.from.should eq(['tushiesandtantrums+website@gmail.com'])
     end
 
+    it 'should set the reply-to to the right email' do
+      @mail.reply_to.should eq([@inquiry.email])
+    end
+
     it 'should assign @inquiry' do
       @mail.body.encoded.should match(@inquiry.body)
     end

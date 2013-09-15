@@ -1,25 +1,13 @@
-!!! 5
+%h1.banner
+  New Message from
+  =link_to @inquiry.name, "mailto: #{@inquiry.email}"
 
-%head
-  %meta{ content: 'text/html; charset=UTF-8', :'http-equiv' => 'Content-Type' }
+%p.strong= @inquiry.subject
 
-%body
+%p
+  = @inquiry.body
 
-  %p
-    %strong
-      New Message from #{@inquiry.name} &lt;#{@inquiry.email}&gt;
-
-  %p
-    %strong Subject:
-    = @inquiry.subject
-
-  %p
-    %strong Message:
-    = @inquiry.body
-
-  %p
-    Sincerely,
-    %br
-    Your Website.
-
-  %p P.S. You stink.
+%p
+  Sincerely,
+  %br
+  %strong= @inquiry.name

@@ -1,0 +1,46 @@
+@import 'bourbon'
+@import 'partials/global_vars'
+@import 'foundation_and_overrides'
+@import 'partials/helpers'
+
+body
+  background: #fefefe
+
+  a
+    color: $color_black
+    font-weight: bold
+
+  h1.logo
+    img
+      display: block
+      margin: 35px auto
+      max-width: 385px
+      width: 85%
+
+  h1.banner
+    background: $color_green
+    color: $color_white
+    font-family: $body-font-family
+    font-size: 24px
+    margin-bottom: 25px
+    padding: 15px 5px
+    text-align: center
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.25)
+    text-transform: uppercase
+    a
+      color: $color_white
+      text-decoration: underline
+      &:hover
+        color: $color_white
+
+  #main
+    display: block
+    margin: 0px auto 50px
+    max-width: 600px
+    width: 85%
+
+    hr
+      background: $color_green
+      height: 5px
+      margin: 0px 0px 20px
+      width: 100%

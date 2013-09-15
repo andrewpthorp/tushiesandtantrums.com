@@ -10,7 +10,10 @@ class InquiryMailer < ActionMailer::Base
   def inquiry_email(inquiry)
     @inquiry = inquiry
     mail(to: 'tushiesandtantrums@gmail.com',
-         subject: 'New Message from your Website')
+          subject: 'New Message from your Website',
+          reply_to: @inquiry.email) do |format|
+      format.html { render layout: 'email' }
+    end
   end
 
 end
