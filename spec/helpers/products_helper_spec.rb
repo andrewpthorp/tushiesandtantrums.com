@@ -8,8 +8,8 @@ describe ProductsHelper do
       expect(helper.product_categories).to have_selector('ul.categories.side-nav')
     end
 
-    it 'should have 3 links' do
-      expect(helper.product_categories).to have_selector('a', count: 3)
+    it 'should have 4 links' do
+      expect(helper.product_categories).to have_selector('a', count: 4)
     end
 
     it 'should default the current category to All' do
@@ -19,7 +19,8 @@ describe ProductsHelper do
     [
       { category: 'all', text: 'All Bedding' },
       { category: 'boys', text: 'Boys Bedding' },
-      { category: 'girls', text: 'Girls Bedding' }
+      { category: 'girls', text: 'Girls Bedding' },
+      { category: 'ready-ship', text: 'Ready to Ship' }
     ].each do |p|
       context "with a category of #{p[:category]}" do
         it "should set the current category to #{p[:text]}" do

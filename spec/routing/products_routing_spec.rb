@@ -31,6 +31,15 @@ describe 'routes for Products' do
         expect({ get: route }).to route_to('products#index', category: 'girls')
       end
     end
+
+    describe 'ready_ship_products_path' do
+      let (:route) { ready_ship_products_path }
+
+      it 'should route correctly' do
+        expect({ get: route }).to route_to('products#index',
+                                           category: 'ready-ship')
+      end
+    end
   end
 
   describe '#show' do

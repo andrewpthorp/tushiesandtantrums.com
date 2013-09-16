@@ -26,6 +26,14 @@ TushiesandtantrumsCom::Application.routes.draw do
       #   girls_products_path
       #   # => '/products/index?category=girls'
       get 'girls', to: 'products#index', as: :girls, defaults: { category: 'girls' }
+
+      # Public: Route used to view ready-ship Products.
+      #
+      # Examples
+      #
+      #   ready_ship_products_path
+      #   # => '/products/index?category=ready-ship'
+      get 'ready-ship', to: 'products#index', as: :ready_ship, defaults: { category: 'ready-ship' }
     end
   end
 

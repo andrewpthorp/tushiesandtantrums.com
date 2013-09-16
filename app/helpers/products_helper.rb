@@ -13,7 +13,8 @@ module ProductsHelper
     list_items = [
       content_tag(:li, link_to('All Bedding', products_path), class: curr == 'all' ? 'active' : ''),
       content_tag(:li, link_to('Boys Bedding', boys_products_path), class: curr == 'boys' ? 'active' : ''),
-      content_tag(:li, link_to('Girls Bedding', girls_products_path), class: curr == 'girls' ? 'active' : '')
+      content_tag(:li, link_to('Girls Bedding', girls_products_path), class: curr == 'girls' ? 'active' : ''),
+      content_tag(:li, link_to('Ready to Ship', ready_ship_products_path), class: curr == 'ready-ship' ? 'active' : '')
     ]
 
     content_tag :ul, class: 'categories side-nav' do
