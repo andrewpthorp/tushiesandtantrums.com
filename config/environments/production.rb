@@ -55,10 +55,10 @@ TushiesandtantrumsCom::Application.configure do
   config.action_mailer.default_url_options = { :host => 'tushiesandtantrums.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: 'smtp.gmail.com',
+    address: 'mail.gandi.net',
     port: 587,
-    user_name: ENV["GMAIL_USER"],
-    password: ENV["GMAIL_PASS"],
+    user_name: ENV['GANDI_USERNAME'],
+    password: ENV['GANDI_PASSWORD'],
     authentication: 'plain',
     enable_starttls_auto: true
   }
