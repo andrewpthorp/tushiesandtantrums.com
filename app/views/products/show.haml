@@ -5,9 +5,9 @@
       .text.right
         .margin-bottom-25
           = category_link @product
-        %h3.name= @product.name
+        %h3.name{title: @product.name}= @product.name
         %p.price= number_to_currency(@product.price)
-        %ul
+        %ul.hide-for-medium-down
           %li.strong Overview
           %li.dotted Handmade Item
           %li.dotted Made to Order
