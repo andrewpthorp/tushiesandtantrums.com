@@ -2,7 +2,7 @@
 class ChargeMailer < ActionMailer::Base
 
   # Public: The default address emails are sent from.
-  default from: 'tushiesandtantrums+website@gmail.com'
+  default from: 'no-reply@tushiesandtantrums.com'
 
   # Public: Send the email for a Charge.
   #

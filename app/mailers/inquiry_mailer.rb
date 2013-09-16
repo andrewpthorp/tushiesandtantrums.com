@@ -2,7 +2,7 @@
 class InquiryMailer < ActionMailer::Base
 
   # Public: The default address emails are sent from.
-  default from: 'tushiesandtantrums+website@gmail.com'
+  default from: 'no-reply@tushiesandtantrums.com'
 
   # Public: Send the email for an Inquiry.
   #

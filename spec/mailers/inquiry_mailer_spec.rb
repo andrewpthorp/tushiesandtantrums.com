@@ -17,7 +17,7 @@ describe InquiryMailer do
     end
 
     it 'should set the sender to the right email' do
-      @mail.from.should eq(['tushiesandtantrums+website@gmail.com'])
+      @mail.from.should eq(['no-reply@tushiesandtantrums.com'])
     end
 
     it 'should set the reply-to to the right email' do

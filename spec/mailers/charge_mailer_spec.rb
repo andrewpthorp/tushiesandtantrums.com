@@ -17,7 +17,7 @@ describe ChargeMailer do
     end
 
     it 'should set the sender to the right email' do
-      expect(@mail.from).to eq(['tushiesandtantrums+website@gmail.com'])
+      expect(@mail.from).to eq(['no-reply@tushiesandtantrums.com'])
     end
 
     it 'should assign @charge' do
