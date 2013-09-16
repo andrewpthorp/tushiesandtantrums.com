@@ -13,19 +13,20 @@ describe Inquiry do
 
     describe '.send_email' do
       before do
-        @i = FactoryGirl.create(:inquiry)
+        @inquiry = FactoryGirl.create(:inquiry)
       end
 
       it 'should run after create' do
-        @i.should_receive(:send_email)
-        @i.run_callbacks(:create)
+        @inquiry.should_receive(:send_email)
+        @inquiry.run_callbacks(:create)
       end
 
       it 'should send an email' do
         m = double('message')
-        InquiryMailer.should_receive(:inquiry_email).with(@i).and_return(m)
+        InquiryMailer.should_receive(:inquiry_created_email).with(@inquiry)
+          .and_return(m)
         m.should_receive(:deliver)
-        @i.send(:send_email)
+        @inquiry.send(:send_email)
       end
     end
 

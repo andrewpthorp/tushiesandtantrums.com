@@ -7,7 +7,7 @@ class InquiryMailer < ActionMailer::Base
   # Public: Send the email for an Inquiry.
   #
   # Returns a Mail::Message.
-  def inquiry_email(inquiry)
+  def inquiry_created_email(inquiry)
     @inquiry = inquiry
     mail(to: 'tushiesandtantrums@gmail.com',
           subject: 'New Message from your Website',

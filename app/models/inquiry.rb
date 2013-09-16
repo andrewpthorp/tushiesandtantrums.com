@@ -30,7 +30,7 @@ private
   #
   # Returns nothing.
   def send_email
-    InquiryMailer.inquiry_email(self).deliver
+    InquiryMailer.inquiry_created_email(self).deliver
   end
 
 end

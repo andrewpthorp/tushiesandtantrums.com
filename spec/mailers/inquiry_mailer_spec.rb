@@ -2,10 +2,10 @@ require "spec_helper"
 
 describe InquiryMailer do
 
-  describe '.inquiry_email' do
+  describe '.inquiry_created_email' do
     before do
       @inquiry = FactoryGirl.create(:inquiry)
-      @mail = InquiryMailer.inquiry_email(@inquiry)
+      @mail = InquiryMailer.inquiry_created_email(@inquiry)
     end
 
     it 'should render the subject' do
