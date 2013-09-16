@@ -51,7 +51,8 @@ TushiesandtantrumsCom::Application.configure do
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = { :host => 'tushies.herokuapp.com' }
+  config.action_mailer.asset_host = 'http://www.tushiesandtantrums.com'
+  config.action_mailer.default_url_options = { :host => 'tushiesandtantrums.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address: 'smtp.gmail.com',

@@ -7,7 +7,7 @@
   %strong= @charge.product.name
 
 %p
-  = link_to 'Click here', admin_charge_path(@charge)
+  = link_to 'Click here', admin_charge_path(@charge, only_path: false)
   to view details about this order.
 
 %p
