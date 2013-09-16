@@ -1,3 +1,8 @@
+- if @ordered.none? && @shipped.none? && @completed.none?
+  .row
+    .large-12.columns.text-center
+      %h3 No Orders Yet
+
 - if @ordered.any?
   = render 'charges', collection: @ordered
 

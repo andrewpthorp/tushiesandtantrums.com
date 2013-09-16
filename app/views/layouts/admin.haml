@@ -29,12 +29,12 @@
 
     -# TODO: Clean these up.
     %p.right.margin-right-20.negative-margin-top-9.hide-for-small
-      = link_to 'Sign Out', destroy_admin_session_path, class: 'action-button small', method: :delete
+      = link_to 'Sign Out', destroy_admin_session_path, class: 'action-button small gray', method: :delete
 
   #main-content
     = yield
 
     -# TODO: Clean these up.
     %p.text-center.show-for-small.hide-for-medium-up
-      = link_to 'Sign Out', destroy_admin_session_path, class: 'action-button small', method: :delete
+      = link_to 'Sign Out', destroy_admin_session_path, class: 'action-button small gray', method: :delete
 

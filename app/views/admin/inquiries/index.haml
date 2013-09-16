@@ -1,33 +1,39 @@
-.row
-  .large-6.columns.large-centered
-    %h3 All Messages
+- if @inquiries.none?
+  .row
+    .large-12.columns.text-center
+      %h3 No Inquiries Yet
 
-.row
-  .large-6.columns.large-centered
-    %section
-      %ul#inquiries.admin-list
-        - @inquiries.each do |inquiry|
-          %li.row
-            .large-10.columns
-              .row
-                .large-3.columns
-                  %p.strong From
-                .large-9.columns
-                  %p.mute= link_to inquiry.name, admin_inquiry_path(inquiry)
-              .row
-                .large-3.columns
-                  %p.strong Subject
-                .large-9.columns
-                  %p.mute= inquiry.subject
-              .row
-                .large-3.columns
-                  %p.strong Sent
-                .large-9.columns
-                  %p.mute= inquiry.created_at.localtime.to_s(:pretty)
-            .large-2.columns
-              = link_to 'View', admin_inquiry_path(inquiry), class: 'button small right'
+- else
+  .row
+    .large-6.columns.large-centered
+      %h3 All Messages
 
-      - unless @inquiries.total_pages == 1
-        %hr
-        .text-right
-          = paginate @inquiries
+  .row
+    .large-6.columns.large-centered
+      %section
+        %ul#inquiries.admin-list
+          - @inquiries.each do |inquiry|
+            %li.row
+              .large-10.columns
+                .row
+                  .large-3.columns
+                    %p.strong From
+                  .large-9.columns
+                    %p.mute= link_to inquiry.name, admin_inquiry_path(inquiry)
+                .row
+                  .large-3.columns
+                    %p.strong Subject
+                  .large-9.columns
+                    %p.mute= inquiry.subject
+                .row
+                  .large-3.columns
+                    %p.strong Sent
+                  .large-9.columns
+                    %p.mute= inquiry.created_at.localtime.to_s(:pretty)
+              .large-2.columns
+                = link_to 'View', admin_inquiry_path(inquiry), class: 'button small right'
+
+        - unless @inquiries.total_pages == 1
+          %hr
+          .text-right
+            = paginate @inquiries

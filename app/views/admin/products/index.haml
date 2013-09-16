@@ -1,26 +1,34 @@
-.row
-  .large-6.columns.large-centered
-    %h3
-      All Products
-      = link_to 'New', new_admin_product_path, class: 'action-button green x-small text-center'
+- if @products.none?
+  .row
+    .large-12.columns.text-center
+      %h3
+        No Products Yet
+        = link_to 'Add One', new_admin_product_path, class: 'action-button green x-small text-center'
 
-.row
-  .large-6.columns.large-centered
-    %section
-      %ul#products.admin-list
-        - @products.each do |product|
-          %li.row
-            .large-2.columns
-              = image_tag product.image
-            .large-7.columns.padding-top-5
-              %p= link_to product.name, product
-              %p.mute= number_to_currency(product.price)
-            .large-3.columns.padding-top-5
-              %ul.button-group.right
-                %li= link_to 'Edit', edit_admin_product_path(product), class: 'button small right secondary'
-                %li= link_to 'Delete', admin_product_path(product), method: :delete, class: 'button small right alert', confirm: 'Are you sure?'
+- else
+  .row
+    .large-6.columns.large-centered
+      %h3
+        All Products
+        = link_to 'New', new_admin_product_path, class: 'action-button green x-small text-center'
 
-      - unless @products.total_pages == 1
-        %hr
-        .text-right
-          = paginate @products
+  .row
+    .large-6.columns.large-centered
+      %section
+        %ul#products.admin-list
+          - @products.each do |product|
+            %li.row
+              .large-2.columns
+                = image_tag product.image
+              .large-7.columns.padding-top-5
+                %p= link_to product.name, product
+                %p.mute= number_to_currency(product.price)
+              .large-3.columns.padding-top-5
+                %ul.button-group.right
+                  %li= link_to 'Edit', edit_admin_product_path(product), class: 'button small right secondary'
+                  %li= link_to 'Delete', admin_product_path(product), method: :delete, class: 'button small right alert', confirm: 'Are you sure?'
+
+        - unless @products.total_pages == 1
+          %hr
+          .text-right
+            = paginate @products
