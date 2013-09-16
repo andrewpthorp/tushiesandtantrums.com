@@ -8,5 +8,7 @@
 
 %footer
   .row
-    .large-12.columns
+    .large-6.columns
+      = render 'shared/share_buttons', links_class: 'text-left'
+    .large-6.columns
       %p.text-right.italic.mute= "Posted #{post.created_at.localtime.to_s(:mdy)}"
