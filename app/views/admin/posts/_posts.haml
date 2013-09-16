@@ -19,10 +19,9 @@
               %p= link_to post.title, post
               %p.mute= "Created: #{post.created_at.localtime.to_s(:pretty)}"
             .large-3.columns.padding-top-5
-              = link_to 'Actions', '#', class: 'button dropdown small right secondary', data: { dropdown: 'actions' }
-              %ul#actions.f-dropdown
-                %li= link_to 'Edit', edit_admin_post_path(post)
-                %li= link_to 'Delete', admin_post_path(post), method: :delete, confirm: 'Are you sure?'
+              %ul.button-group.right
+                %li= link_to 'Edit', edit_admin_post_path(post), class: 'button small right secondary'
+                %li= link_to 'Delete', admin_post_path(post), method: :delete, class: 'button small right alert', confirm: 'Are you sure?'
 
       - unless collection.total_pages == 1
         %hr

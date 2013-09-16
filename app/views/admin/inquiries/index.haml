@@ -25,11 +25,7 @@
                 .large-9.columns
                   %p.mute= inquiry.created_at.localtime.to_s(:pretty)
             .large-2.columns
-              = link_to 'Actions', '#', class: 'button dropdown small right secondary', data: { dropdown: 'actions' }
-              %ul#actions.f-dropdown
-                %li= link_to 'View', admin_inquiry_path(inquiry)
-                %li= link_to 'Respond', "mailto:#{inquiry.email}"
-                %li= link_to 'Delete', admin_inquiry_path(inquiry), method: :delete, confirm: 'Are you sure?'
+              = link_to 'View', admin_inquiry_path(inquiry), class: 'button small right'
 
       - unless @inquiries.total_pages == 1
         %hr

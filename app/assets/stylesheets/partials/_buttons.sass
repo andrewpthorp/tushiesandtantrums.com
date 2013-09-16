@@ -44,7 +44,8 @@
   &.square
     border-radius: 0px
   &.gray
-    color: $color_white !important
+    color: $color_dark_gray !important
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5)
     border-color: $color_gray
     background: $color_gray
     +box-shadow(0px 3px 0px darken($color_gray, 25%))
@@ -72,3 +73,13 @@
     border-bottom: 1px solid $color_gray
     a
       padding: 4px 8px
+
+.button
+  color: $color_white !important
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.15)
+  &.alert
+    color: $color_white !important
+  &.secondary
+    color: $color_dark_gray !important
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.25)
+
