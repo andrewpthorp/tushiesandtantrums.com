@@ -52,6 +52,9 @@ class Charge < ActiveRecord::Base
   # Internal: Set default status.
   before_validation :set_default_status
 
+  # Internal: Send an email after a Charge is created.
+  after_create :send_email
+
   # Public: Order Charges by created_at ASC.
   #
   # Returns an ActiveRecord::Relation.
@@ -117,5 +120,12 @@ private
   # Returns nothing.
   def set_default_status
     self[:status] = 'ordered' if self[:status].blank?
+  end
+
+  # Internal: After a Charge is created, we send the email to notify Ashley.
+  #
+  # Returns nothing.
+  def send_email
+    ChargeMailer.charge_created_email(self).deliver
   end
 end

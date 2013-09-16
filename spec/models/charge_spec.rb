@@ -30,11 +30,11 @@ describe Charge do
   end
 
   describe '.callbacks' do
-    describe '.set_default_status' do
-      before do
-        @charge = FactoryGirl.build(:charge)
-      end
+    before do
+      @charge = FactoryGirl.build(:charge)
+    end
 
+    describe '.set_default_status' do
       it 'should run the callback before validation' do
         @charge.should_receive(:set_default_status)
         @charge.run_callbacks(:validation)
@@ -50,6 +50,21 @@ describe Charge do
         @charge.status = 'shipped'
         @charge.send(:set_default_status)
         expect(@charge.status).to eq('shipped')
+      end
+    end
+
+    describe '.send_email' do
+      it 'should run the callback after create' do
+        @charge.should_receive(:send_email)
+        @charge.run_callbacks(:create)
+      end
+
+      it 'should send an email' do
+        m = double('message')
+        ChargeMailer.should_receive(:charge_created_email).with(@charge)
+          .and_return(m)
+        m.should_receive(:deliver)
+        @charge.send(:send_email)
       end
     end
   end

@@ -1,0 +1,16 @@
+%h1.banner
+  New Order!
+
+%p
+  %strong= @charge.name
+  placed a new order for
+  %strong= @charge.product.name
+
+%p
+  = link_to 'Click here', admin_charge_path(@charge)
+  to view details about this order.
+
+%p
+  Sincerely,
+  %br
+  %strong Your Website.
