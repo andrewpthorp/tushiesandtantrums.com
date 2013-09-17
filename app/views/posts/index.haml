@@ -1,11 +1,12 @@
-.row
-  .large-6.large-centered.columns
-    %h4= link_to 'Latest Post', @latest
+- unless @latest.nil?
+  .row
+    .large-6.large-centered.columns
+      %h4= link_to 'Latest Post', @latest
 
-.row
-  .large-6.large-centered.columns
-    %section
-      = render 'post', post: @latest
+  .row
+    .large-6.large-centered.columns
+      %section
+        = render 'post', post: @latest
 
 - if @posts.any?
   .row

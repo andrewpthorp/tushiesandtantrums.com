@@ -1,7 +1,5 @@
 - if @ordered.none? && @shipped.none? && @completed.none?
-  .row
-    .large-12.columns.text-center
-      %h3 No Orders Yet
+  = render 'shared/no_results', resources: 'Orders'
 
 - if @ordered.any?
   = render 'charges', collection: @ordered

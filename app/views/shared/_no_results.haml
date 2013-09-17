@@ -1,0 +1,9 @@
+- new_link_path ||= nil
+- new_link_text ||= 'Add One'
+
+.row
+  .large-12.columns.text-center
+    %h3
+      No #{resources} Yet
+      - unless new_link_path.nil?
+        = link_to new_link_text, new_link_path, class: 'action-button green x-small'

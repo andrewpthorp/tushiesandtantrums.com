@@ -1,9 +1,5 @@
 - if @products.none?
-  .row
-    .large-12.columns.text-center
-      %h3
-        No Products Yet
-        = link_to 'Add One', new_admin_product_path, class: 'action-button green x-small text-center'
+  = render 'shared/no_results', resources: 'Products', new_link_path: new_admin_product_path
 
 - else
   .row

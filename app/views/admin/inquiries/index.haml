@@ -1,7 +1,5 @@
 - if @inquiries.none?
-  .row
-    .large-12.columns.text-center
-      %h3 No Inquiries Yet
+  = render 'shared/no_results', resources: 'Inquiries'
 
 - else
   .row

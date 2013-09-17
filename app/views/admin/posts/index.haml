@@ -1,7 +1,5 @@
 - if @drafted.none? && @published.none?
-  .row
-    .large-12.columns.text-center
-      %h3 No Posts Yet
+  = render 'shared/no_results', resources: 'Posts'
 
 - if @drafted.any?
   = render 'posts', collection: @drafted, show_new_link: false, header_text: 'Drafts', param_name: :draft_page
