@@ -1,6 +1,11 @@
 .row
   .large-9.columns
-    = f.label :file, 'Image'
-    = f.file_field :file
+    - unless f.object.file.blank?
+      .left.thumb
+        = image_tag f.object.file.thumb
+
+    .left
+      = f.label :file, 'Image'
+      = f.file_field :file
   .large-3.columns.text-right
     = f.link_to_remove 'X', class: 'remove-button'
