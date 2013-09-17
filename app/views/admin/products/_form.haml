@@ -22,16 +22,16 @@
 
     .row
       .large-12.columns
-        = f.label :tag_list
-        = f.text_field :tag_list
-
-    .row
-      .large-12.columns
         .image-fields
           = f.fields_for :images
           .row
             .large-12.columns
               = f.link_to_add 'Add Image', :images, class: 'add-button right'
+
+    .row
+      .large-12.columns
+        = f.label :tag_list
+        = f.text_field :tag_list
 
     %footer
       .row
