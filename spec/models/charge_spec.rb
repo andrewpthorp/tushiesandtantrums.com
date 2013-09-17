@@ -2,6 +2,19 @@ require 'spec_helper'
 
 describe Charge do
 
+  describe '.mass-assignment' do
+    it { should allow_mass_assignment_of(:stripe_charge_id) }
+    it { should allow_mass_assignment_of(:email) }
+    it { should allow_mass_assignment_of(:name) }
+    it { should allow_mass_assignment_of(:product_id) }
+    it { should allow_mass_assignment_of(:status) }
+    it { should allow_mass_assignment_of(:address_line_1) }
+    it { should allow_mass_assignment_of(:address_line_2) }
+    it { should allow_mass_assignment_of(:city) }
+    it { should allow_mass_assignment_of(:state) }
+    it { should allow_mass_assignment_of(:zip) }
+  end
+
   describe '.associations' do
     it { should belong_to(:product) }
   end
