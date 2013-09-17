@@ -2,6 +2,8 @@ p, li, span, dl, dd, h1, h2, h3, h4, h5, h6
   -webkit-font-smoothing: antialiased
   &.small
     font-size: $small-font-size
+  &.medium
+    font-size: 85%
   &.big
     font-size: 120%
   &.mute
@@ -9,6 +11,10 @@ p, li, span, dl, dd, h1, h2, h3, h4, h5, h6
   &.strong
     font-weight: bold
   &.italic
+    font-style: italic
+  &.note
+    @extend .medium
+    @extend .mute
     font-style: italic
 
 .clearfix

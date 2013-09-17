@@ -1,5 +1,5 @@
 %section
-  = form_for [:admin, product], html: { class: 'custom margin-bottom-0 product-form' } do |f|
+  = nested_form_for [:admin, product], html: { class: 'custom margin-bottom-0 product-form' } do |f|
     .row
       .large-12.columns
         = f.label :name
@@ -27,9 +27,11 @@
 
     .row
       .large-12.columns
-        = f.fields_for :images do |image_fields|
-          = image_fields.label :file, 'Image'
-          = image_fields.file_field :file
+        .image-fields
+          = f.fields_for :images
+          .row
+            .large-12.columns
+              = f.link_to_add 'Add Image', :images, class: 'add-button right'
 
     %footer
       .row

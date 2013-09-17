@@ -12,13 +12,16 @@ class Product < ActiveRecord::Base
 
   # Internal: Allow mass-assignment.
   attr_accessible :name, :description, :price, :price_in_cents, :shipping,
-                  :shipping_in_cents, :tag_list, :images_attributes
+                  :shipping_in_cents, :tag_list, :images_attributes, :images
 
   # Internal: Each Product has many Images.
   has_many :images, dependent: :destroy
 
   # Internal: Allow us to create Images from the Product forms.
   accepts_nested_attributes_for :images, allow_destroy: true
+
+  # Internal: Validate that at least one Image is stored with a Product.
+  validates :images, length: { minimum: 1 }
 
   # Internal: Validate the presence of :description.
   validates :description, presence: true

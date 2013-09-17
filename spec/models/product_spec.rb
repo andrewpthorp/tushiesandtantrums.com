@@ -12,6 +12,7 @@ describe Product do
     it { should allow_mass_assignment_of(:shipping_in_cents) }
     it { should allow_mass_assignment_of(:tag_list) }
     it { should allow_mass_assignment_of(:images_attributes) }
+    it { should allow_mass_assignment_of(:images) }
     it { should_not allow_mass_assignment_of(:slug) }
   end
 
@@ -24,6 +25,22 @@ describe Product do
     it { should validate_presence_of(:description) }
     it { should validate_presence_of(:price_in_cents) }
     it { should validate_presence_of(:shipping_in_cents) }
+
+    describe '.images' do
+      let (:image) { Image.new }
+      let (:product) { Product.new(images: []) }
+
+      it 'should have validation errors if images is empty' do
+        product.valid?
+        product.errors[:images].should_not be_empty
+      end
+
+      it 'should not have validation errors if images is not empty' do
+        product.images << image
+        product.valid?
+        product.errors[:images].should be_empty
+      end
+    end
   end
 
   describe '.monetize' do
