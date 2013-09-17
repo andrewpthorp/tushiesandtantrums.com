@@ -47,7 +47,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Examples
   #
   #   Product.first.image.thumb.url
-  #   # => "/uploads/products/image/1/thumb_image.jpg"
+  #   # => '/uploads/products/image/1/thumb_image.jpg'
   #
   # Returns an ImageUploader::Uploader.
   version :thumb do
@@ -59,11 +59,23 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Examples
   #
   #   Product.first.image.featured.url
-  #   # => "/uploads/products/image/1/featured_image.jpg"
+  #   # => '/uploads/products/image/1/featured_image.jpg'
   #
   # Returns an ImageUploader::Uploader.
   version :featured do
     process :resize_to_fill => [970, 385]
+  end
+
+  # Internal: A version of the attachment to use on widgets.
+  #
+  # Examples
+  #
+  #   Product.first.image.widget.url
+  #   # => '/uploads/products/image/1/widget_image.jpg'
+  #
+  # Returns an ImageUploader::Uploader.
+  version :widget do
+    process :resize_to_fill => [220, 180]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
