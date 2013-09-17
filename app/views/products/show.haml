@@ -13,14 +13,14 @@
           %li.dotted Made to Order
           %li.dotted Made in a Smokefree Home
         = link_to 'Buy Now', new_product_charges_path(@product), class: 'action-button', remote: true
-      .background= image_tag @product.image
-      .blur= image_tag @product.image
+      .background= image_tag @product.images.first.file
+      .blur= image_tag @product.images.first.file
     .content.show-for-small.hide-for-medium-up
       .text.white-background
         %h3.name-2.name= @product.name
         %p.strong.price= number_to_currency(@product.price)
         = link_to 'Buy Now', new_product_charges_path(@product), class: 'action-button', remote: true
-      .background.full= image_tag @product.image
+      .background.full= image_tag @product.images.first.file
     .border.bottom
 
 .row

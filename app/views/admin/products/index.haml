@@ -15,7 +15,7 @@
           - @products.each do |product|
             %li.row
               .large-2.columns
-                = image_tag product.image
+                = image_tag product.images.first.file
               .large-7.columns.padding-top-5
                 %p= link_to product.name, product
                 %p.mute= number_to_currency(product.price)

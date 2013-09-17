@@ -81,14 +81,14 @@ describe Admin::ProductsController do
   end
 
   describe 'GET new' do
-    it 'should set @product' do
+    it 'should set @product to a new product' do
       get :new
-      assigns(:product).should be_a(Product)
+      assigns(:product).should be_a_new(Product)
     end
 
-    it 'should not persist @product' do
-      @product.should_not_receive(:save)
+    it 'should build a new image' do
       get :new
+      assigns(:product).images.first.should be_a_new(Image)
     end
   end
 

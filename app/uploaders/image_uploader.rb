@@ -44,11 +44,6 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Internal: A thumbnail version of the attachment.
   #
-  # Examples
-  #
-  #   Product.first.image.thumb.url
-  #   # => '/uploads/products/image/1/thumb_image.jpg'
-  #
   # Returns an ImageUploader::Uploader.
   version :thumb do
     process :resize_to_fill => [50, 50]
@@ -56,22 +51,12 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Internal: A version of the attachment to use as featured.
   #
-  # Examples
-  #
-  #   Product.first.image.featured.url
-  #   # => '/uploads/products/image/1/featured_image.jpg'
-  #
   # Returns an ImageUploader::Uploader.
   version :featured do
     process :resize_to_fill => [970, 385]
   end
 
   # Internal: A version of the attachment to use on widgets.
-  #
-  # Examples
-  #
-  #   Product.first.image.widget.url
-  #   # => '/uploads/products/image/1/widget_image.jpg'
   #
   # Returns an ImageUploader::Uploader.
   version :widget do

@@ -21,6 +21,7 @@ class Admin::ProductsController < Admin::BaseController
 
   def new
     @product = Product.new
+    @product.images.build
   end
 
   def create

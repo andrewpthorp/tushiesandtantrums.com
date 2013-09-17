@@ -22,7 +22,7 @@
 
       .row
         .large-6.columns
-          = image_tag @charge.product.image
+          = image_tag @charge.product.images.first.file
         .large-6.columns
           %p.strong.margin-bottom-5= @charge.product.name
           %p= number_to_currency(@charge.product.total)

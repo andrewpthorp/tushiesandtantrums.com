@@ -12,7 +12,13 @@ class Product < ActiveRecord::Base
 
   # Internal: Allow mass-assignment.
   attr_accessible :name, :description, :price, :price_in_cents, :shipping,
-                  :shipping_in_cents, :image, :tag_list
+                  :shipping_in_cents, :tag_list, :images_attributes
+
+  # Internal: Each Product has many Images.
+  has_many :images, dependent: :destroy
+
+  # Internal: Allow us to create Images from the Product forms.
+  accepts_nested_attributes_for :images, allow_destroy: true
 
   # Internal: Validate the presence of :description.
   validates :description, presence: true
@@ -23,16 +29,10 @@ class Product < ActiveRecord::Base
   # Internal: Validate the presence of :shipping_in_cents.
   validates :shipping_in_cents, presence: true
 
-  # Internal: Validate the presence of :image.
-  validates :image, presence: true
-
   # Public: Get all Products in random order.
   #
   # Returns a Product::FriendlyIdActiveRecordRelation.
   scope :random, order('RANDOM()')
-
-  # Internal: Use CarrierWave to mount the ImageUploader on :image.
-  mount_uploader :image, ImageUploader
 
   # Internal: Use money-rails to handle monetizing the :price_in_cents.
   monetize :price_in_cents, as: 'price'

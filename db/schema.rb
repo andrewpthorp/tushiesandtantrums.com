@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130911125529) do
+ActiveRecord::Schema.define(:version => 20130917192902) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -57,6 +57,13 @@ ActiveRecord::Schema.define(:version => 20130911125529) do
   add_index "friendly_id_slugs", ["sluggable_id"], :name => "index_friendly_id_slugs_on_sluggable_id"
   add_index "friendly_id_slugs", ["sluggable_type"], :name => "index_friendly_id_slugs_on_sluggable_type"
 
+  create_table "images", :force => true do |t|
+    t.string   "file"
+    t.integer  "product_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "inquiries", :force => true do |t|
     t.string   "name"
     t.string   "email"
@@ -76,14 +83,13 @@ ActiveRecord::Schema.define(:version => 20130911125529) do
   end
 
   create_table "products", :force => true do |t|
-    t.string   "name"
     t.text     "description"
     t.integer  "price_in_cents"
-    t.string   "image"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
     t.integer  "shipping_in_cents"
     t.string   "slug"
+    t.string   "name"
   end
 
   add_index "products", ["slug"], :name => "index_products_on_slug", :unique => true

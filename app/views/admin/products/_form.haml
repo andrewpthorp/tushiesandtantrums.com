@@ -17,11 +17,6 @@
 
     .row
       .large-12.columns
-        = f.label :image
-        = f.file_field :image
-
-    .row
-      .large-12.columns
         = f.label :description
         = f.text_area :description
 
@@ -29,6 +24,12 @@
       .large-12.columns
         = f.label :tag_list
         = f.text_field :tag_list
+
+    .row
+      .large-12.columns
+        = f.fields_for :images do |image_fields|
+          = image_fields.label :file, 'Image'
+          = image_fields.file_field :file
 
     %footer
       .row

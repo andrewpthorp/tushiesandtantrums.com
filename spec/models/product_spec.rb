@@ -3,11 +3,15 @@ require 'spec_helper'
 describe Product do
   include MoneyRails::TestHelpers
 
+  describe '.associations' do
+    it { should have_many(:images).dependent(:destroy) }
+    it { should accept_nested_attributes_for(:images).allow_destroy(true) }
+  end
+
   describe '.validations' do
     it { should validate_presence_of(:description) }
     it { should validate_presence_of(:price_in_cents) }
     it { should validate_presence_of(:shipping_in_cents) }
-    it { should validate_presence_of(:image) }
   end
 
   describe '.monetize' do

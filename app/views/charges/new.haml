@@ -3,7 +3,7 @@
     .large-6.large-centered.columns
       .row
         .large-centered.large-4.columns
-          = link_to image_tag(@product.image), @product
+          = link_to image_tag(@product.images.first.file), @product
       .row
         .large-12.columns
           %header.popup-header
