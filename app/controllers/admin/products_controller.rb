@@ -1,16 +1,13 @@
 class Admin::ProductsController < Admin::BaseController
 
-  # GET /admin/products
   def index
     @products = Product.page(params[:page])
   end
 
-  # GET /admin/products/:id/edit
   def edit
     @product = Product.find(params[:id])
   end
 
-  # PUT /admin/products/:id
   def update
     @product = Product.find(params[:id])
 
@@ -22,12 +19,10 @@ class Admin::ProductsController < Admin::BaseController
     end
   end
 
-  # GET /admin/products/new
   def new
     @product = Product.new
   end
 
-  # POST /admin/products
   def create
     @product = Product.new(params[:product])
 
@@ -39,7 +34,6 @@ class Admin::ProductsController < Admin::BaseController
     end
   end
 
-  # DELETE /admin/products/:id
   def destroy
     @product = Product.find(params[:id])
 

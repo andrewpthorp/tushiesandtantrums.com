@@ -1,7 +1,6 @@
 class ProductsController < ApplicationController
   before_filter :set_active_navigation
 
-  # GET /products
   def index
     @category = params[:category]
 
@@ -12,7 +11,6 @@ class ProductsController < ApplicationController
     end
   end
 
-  # GET /products/:id
   def show
     @product = Product.find(params[:id])
   end

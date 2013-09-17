@@ -1,17 +1,14 @@
 class Admin::PostsController < Admin::BaseController
 
-  # GET /admin/posts
   def index
     @published = Post.published.page(params[:published_page])
     @drafted = Post.drafted.page(params[:draft_page])
   end
 
-  # GET /admin/posts/:id/edit
   def edit
     @post = Post.find(params[:id])
   end
 
-  # PUT /admin/posts/:id
   def update
     @post = Post.find(params[:id])
 
@@ -23,12 +20,10 @@ class Admin::PostsController < Admin::BaseController
     end
   end
 
-  # GET /admin/posts/new
   def new
     @post = Post.new
   end
 
-  # POST /admin/posts
   def create
     @post = Post.new(params[:post])
 
@@ -40,7 +35,6 @@ class Admin::PostsController < Admin::BaseController
     end
   end
 
-  # DELETE /admin/posts/:id
   def destroy
     @post = Post.find(params[:id])
 
