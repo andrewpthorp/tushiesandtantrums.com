@@ -3,24 +3,19 @@
     .border.top
     .content.hide-for-small
       .text.right
-        .margin-bottom-25
-          = category_link @product
-        %h3.name{title: @product.name}= @product.name
-        %p.price= number_to_currency(@product.price)
-        %ul.hide-for-medium-down
-          %li.strong Overview
-          %li.dotted Handmade Item
-          %li.dotted Made to Order
-          %li.dotted Made in a Smokefree Home
-        = link_to 'Buy Now', new_product_charges_path(@product), class: 'action-button', remote: true
-      .background= image_tag @product.images.first.file
-      .blur= image_tag @product.images.first.file
+        = render 'products/info', product: @product
+
+      .background
+        = image_tag @product.primary_image.file, class: 'product-image'
+        = image_toolbar(@product)
+
+      .blur= image_tag @product.primary_image.file
     .content.show-for-small.hide-for-medium-up
+
       .text.white-background
-        %h3.name-2.name= @product.name
-        %p.strong.price= number_to_currency(@product.price)
-        = link_to 'Buy Now', new_product_charges_path(@product), class: 'action-button', remote: true
-      .background.full= image_tag @product.images.first.file
+        = render 'products/info', product: @product
+
+      .background.full= image_tag @product.primary_image.file
     .border.bottom
 
 .row
@@ -37,3 +32,7 @@
       %header
         %h1 Share this Product
         = render 'shared/share_buttons'
+
+:coffeescript
+  $ ->
+    new ProductsImagesView

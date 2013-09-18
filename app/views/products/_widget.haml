@@ -1,7 +1,7 @@
 .product-widget
 
   .image
-    = image_tag product.images.first.file.widget
+    = image_tag product.primary_image.file.widget
 
   .content
     %h5.name= product.name

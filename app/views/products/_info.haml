@@ -1,0 +1,14 @@
+.hide-for-small
+  = category_link @product
+
+%h3.name{title: @product.name}= @product.name
+%p.strong.price= number_to_currency(@product.price)
+
+.hide-for-medium-down
+  %ul
+    %li.strong Overview
+    %li.dotted Handmade Item
+    %li.dotted Made to Order
+    %li.dotted Made in a Smokefree Home
+
+= link_to 'Buy Now', new_product_charges_path(@product), class: 'action-button', remote: true
