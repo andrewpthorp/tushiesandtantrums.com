@@ -45,4 +45,22 @@ module ProductsHelper
     link_to text, url, class: 'back-button'
   end
 
+
+  # Public: Get a div with image thumbnails for the Product show page.
+  #
+  # product - A Product with 0, 1, or many Images.
+  #
+  # Returns an ActiveSupport::SafeBuffer.
+  def image_toolbar(product)
+    return if product.images.size <= 1
+
+    content_tag :ul, class: 'toolbar' do
+      product.images.map do |image|
+        concat(content_tag(:li, image_tag(image.file.thumb),
+                                class: 'image-thumb',
+                                data: { src: image.file.url }))
+      end
+    end
+  end
+
 end

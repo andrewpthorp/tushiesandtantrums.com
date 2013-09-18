@@ -3,7 +3,6 @@ require 'spec_helper'
 describe ProductsHelper do
 
   describe '#product_categories' do
-
     it 'should return an unordered list' do
       expect(helper.product_categories).to have_selector('ul.categories.side-nav')
     end
@@ -29,7 +28,6 @@ describe ProductsHelper do
         end
       end
     end
-
   end
 
   describe '#category_link' do
@@ -85,7 +83,31 @@ describe ProductsHelper do
         end
       end
     end
+  end
 
+  describe '#image_toolbar' do
+    context 'with one image' do
+      let (:product) { FactoryGirl.create(:product) }
+      let (:results) { helper.image_toolbar(product) }
+
+      it 'should return nil' do
+        expect(results).to be_nil
+      end
+    end
+
+    context 'with multiple images' do
+      let (:product) { FactoryGirl.create(:product_with_multiple_images) }
+      let (:results) { helper.image_toolbar(product) }
+
+      it 'should return an unordered list' do
+        expect(results).to have_selector('ul.toolbar')
+      end
+
+      it 'should have a list item for each image' do
+        expect(results).to have_selector('li.image-thumb',
+                                         count: product.images.size)
+      end
+    end
   end
 
 end
