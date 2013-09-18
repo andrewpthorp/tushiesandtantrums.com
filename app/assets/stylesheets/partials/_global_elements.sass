@@ -26,8 +26,7 @@
           padding: 25px 75px 25px 21px
           top: 0px
           width: 37.5%
-          .back
-            color: $color_dark_gray
+          .back-button
             display: inline-block
             margin-bottom: 15px
           .name
@@ -64,7 +63,34 @@
           margin-bottom: 0px
           top: 0px
           width: 100%
-        img
+        ul.toolbar
+          background: rgba(255, 255, 255, 0.75)
+          border-radius: 5px
+          bottom: 25px
+          height: 70px
+          left: 25px
+          margin-bottom: 0px
+          padding: 10px
+          position: absolute
+          li
+            display: inline-block
+            height: 50px
+            margin: 0px 10px 0px 0px
+            width: 50px
+            &:last-child
+              margin: 0px
+            img
+              +box-shadow(0px 0px 4px rgba(0, 0, 0, 0.5))
+              +box-sizing(border-box)
+              +transition(all 0.25s ease-in-out)
+              border: 1px solid $color_black
+              cursor: pointer
+              display: block
+              &:hover
+                +box-shadow(0px 0px 8px rgba(0, 0, 0, 0.5))
+              &:active
+                +box-shadow(0px 0px 8px $color_black)
+        > img
           display: block
           width: 100%
     .border
