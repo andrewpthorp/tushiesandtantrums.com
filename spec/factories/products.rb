@@ -9,5 +9,11 @@ FactoryGirl.define do
     after(:build) do |product|
       product.images << FactoryGirl.build(:image)
     end
+
+    factory :product_with_multiple_images do
+      after(:build) do |product|
+        product.images << FactoryGirl.build(:image)
+      end
+    end
   end
 end

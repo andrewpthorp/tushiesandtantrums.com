@@ -92,5 +92,12 @@ describe Product do
         product.tax.fractional.should eq(95)
       end
     end
+
+    describe '#primary_image' do
+      it 'should return the correct image' do
+        product = FactoryGirl.create(:product_with_multiple_images)
+        expect(product.primary_image).to be_primary
+      end
+    end
   end
 end

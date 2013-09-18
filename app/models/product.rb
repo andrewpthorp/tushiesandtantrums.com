@@ -63,4 +63,11 @@ class Product < ActiveRecord::Base
   def tax
     price * 0.0095
   end
+
+  # Public: Get the Image for the Product with :primary set to true.
+  #
+  # Returns an Image.
+  def primary_image
+    self.images.primary.first
+  end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130917192902) do
+ActiveRecord::Schema.define(:version => 20130918152523) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -60,9 +60,12 @@ ActiveRecord::Schema.define(:version => 20130917192902) do
   create_table "images", :force => true do |t|
     t.string   "file"
     t.integer  "product_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "primary",    :default => false
   end
+
+  add_index "images", ["primary"], :name => "index_images_on_primary"
 
   create_table "inquiries", :force => true do |t|
     t.string   "name"
