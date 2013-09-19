@@ -16,10 +16,13 @@
             .large-6.columns
               %p.margin-bottom-0= link_to charge.product.name, admin_charge_path(charge)
               = charge_status(charge)
-            .large-3.columns.margin-top-5
-              = form_for [:admin, charge], html: { class: 'edit_charge custom' } do |f|
-                = hidden_field_tag :return_to, admin_charges_path
-                = f.select :status, Charge::VALID_STATUSES.each.map { |val| [val.capitalize, val] }
+              .row.margin-top-3
+                .large-6.columns
+                  = form_for [:admin, charge], html: { class: 'edit_charge custom' } do |f|
+                    = hidden_field_tag :return_to, admin_charges_path
+                    = f.select :status, Charge::VALID_STATUSES.each.map { |val| [val.capitalize, val] }
+            .large-3.columns
+              = link_to '', admin_charge_path(charge), class: 'icon-view right'
 
 
       - unless collection.last_page?

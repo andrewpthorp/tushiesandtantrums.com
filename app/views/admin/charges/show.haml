@@ -38,12 +38,14 @@
         .margin-bottom-25
           = "#{@charge.city}, #{@charge.state} #{@charge.zip}"
 
-      %hr
-
-      .row
-        .large-5.columns.large-offset-7
-          = form_for [:admin, @charge], html: { class: 'edit_charge custom' } do |f|
-            = f.select :status, Charge::VALID_STATUSES.each.map { |val| [val.capitalize, val] }
+      %footer
+        .row
+          .large-4.columns
+            = form_for [:admin, @charge], html: { class: 'edit_charge custom' } do |f|
+              = f.select :status, Charge::VALID_STATUSES.each.map { |val| [val.capitalize, val] }
+          .large-8.columns
+            .right
+              = charge_stripe_link(@charge)
 
 :coffeescript
   new ChargesView(el: '.edit_charge')

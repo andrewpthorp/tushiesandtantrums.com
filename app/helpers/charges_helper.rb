@@ -28,4 +28,17 @@ module ChargesHelper
     end
   end
 
+  # Public: Get the URL for a charge to view on stripe.com.
+  #
+  # charge - The Charge to get a link for.
+  #
+  # Returns an ActiveSupport::SafeBuffer.
+  def charge_stripe_link(charge)
+    return nil if charge.stripe_charge_id.blank?
+
+    link_to 'View this on Stripe',
+            "https://manage.stripe.com/payments/#{charge.stripe_charge_id}",
+            target: '_blank', class: 'action-button square stripe-link'
+  end
+
 end

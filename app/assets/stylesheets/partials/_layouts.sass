@@ -36,18 +36,22 @@ body.minimal, body.admin
       margin: $column-gutter -25px -25px
       padding: 25px
       background: lighten($color_gray, 10%)
+      .stripe-link
+        height: 37px
+        line-height: 21px
       p
         margin-bottom: 0px
 
 
 body.admin
   #global-header
-    height: 75px
     background: $color_white
     border-bottom: 5px solid darken($color_gray, 5%)
+    height: 75px
+    position: relative
     .title
-      position: absolute
       left: 20px
+      position: absolute
       top: 13px
     .signout
       position: absolute
@@ -60,8 +64,8 @@ body.admin
     margin: 25px auto 50px
     section
       a
-        font-weight: bold
         color: $color_dark_gray
+        font-weight: bold
         &:hover
           color: $color_black
       .f-dropdown
