@@ -16,28 +16,11 @@ describe 'routes for Products' do
       end
     end
 
-    describe 'boys_products_path' do
-      let (:route) { boys_products_path }
+    describe 'category_products_path' do
+      let (:route) { category_products_path('boys') }
 
       it 'should route correctly' do
         expect({ get: route }).to route_to('products#index', category: 'boys')
-      end
-    end
-
-    describe 'girls_products_path' do
-      let (:route) { girls_products_path }
-
-      it 'should route correctly' do
-        expect({ get: route }).to route_to('products#index', category: 'girls')
-      end
-    end
-
-    describe 'ready_ship_products_path' do
-      let (:route) { ready_ship_products_path }
-
-      it 'should route correctly' do
-        expect({ get: route }).to route_to('products#index',
-                                           category: 'ready-ship')
       end
     end
   end

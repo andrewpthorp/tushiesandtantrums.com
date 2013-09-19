@@ -7,25 +7,31 @@ describe ProductsHelper do
       expect(helper.product_categories).to have_selector('ul.categories.side-nav')
     end
 
-    it 'should have 4 links' do
-      expect(helper.product_categories).to have_selector('a', count: 4)
-    end
-
     it 'should default the current category to All' do
-      expect(helper.product_categories).to have_selector('li.active', text: /All/)
+      expect(helper.product_categories).to(
+       have_selector('li.active', text: "All Bedding (0)")
+      )
     end
 
-    [
-      { category: 'all', text: 'All Bedding' },
-      { category: 'boys', text: 'Boys Bedding' },
-      { category: 'girls', text: 'Girls Bedding' },
-      { category: 'ready-ship', text: 'Ready to Ship' }
-    ].each do |p|
-      context "with a category of #{p[:category]}" do
-        it "should set the current category to #{p[:text]}" do
-          expect(helper.product_categories(p[:category]))
-            .to have_selector("li.active", text: p[:text])
-        end
+    it 'should have a link for each tag' do
+      FactoryGirl.create(:product, tag_list: 'girls')
+      expect(helper.product_categories).to(
+        have_selector('li', text: 'Girls Bedding (1)')
+      )
+    end
+
+    it 'should sort the tags alphabetically' do
+      FactoryGirl.create(:product, tag_list: 'girls,boys')
+      results = helper.product_categories
+      expect(results.index('Girls')).to be > results.index('Boys')
+    end
+
+    context 'when passing a category in' do
+      it 'should set that category to active' do
+        FactoryGirl.create(:product, tag_list: 'phillies')
+        expect(helper.product_categories('phillies')).to(
+          have_selector('li.active', text: /Phillies/)
+        )
       end
     end
   end
@@ -61,26 +67,12 @@ describe ProductsHelper do
     end
 
     context 'when the product has one category' do
-      context 'and the category is boys' do
-        it 'should link back to boys_products_path' do
-          @product.update_attributes(tag_list: 'boys')
-          text = 'View Boys Bedding'
-          url = '/shop/boys'
-          expect(helper.category_link(@product)).to(
-            have_selector("a[href='#{url}']", text: "#{text}")
-          )
-        end
-      end
-
-      context 'and the category is girls' do
-        it 'should link back to girls_products_path' do
-          @product.update_attributes(tag_list: 'girls')
-          text = 'View Girls Bedding'
-          url = '/shop/girls'
-          expect(helper.category_link(@product)).to(
-            have_selector("a[href='#{url}']", text: "#{text}")
-          )
-        end
+      it 'should link to that category' do
+        @product.update_attributes(tag_list: 'boys')
+        url = '/shop/category/boys'
+        expect(helper.category_link(@product)).to(
+          have_selector("a[href='#{url}']", text: "View Boys Bedding")
+        )
       end
     end
   end

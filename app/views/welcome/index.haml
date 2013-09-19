@@ -5,8 +5,8 @@
       .text
         .hide-for-small
           %h1.color-white.littledays.margin-bottom-0 A Children's Boutique
-          = link_to 'Shop Boys Bedding', boys_products_path, class: 'hollow-button margin-right-15'
-          = link_to 'Shop Girls Bedding', girls_products_path, class: 'hollow-button'
+          = link_to 'Shop Boys Bedding', category_products_path('boys'), class: 'hollow-button margin-right-15'
+          = link_to 'Shop Girls Bedding', category_products_path('girls'), class: 'hollow-button'
         .show-for-small.hide-for-medium-up
           = link_to 'Shop Our Products', products_path, class: 'hollow-button'
       .background.full= image_tag 'focal-image.jpg'

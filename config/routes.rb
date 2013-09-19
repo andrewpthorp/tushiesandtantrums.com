@@ -9,32 +9,7 @@ TushiesandtantrumsCom::Application.routes.draw do
 
   # Public: Routes for Products.
   resources :products, only: [:index, :show], path: 'shop' do
-    collection do
-
-      # Public: Route used to view boys Products.
-      #
-      # Examples
-      #
-      #   boys_products_path
-      #   # => '/products/index?category=boys'
-      get 'boys', to: 'products#index', as: :boys, defaults: { category: 'boys' }
-
-      # Public: Route used to view boys Products.
-      #
-      # Examples
-      #
-      #   girls_products_path
-      #   # => '/products/index?category=girls'
-      get 'girls', to: 'products#index', as: :girls, defaults: { category: 'girls' }
-
-      # Public: Route used to view ready-ship Products.
-      #
-      # Examples
-      #
-      #   ready_ship_products_path
-      #   # => '/products/index?category=ready-ship'
-      get 'ready-ship', to: 'products#index', as: :ready_ship, defaults: { category: 'ready-ship' }
-    end
+    get 'category/:category', to: 'products#index', as: :category, on: :collection
   end
 
   # Public: Routes for Posts.

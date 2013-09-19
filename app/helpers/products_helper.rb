@@ -11,11 +11,13 @@ module ProductsHelper
     curr = 'all' if curr.blank?
 
     list_items = [
-      content_tag(:li, link_to('All Bedding', products_path), class: curr == 'all' ? 'active' : ''),
-      content_tag(:li, link_to('Boys Bedding', boys_products_path), class: curr == 'boys' ? 'active' : ''),
-      content_tag(:li, link_to('Girls Bedding', girls_products_path), class: curr == 'girls' ? 'active' : ''),
-      content_tag(:li, link_to('Ready to Ship', ready_ship_products_path), class: curr == 'ready-ship' ? 'active' : '')
+      content_tag(:li, link_to("All Bedding (#{Product.count})", products_path), class: curr == 'all' ? 'active' : '')
     ]
+
+    Product.tag_counts.sort{ |a,b| a.name <=> b.name }.each do |t|
+      item_class = t.name == curr ? 'active' : ''
+      list_items << content_tag(:li, link_to("#{t.name.titleize} Bedding (#{t.count})", category_products_path(t.name)), class: item_class)
+    end
 
     content_tag :ul, class: 'categories side-nav' do
       list_items.map do |list_item|
@@ -34,12 +36,10 @@ module ProductsHelper
     if product.nil? || product.tags.size == 0 || product.tags.size > 1
       url = products_path
       text = 'View All Bedding'
-    elsif product.tag_list.include? 'girls'
-      url = girls_products_path
-      text = 'View Girls Bedding'
-    elsif product.tag_list.include? 'boys'
-      url = boys_products_path
-      text = 'View Boys Bedding'
+    else
+      tag = product.tag_list.first
+      url = category_products_path(tag)
+      text = "View #{tag.titleize} Bedding"
     end
 
     link_to text, url, class: 'icon-reply back-button'
