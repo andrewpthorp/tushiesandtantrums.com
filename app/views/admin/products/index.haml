@@ -6,7 +6,7 @@
     .large-6.columns.large-centered
       %h3
         All Products
-        = link_to 'New', new_admin_product_path, class: 'action-button green x-small text-center'
+        = link_to 'New', new_admin_product_path, class: 'action-button green small'
 
   .row
     .large-6.columns.large-centered
@@ -21,8 +21,8 @@
                 %p.mute= number_to_currency(product.price)
               .large-3.columns.padding-top-5
                 %ul.button-group.right
-                  %li= link_to 'Edit', edit_admin_product_path(product), class: 'button small right secondary'
-                  %li= link_to 'Delete', admin_product_path(product), method: :delete, class: 'button small right alert', confirm: 'Are you sure?'
+                  %li= link_to '', edit_admin_product_path(product), class: 'icon-edit'
+                  %li= link_to '', admin_product_path(product), method: :delete, class: 'icon-delete', confirm: 'Are you sure?'
 
         - unless @products.total_pages == 1
           %hr

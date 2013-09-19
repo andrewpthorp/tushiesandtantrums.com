@@ -20,53 +20,44 @@
     padding: 5px 10px
 
 .action-button
-  +transition(all 0.1s ease-in-out)
-  display: inline-block
-  padding: 15px 40px
-  border-radius: 10px
-  color: $color_white
-  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.25)
   +box-shadow(0px 3px 0px darken($color_bright_green, 25%))
+  +transition(all 0.1s ease-in-out)
   background: $color_bright_green
-  font-size: 14px !important
+  border-radius: 10px
+  color: $color_white !important
+  display: inline-block
   font-family: $body-font-family !important
-  font-weight: normal !important
+  font-size: 14px !important
+  font-weight: bold !important
+  padding: 8px 20px
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.25)
   &:hover
-    color: $color_white
+    color: $color_white !important
   &:active
+    +box-shadow(0px 0px 0px transparent)
     position: relative
     top: 2px
-    +box-shadow(0px 0px 0px transparent)
   &.small
-    padding: 10px 25px
-  &.x-small
-    padding: 6px 15px
+    padding: 5px 15px
+  &.large
+    padding: 15px 40px
   &.square
+    +box-shadow(none !important)
     border-radius: 0px
   &.gray
+    +box-shadow(0px 3px 0px darken($color_gray, 25%))
+    background: $color_gray
+    border-color: $color_gray
     color: $color_dark_gray !important
     text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5)
-    border-color: $color_gray
-    background: $color_gray
-    +box-shadow(0px 3px 0px darken($color_gray, 25%))
 
 .back-button
   display: inline-block
   position: relative
-  padding-left: 18px
   font-size: emCalc(13px)
   color: #777
-  &:before
-    position: absolute
-    left: 0px
-    content: url('layout/back-arrow.png')
-    display: block
-    width: 12px
-    height: 11px
   &:hover
     color: #414141
-    &:before
-      content: url('layout/back-arrow-dark.png')
 
 .add-button, .remove-button
   background: $color_dark_gray

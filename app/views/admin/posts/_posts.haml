@@ -7,7 +7,7 @@
     %h3
       = header_text
       - if show_new_link
-        = link_to 'New', new_admin_post_path, class: 'action-button x-small'
+        = link_to 'New', new_admin_post_path, class: 'action-button small'
 
 .row.margin-bottom-20
   .large-6.large-centered.columns
@@ -20,8 +20,8 @@
               %p.mute= "Created: #{post.created_at.localtime.to_s(:pretty)}"
             .large-3.columns.padding-top-5
               %ul.button-group.right
-                %li= link_to 'Edit', edit_admin_post_path(post), class: 'button small right secondary'
-                %li= link_to 'Delete', admin_post_path(post), method: :delete, class: 'button small right alert', confirm: 'Are you sure?'
+                %li= link_to '', edit_admin_post_path(post), class: 'icon-edit'
+                %li= link_to '', admin_post_path(post), method: :delete, class: 'icon-delete', confirm: 'Are you sure?'
 
       - unless collection.total_pages == 1
         %hr

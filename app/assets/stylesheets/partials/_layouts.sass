@@ -45,6 +45,14 @@ body.admin
     height: 75px
     background: $color_white
     border-bottom: 5px solid darken($color_gray, 5%)
+    .title
+      position: absolute
+      left: 20px
+      top: 13px
+    .signout
+      position: absolute
+      right: 20px
+      top: 18px
     .admin-navigation
       position: relative
       top: 25px
@@ -54,6 +62,8 @@ body.admin
       a
         font-weight: bold
         color: $color_dark_gray
+        &:hover
+          color: $color_black
       .f-dropdown
         li
           a

@@ -42,7 +42,7 @@ module ProductsHelper
       text = 'View Boys Bedding'
     end
 
-    link_to text, url, class: 'back-button'
+    link_to text, url, class: 'icon-reply back-button'
   end
 
 

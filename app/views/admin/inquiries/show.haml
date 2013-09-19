@@ -29,5 +29,6 @@
 
       .row
         .large-12.columns
-          = link_to 'Respond', "mailto:#{@inquiry.email}", class: 'small action-button color-white right'
-          = link_to 'Delete', admin_inquiry_path(@inquiry), method: :delete, class: 'small action-button gray right margin-right-15', confirm: 'Are you sure?'
+          .text-right
+            = link_to 'Delete', admin_inquiry_path(@inquiry), method: :delete, class: 'action-button gray square', confirm: 'Are you sure?'
+            = link_to 'Respond', "mailto:#{@inquiry.email}", class: 'action-button square'
