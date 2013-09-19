@@ -60,6 +60,9 @@ TushiesandtantrumsCom::Application.routes.draw do
   # Public: Admin routes.
   namespace :admin do
 
+    # Public: Route /admin to /admin/products.
+    root to: 'products#index'
+
     # Public: Admin routes for Products.
     resources :products, except: [:show]
 

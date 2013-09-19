@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   #
   # Returns a String.
   def after_sign_in_path_for(resource)
-    admin_products_path
+    admin_root_path
   end
 
 end
