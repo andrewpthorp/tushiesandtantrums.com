@@ -16,7 +16,7 @@ describe ProductsHelper do
     it 'should have a link for each tag' do
       FactoryGirl.create(:product, tag_list: 'girls')
       expect(helper.product_categories).to(
-        have_selector('li', text: 'Girls Bedding (1)')
+        have_selector('li', text: 'Girls (1)')
       )
     end
 

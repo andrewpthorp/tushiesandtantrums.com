@@ -16,7 +16,7 @@ module ProductsHelper
 
     Product.tag_counts.sort{ |a,b| a.name <=> b.name }.each do |t|
       item_class = t.name == curr ? 'active' : ''
-      list_items << content_tag(:li, link_to("#{t.name.titleize} Bedding (#{t.count})", category_products_path(t.name)), class: item_class)
+      list_items << content_tag(:li, link_to("#{t.name.titleize} (#{t.count})", category_products_path(t.name)), class: item_class)
     end
 
     content_tag :ul, class: 'categories side-nav' do

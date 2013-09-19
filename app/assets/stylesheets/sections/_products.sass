@@ -1,7 +1,7 @@
 .product-widget
-  position: relative
   border: 1px solid $color_gray
   border-radius: 3px
+  position: relative
 
   .image
     height: 180px
@@ -13,36 +13,42 @@
   .content
     padding: 15px
     .name
-      width: 100%
-      white-space: nowrap
       overflow: hidden
       text-overflow: ellipsis
+      white-space: nowrap
+      width: 100%
     .price
       color: $color_bright_green
 
   .overlay
-    background: rgba(255, 255, 255, 0.35)
+    background: rgba(255, 255, 255, 0.5)
     height: 100%
     left: 0px
     position: absolute
     top: 0px
     width: 100%
     a
-      +box-shadow(0px 0px 3px rgba(0, 0, 0, 0.25))
-      background: rgba($color_salmon, 0.8)
+      +box-shadow(0px 0px 5px rgba(0, 0, 0, 0.5))
+      background: $color_bright_green
+      background: rgba($color_bright_green, 0.8)
       border-radius: 50px
       color: $color_white
       display: block
+      font-weight: bold
       height: 100px
       line-height: 1.5
-      font-family: 'Josefin Slab'
       margin: 40px auto 0px
       padding: 25px 15px 15px
       text-align: center
+      text-transform: uppercase
       text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.25)
       width: 100px
       &:hover
-        background: $color_salmon
+        +transform(scale(1.05))
+        background: $color_bright_green
+      &:active
+        +box-shadow(0px 0px 8px rgba(0, 0, 0, 0.75))
+        +transform(scale(0.98))
 
 .description
   ul
@@ -53,19 +59,10 @@
     padding-top: 0px
     li
       a
-        +box-sizing(border-box)
-        background: $color_gray
-        border-right: 3px solid transparent
         color: $color_dark_gray
-        display: block
         font-weight: bold
-        padding: 5px 5px 5px 10px
-        text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5)
       &.active a
-        background: $color_bright_green
-        border-color: darken($color_bright_green, 35%)
-        color: $color_white
-        text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.25)
+        color: darken($color_bright_green, 10%)
 
 @media only screen and (max-width: #{$medium-screen})
   .product-widget
