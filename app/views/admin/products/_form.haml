@@ -26,12 +26,13 @@
     .row
       .large-12.columns
         .image-fields
-          = f.fields_for :images
+          .image-field-wrapper
+            = f.fields_for :images
           .row
             .large-2.columns
               %p.has-tip.tip-top{data: { tooltip: true }, title: 'Atleast one image is required. You can set the primary image by toggling the checkbox on the left.'} Help?
             .large-10.columns
-              = f.link_to_add 'Add Image', :images, class: 'add-button right'
+              = f.link_to_add 'Add Image', :images, class: 'add-button right', data: { target: '.image-field-wrapper' }
 
     %footer
       .row
