@@ -13,7 +13,9 @@
         = f.label :shipping
         = f.text_field :shipping
       .large-4.columns
-        = f.label :tag_list
+        = f.label :tag_list do
+          Categories
+          %span.has-tip.tip-top{data: { tooltip: true }, title: 'Categories are what shows up in the shop: boys, girls, ready-ship, etc.'} ?
         = f.text_field :tag_list
 
     .row
