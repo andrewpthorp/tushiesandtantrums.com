@@ -27,8 +27,9 @@
       .gray-box.margin-bottom-25
         %p= @inquiry.body
 
-      .row
-        .large-12.columns
-          .text-right
-            = link_to 'Delete', admin_inquiry_path(@inquiry), method: :delete, class: 'action-button gray square', confirm: 'Are you sure?'
-            = link_to 'Respond', "mailto:#{@inquiry.email}", class: 'action-button square'
+      %footer
+        .row
+          .large-12.columns
+            .text-right
+              = link_to 'Delete', admin_inquiry_path(@inquiry), method: :delete, class: 'action-button gray square', confirm: 'Are you sure?'
+              = link_to 'Respond', "mailto:#{@inquiry.email}", class: 'action-button square'
