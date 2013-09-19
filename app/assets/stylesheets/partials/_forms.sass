@@ -12,13 +12,17 @@ form
 form.custom
   .checkbox
     +box-sizing(border-box)
-    padding: 0px !important
     border: 1px solid #ccc
-    width: 22px
+    border-radius: 2px
     height: 22px
+    padding: 0px !important
+    width: 22px
+    &.disabled
+      background: #fff
     &.checked
       &:before
         background: $color_bright_green
+        border-radius: 2px
         margin: 0px !important
         top: 3px !important
         left: 3px !important
@@ -34,8 +38,11 @@ form.product-form
     padding: 15px
     input
       margin-bottom: 0px
-    .thumb
+    .thumb, .primary
       margin-right: 15px
+    .primary
+      position: relative
+      top: 14px
     .fields
       margin-bottom: 10px
       padding-bottom: 10px
@@ -43,7 +50,10 @@ form.product-form
       .remove-button
         position: relative
         top: 12px
-    .add-button
+    .add-button, .has-tip
+      font-size: 16px
+      line-height: 16px
+      margin-bottom: 0px
       margin-top: 8px
     .note
       position: relative
