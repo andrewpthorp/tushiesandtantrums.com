@@ -1,21 +1,21 @@
 .hollow-button
+  +box-shadow(1px 1px 0px rgba(0, 0, 0, 0.45))
   +transition(all 0.1s ease-in-out)
-  display: inline-block
-  padding: 10px 20px
+  background: transparent
   border: 3px solid $color_white
   border-radius: 10px
   color: $color_white
+  display: inline-block
+  padding: 10px 20px
   text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.45)
-  +box-shadow(1px 1px 0px rgba(0, 0, 0, 0.45))
-  background: transparent
   &:hover
     border-color: $color_bright_green
     color: $color_bright_green
   &:active
+    +box-shadow(0px 0px 0px transparent)
+    left: 1px
     position: relative
     top: 1px
-    left: 1px
-    +box-shadow(0px 0px 0px transparent)
   &.small
     padding: 5px 10px
 
@@ -32,6 +32,7 @@
   padding: 8px 20px
   text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.25)
   &:hover
+    background: darken($color_bright_green, 5%)
     color: $color_white !important
   &:active
     +box-shadow(0px 0px 0px transparent)
@@ -52,10 +53,10 @@
     text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5)
 
 .back-button
-  display: inline-block
-  position: relative
-  font-size: emCalc(13px)
   color: #777
+  display: inline-block
+  font-size: emCalc(13px)
+  position: relative
   &:hover
     color: #414141
 
@@ -69,8 +70,8 @@
     +box-shadow(inset 0px 3px 6px rgba(0, 0, 0, 0.25))
 
 .remove-button
-  padding: 3px 6px
   background: $color_gray
+  padding: 3px 6px
 
 .f-dropdown
   li
