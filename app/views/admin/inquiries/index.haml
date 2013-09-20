@@ -11,7 +11,7 @@
       %section
         %ul#inquiries.admin-list
           - @inquiries.each do |inquiry|
-            %li.row
+            %li.row{class: inquiry.status}
               .large-10.columns
                 .row
                   .large-3.columns

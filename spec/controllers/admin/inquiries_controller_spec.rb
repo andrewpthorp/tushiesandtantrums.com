@@ -19,9 +19,28 @@ describe Admin::InquiriesController do
   end
 
   describe 'GET show' do
+    before do
+      Inquiry.stub(:find).and_return(@inquiry)
+    end
+
     it 'should set @inquiry' do
       get :show, id: @inquiry.id
       expect(assigns(:inquiry)).to eq(@inquiry)
+    end
+
+    context 'when the inquiry is unread' do
+      it 'should mark the inquiry as read' do
+        @inquiry.should_receive(:update_attributes).with({status: 'read'})
+        get :show, id: @inquiry.id
+      end
+    end
+
+    context 'when the inquiry is read' do
+      it 'should not change the inquiry status' do
+        @inquiry.update_attributes(status: 'read')
+        @inquiry.should_not_receive(:update_attributes)
+        get :show, id: @inquiry.id
+      end
     end
   end
 

@@ -1,11 +1,12 @@
 class Admin::InquiriesController < Admin::BaseController
 
   def index
-    @inquiries = Inquiry.page(params[:page])
+    @inquiries = Inquiry.order('created_at DESC').page(params[:page])
   end
 
   def show
     @inquiry = Inquiry.find(params[:id])
+    @inquiry.update_attributes(status: 'read') if @inquiry.unread?
   end
 
   def destroy

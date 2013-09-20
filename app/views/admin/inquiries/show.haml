@@ -1,6 +1,8 @@
 .row
   .large-6.large-centered.columns
-    %h3 Message from #{@inquiry.name}
+    %h3
+      Message from #{@inquiry.name}
+      = link_to 'Back', admin_inquiries_path, class: 'action-button small'
 
 .row
   .large-6.large-centered.columns
