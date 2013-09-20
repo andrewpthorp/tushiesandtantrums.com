@@ -36,6 +36,8 @@
 
       = render 'shared/global_footer'
 
+  = render 'shared/google_analytics'
+
 :coffeescript
   $ ->
     Stripe.setPublishableKey("#{ENV['STRIPE_PUBLIC_KEY']}")
