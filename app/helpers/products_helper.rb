@@ -56,7 +56,7 @@ module ProductsHelper
 
     content_tag :ul, class: 'toolbar' do
       product.images.map do |image|
-        concat(content_tag(:li, image_tag(image.file.thumb),
+        concat(content_tag(:li, image_tag(image.file.widget),
                                 class: 'image-thumb',
                                 data: { src: image.file.url }))
       end

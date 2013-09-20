@@ -42,20 +42,6 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   process :scale => [50, 50]
   # end
 
-  # Internal: A thumbnail version of the attachment.
-  #
-  # Returns an ImageUploader::Uploader.
-  version :thumb do
-    process :resize_to_fill => [50, 50]
-  end
-
-  # Internal: A version of the attachment to use as featured.
-  #
-  # Returns an ImageUploader::Uploader.
-  version :featured do
-    process :resize_to_fill => [970, 385]
-  end
-
   # Internal: A version of the attachment to use on widgets.
   #
   # Returns an ImageUploader::Uploader.

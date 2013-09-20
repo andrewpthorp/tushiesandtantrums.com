@@ -3,7 +3,7 @@
     .left.primary
       = f.check_box :primary, class: 'primary-check'
     .left.thumb
-      = image_tag f.object.file.thumb unless f.object.file.blank?
+      = image_tag f.object.file unless f.object.file.blank?
     .left
       = f.label :file, 'Image'
       = f.file_field :file
