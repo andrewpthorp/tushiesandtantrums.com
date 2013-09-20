@@ -23,14 +23,8 @@ class Product < ActiveRecord::Base
   # Internal: Validate that at least one Image is stored with a Product.
   validates :images, length: { minimum: 1 }
 
-  # Internal: Validate the presence of :description.
-  validates :description, presence: true
-
-  # Internal: Validate the presence of :price_in_cents.
-  validates :price_in_cents, presence: true
-
-  # Internal: Validate the presence of :shipping_in_cents.
-  validates :shipping_in_cents, presence: true
+  # Internal: Validate the presence of specific attributes.
+  validates :description, :price_in_cents, :shipping_in_cents, presence: true
 
   # Public: Get all Products in random order.
   #

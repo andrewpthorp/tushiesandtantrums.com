@@ -6,7 +6,7 @@
 # this model handles personal and shipping information as well.
 class Charge < ActiveRecord::Base
 
-  # Internal: Valid States for a Charge.
+  # Internal: Valid states for a Charge.
   VALID_STATUSES = %w(ordered shipped completed)
 
   # Internal: Allow mass-assignment.
@@ -19,29 +19,9 @@ class Charge < ActiveRecord::Base
   # Public: Each Carge belongs to a Product.
   belongs_to :product
 
-  # Internal: Validates presence of :stripe_charge_id.
-  validates :stripe_charge_id, presence: true
-
-  # Internal: Validates presence of :name.
-  validates :name, presence: true
-
-  # Internal: Validates presence of :product.
-  validates :product, presence: true
-
-  # Internal: Validates presence of :address_line_1.
-  validates :address_line_1, presence: true
-
-  # Internal: Validates presence of :city.
-  validates :city, presence: true
-
-  # Internal: Validates presence of :state.
-  validates :state, presence: true
-
-  # Internal: Validates presence of :zip.
-  validates :zip, presence: true
-
-  # Internal: Validates presence of :email.
-  validates :email, presence: true
+  # Internal: Validates presence of specific attributes.
+  validates :stripe_charge_id, :email, :name, :product, :address_line_1,
+            :address_line_2, :city, :state, :zip, presence: true
 
   # Internal: Validates format of email.
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i

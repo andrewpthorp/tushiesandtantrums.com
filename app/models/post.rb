@@ -13,11 +13,8 @@ class Post < ActiveRecord::Base
   # Internal: Allow mass-assignment.
   attr_accessible :title, :body, :published
 
-  # Internal: Validate presence of :title.
-  validates :title, presence: true
-
-  # Internal: Validates presence of :body.
-  validates :body, presence: true
+  # Internal: Validate presence of specific attributes.
+  validates :title, :body, presence: true
 
   # Public: Get all Posts that have published set to true.
   #
