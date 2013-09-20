@@ -3,6 +3,8 @@
 A website for my sisters company to sell her products online. You can view this
 website at http://tushiesandtantrums.com.
 
+[![Build Status](https://travis-ci.org/andrewpthorp/tushiesandtantrums.com.png)](https://travis-ci.org/andrewpthorp/tushiesandtantrums.com)
+
 ## Screenshots
 
 ![Homepage](https://s3.amazonaws.com/andrewthorp-blog-pro/tushies-images/homepage.png)
