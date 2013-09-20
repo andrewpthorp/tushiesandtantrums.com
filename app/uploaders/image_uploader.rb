@@ -41,6 +41,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # version :thumb do
   #   process :scale => [50, 50]
   # end
+  process :resize_to_fill => [750, 500]
 
   # Internal: A version of the attachment to use on widgets.
   #
