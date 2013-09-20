@@ -20,7 +20,9 @@
 
     .row
       .large-12.columns
-        = f.label :description
+        = f.label :description do
+          Description
+          %span.has-tip.tip-top{data: { tooltip: true }, title: 'The description supports markdown formatting. Look at the tips to the right to see how to use markdown.'} Help?
         = f.text_area :description
 
     .row

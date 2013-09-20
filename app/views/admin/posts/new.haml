@@ -3,5 +3,8 @@
     %h3 New Post
 
 .row
-  .large-6.columns.large-centered
+  .large-6.columns.large-offset-3
     = render 'form', post: @post
+
+  .large-3.columns
+    = render 'shared/markdown_tips'

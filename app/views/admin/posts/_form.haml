@@ -7,7 +7,9 @@
 
     .row
       .large-12.columns
-        = f.label :body
+        = f.label :body do
+          Body
+          %span.has-tip.tip-top{data: { tooltip: true }, title: 'The body supports markdown formatting. Look at the tips to the right to see how to use markdown.'} Help?
         = f.text_area :body
 
     .row
