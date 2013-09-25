@@ -1,5 +1,3 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
   factory :charge do
     stripe_charge_id    { Faker::Lorem.characters(15) }
