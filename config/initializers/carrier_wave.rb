@@ -7,8 +7,7 @@ if Rails.env.production?
       :aws_secret_access_key  => ENV["AWS_SECRET_KEY"]
     }
     config.fog_directory  = 'tushiesandtantrums-production'
-    config.fog_public     = false
-    config.fog_attributes = {'Cache-Control'=>'max-age=315576000'}
+    config.asset_host     = 'http://dq18exmy7j8jw.cloudfront.net'
   end
 elsif Rails.env.development?
   CarrierWave.configure do |config|
