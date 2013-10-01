@@ -109,6 +109,13 @@ describe Admin::ProductsController do
         Product.stub(:new).and_return(@product)
       end
 
+      it 'should expire the welcome#index cache' do
+        expect(controller).to receive(:expire_action).with(
+          controller: 'welcome', action: 'index'
+        )
+        do_create
+      end
+
       it 'should redirect to the product' do
         do_create
         response.should redirect_to(admin_products_path)
