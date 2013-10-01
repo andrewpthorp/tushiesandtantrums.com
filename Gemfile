@@ -25,6 +25,8 @@ gem 'redcarpet'
 gem 'kaminari'
 gem 'newrelic_rpm'
 gem 'nested_form'
+gem 'dalli'
+gem 'memcachier'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.5'

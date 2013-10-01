@@ -66,6 +66,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    dalli (2.6.4)
     dante (0.1.5)
     database_cleaner (1.0.1)
     debug_inspector (0.0.2)
@@ -152,6 +153,7 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    memcachier (0.0.2)
     method_source (0.8.1)
     mime-types (1.23)
     mini_magick (3.6.0)
@@ -282,6 +284,7 @@ DEPENDENCIES
   carmen-rails
   carrierwave
   coffee-rails (~> 3.2.1)
+  dalli
   database_cleaner (>= 0.6.7)
   devise
   factory_girl_rails
@@ -296,6 +299,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   letter_opener
+  memcachier
   mini_magick
   money-rails
   nested_form
