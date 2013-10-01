@@ -9,9 +9,10 @@ describe WelcomeController do
     end
 
     it 'should get the four newest products products' do
-      5.times { FactoryGirl.create(:product) }
+      mock_products = double('array')
+      Product.stub_chain(:newest, :limit).and_return(mock_products)
       get :index
-      expect(assigns(:products)).not_to include(Product.first)
+      expect(assigns(:products)).to eq(mock_products)
     end
 
     it 'should respond with an HTTP 200' do
