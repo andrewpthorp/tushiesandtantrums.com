@@ -55,8 +55,8 @@ describe Product do
 
   describe '.scopes' do
     describe '.newest' do
-      it 'should order by created_at in the database' do
-        Product.newest.to_sql.should =~ /ORDER BY created_at DESC/
+      it 'should order by created_at DESC, id DESC' do
+        Product.newest.to_sql.should =~ /ORDER BY created_at DESC, id DESC/
       end
     end
   end

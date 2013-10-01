@@ -26,10 +26,11 @@ class Product < ActiveRecord::Base
   # Internal: Validate the presence of specific attributes.
   validates :description, :price_in_cents, :shipping_in_cents, presence: true
 
-  # Public: Get all Products ordered by the created_at date.
+  # Public: Get all Products ordered by the created_at. If two Products have the
+  # same created_at, it orders by the id.
   #
   # Returns a Product::FriendlyIdActiveRecordRelation.
-  scope :newest, order('created_at DESC')
+  scope :newest, order('created_at DESC, id DESC')
 
   # Internal: Use money-rails to handle monetizing the :price_in_cents.
   monetize :price_in_cents, as: 'price'
