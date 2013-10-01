@@ -54,9 +54,9 @@ describe Product do
   end
 
   describe '.scopes' do
-    describe '.random' do
-      it 'should order random from the database' do
-        Product.random.to_sql.should =~ /ORDER BY RANDOM/
+    describe '.newest' do
+      it 'should order by created_at in the database' do
+        Product.newest.to_sql.should =~ /ORDER BY created_at DESC/
       end
     end
   end

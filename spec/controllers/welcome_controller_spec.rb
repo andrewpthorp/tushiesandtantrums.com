@@ -5,18 +5,18 @@ describe WelcomeController do
   describe 'GET index' do
     it 'should set @active_navigation' do
       get :index
-      assigns(:active_navigation).should == 'home'
+      expect(assigns(:active_navigation)).to eq('home')
     end
 
-    it 'should get four random products' do
+    it 'should get the four newest products products' do
       5.times { FactoryGirl.create(:product) }
       get :index
-      assigns(:products).size.should == 4
+      expect(assigns(:products)).not_to include(Product.first)
     end
 
     it 'should respond with an HTTP 200' do
       get :index
-      response.should be_success
+      expect(response).to be_success
     end
   end
 

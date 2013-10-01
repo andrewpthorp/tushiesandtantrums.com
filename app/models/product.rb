@@ -26,10 +26,10 @@ class Product < ActiveRecord::Base
   # Internal: Validate the presence of specific attributes.
   validates :description, :price_in_cents, :shipping_in_cents, presence: true
 
-  # Public: Get all Products in random order.
+  # Public: Get all Products ordered by the created_at date.
   #
   # Returns a Product::FriendlyIdActiveRecordRelation.
-  scope :random, order('RANDOM()')
+  scope :newest, order('created_at DESC')
 
   # Internal: Use money-rails to handle monetizing the :price_in_cents.
   monetize :price_in_cents, as: 'price'
