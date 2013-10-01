@@ -20,6 +20,8 @@ website at http://tushiesandtantrums.com.
 * **gandi.net** _(dns)_
 * **rails**
 * **postgresql**
+* **memcachier**
+* **newrelic**
 * **sass**
 * **coffeescript**
 
@@ -40,6 +42,9 @@ website at http://tushiesandtantrums.com.
 * **friendly id** _(slugs-slugs-and-more-slugs)_
 * **redcarpet** _(markdown support)_
 * **kaminari** _(pagination)_
+* **dalli** _(caching)_
+* **memcachier** _(cache store)_
+* **newrelic_rpm** _(monitoring)_
 
 ## Attribution
 
