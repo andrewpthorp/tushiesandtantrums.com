@@ -29,8 +29,8 @@
                   .large-9.columns
                     %p.mute= inquiry.created_at.localtime.to_s(:pretty)
               .large-2.columns
-                %ul.button-group.right
-                  %li= link_to '', admin_inquiry_path(inquiry), class: 'icon-view'
+                %ul.actions
+                  %li= link_to 'View', admin_inquiry_path(inquiry), class: 'icon-view'
 
         - unless @inquiries.total_pages == 1
           %hr

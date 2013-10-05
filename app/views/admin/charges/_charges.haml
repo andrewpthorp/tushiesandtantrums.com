@@ -22,7 +22,8 @@
                     = hidden_field_tag :return_to, admin_charges_path
                     = f.select :status, Charge::VALID_STATUSES.each.map { |val| [val.capitalize, val] }
             .large-3.columns
-              = link_to '', admin_charge_path(charge), class: 'icon-view right'
+              %ul.actions
+                %li= link_to 'View', admin_charge_path(charge), class: 'icon-view'
 
 
       - unless collection.last_page?
