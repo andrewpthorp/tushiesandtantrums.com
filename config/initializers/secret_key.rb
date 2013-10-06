@@ -9,4 +9,8 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-TushiesandtantrumsCom::Application.config.secret_key_base = ENV['SECRET_KEY']
+if Rails.env.test?
+  TushiesandtantrumsCom::Application.config.secret_key_base = 'test123'
+else
+  TushiesandtantrumsCom::Application.config.secret_key_base = ENV['SECRET_KEY']
+end
