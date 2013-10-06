@@ -1,27 +1,48 @@
 require 'spec_helper'
 
 describe Admin::ProductsController do
+  before do
+    @product = FactoryGirl.create(:product)
+    sign_in_admin
+  end
 
+  # Internal: Get a valid Hash of attributes for a Product.
+  #
+  # Returns a Hash.
   def valid_params
     @valid_params ||= FactoryGirl.attributes_for(:product).stringify_keys
   end
 
+  # Internal: Reusable method to perform the HTTP PATCH.
   def do_update
     Product.stub(:find).and_return(@product)
     put :update, id: @product.id, product: valid_params
   end
 
+  # Internal: Reusable method to perform the HTTP POST.
   def do_create
     post :create, product: valid_params
   end
 
+  # Internal: Reusable method to perform the HTTP DELETE.
   def do_destroy
     delete :destroy, id: @product.id
   end
 
-  before do
-    @product = FactoryGirl.create(:product)
-    sign_in_admin
+  describe Admin::ProductsController::ProductParams do
+    let (:params) { ActionController::Parameters.new(product: { name: 'B' }) }
+    let (:blank_params) { ActionController::Parameters.new({}) }
+
+    it 'scrubs the parameters' do
+      product_params = Admin::ProductsController::ProductParams.build(params)
+      expect(product_params).to eq({'name' => 'B'})
+    end
+
+    it 'requires a product' do
+      expect{ Admin::ProductsController::ProductParams.build(blank_params) }.to(
+        raise_error(ActionController::ParameterMissing, /product/)
+      )
+    end
   end
 
   describe 'GET index' do

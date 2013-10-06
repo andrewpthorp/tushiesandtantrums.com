@@ -1,14 +1,14 @@
 require 'spec_helper'
 
 describe Admin::InquiriesController do
-
-  def do_delete
-    delete :destroy, id: @inquiry.id
-  end
-
   before do
     @inquiry = FactoryGirl.create(:inquiry)
     sign_in_admin
+  end
+
+  # Internal: Reusable method to perform the HTTP DELETE.
+  def do_delete
+    delete :destroy, id: @inquiry.id
   end
 
   describe 'GET index' do

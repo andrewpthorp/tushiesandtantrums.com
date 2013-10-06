@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe ChargesController do
 
+  # Internal: Reusable method to perform the HTTP GET.
   def do_get(use_xhr=false)
     @product = FactoryGirl.create(:product)
     if use_xhr
@@ -11,12 +12,30 @@ describe ChargesController do
     end
   end
 
+  # Internal: Reusable method to perform the HTTP POST.
   def do_create(valid_without_stripe=true)
     @charge = FactoryGirl.build(:charge)
     @product = @charge.product
     Charge.stub(:new).and_return(@charge)
     @charge.stub(:valid_without_stripe?).and_return(valid_without_stripe)
     post :create, charge: FactoryGirl.attributes_for(:charge)
+  end
+
+  describe ChargesController::ChargeParams do
+    let (:hash) { { charge: { name: 'Andrew', foo: 'bar' } } }
+    let (:params) { ActionController::Parameters.new(hash) }
+    let (:blank_params) { ActionController::Parameters.new({}) }
+
+    it 'scrubs the parameters' do
+      charge_params = ChargesController::ChargeParams.build(params)
+      expect(charge_params).to eq({'name' => 'Andrew'})
+    end
+
+    it 'requires a charge' do
+      expect { ChargesController::ChargeParams.build(blank_params) }.to(
+        raise_error(ActionController::ParameterMissing, /charge/)
+      )
+    end
   end
 
   describe 'GET new' do
@@ -90,7 +109,7 @@ describe ChargesController do
     context 'with invalid data that does not include Stripe' do
       it 'should render the charge form' do
         do_create(false)
-        response.should render_template(:new, layout: 'minimal')
+        response.should render_template(:new)
       end
 
       it 'should set the flash' do

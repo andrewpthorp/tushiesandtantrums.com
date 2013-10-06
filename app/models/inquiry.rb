@@ -9,9 +9,6 @@ class Inquiry < ActiveRecord::Base
   # Internal: Valid states for an Inquiry.
   VALID_STATUSES = %w(unread read)
 
-  # Internal: Allow mass-assignment.
-  attr_accessible :body, :email, :name, :subject, :status
-
   # Internal: Validate presence of specific attributes.
   validates :name, :email, :subject, :body, presence: true
 

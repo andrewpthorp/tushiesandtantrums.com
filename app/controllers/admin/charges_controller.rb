@@ -1,5 +1,19 @@
 class Admin::ChargesController < Admin::BaseController
 
+  # Internal: A testable class for use with strong_parameters.
+  class ChargeParams
+
+    # Internal: Build params for creating/updating an Charge.
+    #
+    # Examples
+    #
+    #   ChargeParams.build(charge: { status: 'shipped' })
+    #   # => { 'status' => 'shipped' }
+    def self.build(params)
+      params.require(:charge).permit!
+    end
+  end
+
   def index
     @ordered = Charge.ordered.by_date.page(params[:ordered_page])
     @shipped = Charge.shipped.by_date.page(params[:shipped_page])
@@ -13,7 +27,7 @@ class Admin::ChargesController < Admin::BaseController
   def update
     @charge = Charge.find(params[:id])
 
-    if @charge.update_attributes(params[:charge])
+    if @charge.update_attributes(ChargeParams.build(params))
       flash[:notice] = 'Order successfully updated!'
     else
       flash[:error] = 'Oops! There was a problem updating that order.'

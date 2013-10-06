@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe PostsController do
-
   before do
     @latest = FactoryGirl.create(:post)
     @old = FactoryGirl.create(:post, created_at: 5.days.ago)

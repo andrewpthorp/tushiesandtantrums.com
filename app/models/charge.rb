@@ -9,10 +9,6 @@ class Charge < ActiveRecord::Base
   # Internal: Valid states for a Charge.
   VALID_STATUSES = %w(ordered shipped completed)
 
-  # Internal: Allow mass-assignment.
-  attr_accessible :stripe_charge_id, :email, :name, :product_id, :status,
-                  :address_line_1, :address_line_2, :city, :state, :zip
-
   # Internal: Only show 5 per page, by default.
   paginates_per 5
 
@@ -38,22 +34,22 @@ class Charge < ActiveRecord::Base
   # Public: Order Charges by created_at ASC.
   #
   # Returns an ActiveRecord::Relation.
-  scope :by_date, order('created_at ASC')
+  scope :by_date, -> { order('created_at ASC') }
 
   # Public: Get all Charges with a status of 'ordered'.
   #
   # Returns an ActiveRecord::Relation.
-  scope :ordered, where(status: 'ordered')
+  scope :ordered, -> { where(status: 'ordered') }
 
   # Public: Get all Charges with a status of 'shipped'.
   #
   # Returns an ActiveRecord::Relation.
-  scope :shipped, where(status: 'shipped')
+  scope :shipped, -> { where(status: 'shipped') }
 
   # Public: Get all Charges with a status of 'completed'.
   #
   # Returns an ActiveRecord::Relation.
-  scope :completed, where(status: 'completed')
+  scope :completed, -> { where(status: 'completed') }
 
   # Public: Get the Stripe::Charge object from Stripe's API.
   #

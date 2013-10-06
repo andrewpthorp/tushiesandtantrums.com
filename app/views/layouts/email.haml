@@ -3,7 +3,11 @@
   %head
     %meta{:content => "width=device-width", :name => "viewport"}
     %meta{:content => "text/html; charset=utf-8", "http-equiv" => "content-type"}
-    = stylesheet_link_tag 'email'
+
+    -# TODO: This is broken with the following error:
+    -# undefined method `params` for #<InquiryMailer>
+    -# FIX IT!
+    -#= stylesheet_link_tag 'email'
 
   %body
     %h1.logo
