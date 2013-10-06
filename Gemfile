@@ -38,11 +38,10 @@ end
 
 group :development do
   gem 'letter_opener'
-  gem 'guard'
+  gem 'guard', git: 'https://github.com/guard/guard.git'
   gem 'guard-livereload'
   gem 'guard-rspec'
   gem 'quiet_assets'
-  gem 'better_errors'
   gem 'binding_of_caller'
 end
 

@@ -1,4 +1,4 @@
-guard :rspec do
+guard 'rspec' do
   watch(%r{^app/(.+)\.rb$})                           { |m| "spec/#{m[1]}_spec.rb" }
   watch(%r{^app/controllers/(.+)_(controller)\.rb$})  { |m| ["spec/routing/#{m[1]}_routing_spec.rb", "spec/#{m[2]}s/#{m[1]}_#{m[2]}_spec.rb"] }
   watch(%r{^spec/(.+)\_spec.rb$})                     { |m| "spec/#{m[1]}_spec.rb" }
@@ -14,4 +14,3 @@ guard :rspec do
     :line_separator => ' > ', # since we are single line we need a separator
     :color_location => 'status-left-fg' # to customize which tmux element will change color
 end
-
