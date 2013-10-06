@@ -78,7 +78,9 @@ describe Image do
 
     describe '.for_product' do
       it 'should return images for a given product' do
-        expect(Image.for_product(@product.id).to_a).to eq(@product.images.to_a)
+        expect(Image.for_product(@product.id).map(&:product_id).uniq).to(
+          eq([@product.id])
+        )
       end
     end
 
