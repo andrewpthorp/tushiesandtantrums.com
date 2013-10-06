@@ -23,11 +23,6 @@ TushiesandtantrumsCom::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
-  # Cache between deploys
-  config.assets.cache_store = :dalli_store, ENV['MEMCACHIER_SERVERS'],
-                              { username: ENV['MEMCACHIER_USERNAME'],
-                                password: ENV['MEMCACHIER_PASSWORD'] }
-
   # Version of your assets, change this if you want to expire all your assets.
   config.assets.version = '1.0'
 
