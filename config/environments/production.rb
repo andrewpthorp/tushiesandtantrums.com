@@ -11,8 +11,8 @@ TushiesandtantrumsCom::Application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
-  # Disable Rails's static asset server (Apache or nginx will already do this)
-  config.serve_static_assets = false
+  # Disable Rails's static asset server (Apache or nginx will already do this).
+  config.serve_static_assets = true
 
   # Compress JavaScripts and CSS
   config.assets.js_compressor = :uglifier
@@ -28,6 +28,9 @@ TushiesandtantrumsCom::Application.configure do
                               { username: ENV['MEMCACHIER_USERNAME'],
                                 password: ENV['MEMCACHIER_PASSWORD'] }
 
+  # Version of your assets, change this if you want to expire all your assets.
+  config.assets.version = '1.0'
+
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
 
@@ -39,7 +42,7 @@ TushiesandtantrumsCom::Application.configure do
   # config.force_ssl = true
 
   # See everything in the log (default is :info)
-  # config.log_level = :debug
+  config.log_level = :info
 
   # Prepend all log lines with the following tags
   # config.log_tags = [ :subdomain, :uuid ]
@@ -85,7 +88,4 @@ TushiesandtantrumsCom::Application.configure do
 
   # Add the fonts path
   config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
-
-  # Precompile additional assets
-  config.assets.precompile += %w( .svg .eot .woff .ttf )
 end
