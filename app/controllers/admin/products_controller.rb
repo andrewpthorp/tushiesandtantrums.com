@@ -42,7 +42,6 @@ class Admin::ProductsController < Admin::BaseController
     @product = Product.new(ProductParams.build(params))
 
     if @product.save
-      expire_action controller: 'welcome', action: 'index'
       redirect_to admin_products_path, notice: "Product successfully created!"
     else
       flash[:error] = "There was a problem creating that product. Please make sure you filled out all of the fields"

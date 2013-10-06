@@ -31,7 +31,6 @@ gem 'memcachier'
 gem 'sass-rails', '~> 4.0.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'uglifier'
-gem 'actionpack-action_caching'
 
 group :production do
   gem 'rails_12factor' # heroku!
