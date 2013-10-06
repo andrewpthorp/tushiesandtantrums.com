@@ -2,12 +2,6 @@ require 'spec_helper'
 
 describe Image do
 
-  describe '.mass-assignment' do
-    it { should allow_mass_assignment_of(:file) }
-    it { should allow_mass_assignment_of(:primary) }
-    it { should_not allow_mass_assignment_of(:product) }
-  end
-
   describe '.associations' do
     it { should belong_to(:product) }
   end
@@ -84,7 +78,9 @@ describe Image do
 
     describe '.for_product' do
       it 'should return images for a given product' do
-        expect(Image.for_product(@product.id).to_a).to eq(@product.images.to_a)
+        expect(Image.for_product(@product.id).map(&:product_id).uniq).to(
+          eq([@product.id])
+        )
       end
     end
 

@@ -5,14 +5,10 @@ class Product < ActiveRecord::Base
   extend FriendlyId
 
   # Internal: Slug the :name of Products using FriendlyId.
-  friendly_id :name, use: :slugged
+  friendly_id :name, use: [:slugged, :finders]
 
   # Internal: Allow Products to be tagged, or categorized.
   acts_as_taggable
-
-  # Internal: Allow mass-assignment.
-  attr_accessible :name, :description, :price, :price_in_cents, :shipping,
-                  :shipping_in_cents, :tag_list, :images_attributes, :images
 
   # Internal: Each Product has many Images.
   has_many :images, dependent: :destroy
@@ -30,7 +26,7 @@ class Product < ActiveRecord::Base
   # same created_at, it orders by the id.
   #
   # Returns a Product::FriendlyIdActiveRecordRelation.
-  scope :newest, order('created_at DESC, id DESC')
+  scope :newest, -> { order('created_at DESC, id DESC') }
 
   # Internal: Use money-rails to handle monetizing the :price_in_cents.
   monetize :price_in_cents, as: 'price'

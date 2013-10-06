@@ -4,9 +4,6 @@
 # Images.
 class Image < ActiveRecord::Base
 
-  # Internal: Allow mass-assignment.
-  attr_accessible :file, :primary
-
   # Internal: Each Image belongs to a Product.
   belongs_to :product
 
@@ -27,12 +24,12 @@ class Image < ActiveRecord::Base
   # product_id - The :id of a Product to get all Images for.
   #
   # Returns an ActiveRecord::Relation.
-  scope :for_product, lambda { |product_id| where(product_id: product_id) }
+  scope :for_product, -> (product_id) { where(product_id: product_id) }
 
   # Public: Get all Images with :primary set to true.
   #
   # Returns an ActiveRecord::Relation.
-  scope :primary, where(primary: true)
+  scope :primary, -> { where(primary: true) }
 
 protected
 

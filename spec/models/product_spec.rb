@@ -3,19 +3,6 @@ require 'spec_helper'
 describe Product do
   include MoneyRails::TestHelpers
 
-  describe '.mass-assignment' do
-    it { should allow_mass_assignment_of(:name) }
-    it { should allow_mass_assignment_of(:description) }
-    it { should allow_mass_assignment_of(:price) }
-    it { should allow_mass_assignment_of(:price_in_cents) }
-    it { should allow_mass_assignment_of(:shipping) }
-    it { should allow_mass_assignment_of(:shipping_in_cents) }
-    it { should allow_mass_assignment_of(:tag_list) }
-    it { should allow_mass_assignment_of(:images_attributes) }
-    it { should allow_mass_assignment_of(:images) }
-    it { should_not allow_mass_assignment_of(:slug) }
-  end
-
   describe '.associations' do
     it { should have_many(:images).dependent(:destroy) }
     it { should accept_nested_attributes_for(:images).allow_destroy(true) }

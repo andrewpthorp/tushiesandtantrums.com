@@ -2,8 +2,26 @@ require 'spec_helper'
 
 describe InquiriesController do
 
+  # Internal: Reusable method to perform the HTTP POST.
   def do_create
     xhr :post, :create, inquiry: FactoryGirl.attributes_for(:inquiry)
+  end
+
+  describe InquiriesController::InquiryParams do
+    let (:hash) { { inquiry: { name: 'Andrew', foo: 'bar' } } }
+    let (:params) { ActionController::Parameters.new(hash) }
+    let (:blank_params) { ActionController::Parameters.new({}) }
+
+    it 'scrubs the parameters' do
+      inquiry_params = InquiriesController::InquiryParams.build(params)
+      expect(inquiry_params).to eq({'name' => 'Andrew'})
+    end
+
+    it 'requires an inquiry' do
+      expect { InquiriesController::InquiryParams.build(blank_params) }.to(
+        raise_error(ActionController::ParameterMissing, /inquiry/)
+      )
+    end
   end
 
   describe 'GET new' do

@@ -6,6 +6,23 @@ describe Admin::ChargesController do
     sign_in_admin
   end
 
+  describe Admin::ChargesController::ChargeParams do
+    let (:hash) { { charge: { status: 'shipped' } } }
+    let (:params) { ActionController::Parameters.new(hash) }
+    let (:blank_params) { ActionController::Parameters.new({}) }
+
+    it 'scrubs the parameters' do
+      charge_params = Admin::ChargesController::ChargeParams.build(params)
+      expect(charge_params).to eq({'status' => 'shipped'})
+    end
+
+    it 'requires a charge' do
+      expect { Admin::ChargesController::ChargeParams.build(blank_params) }.to(
+        raise_error(ActionController::ParameterMissing, /charge/)
+      )
+    end
+  end
+
   describe 'GET index' do
     it 'should set @ordered' do
       Charge.stub_chain(:ordered, :by_date, :page).and_return(@charge)
@@ -45,7 +62,7 @@ describe Admin::ChargesController do
 
     context 'when passing a return_to param' do
       it 'should redirect to the return_to' do
-        put :update, id: @charge.id, charge: {}, return_to: '/foo'
+        put :update, id: @charge.id, charge: { status: 'shipped' }, return_to: '/foo'
         expect(response).to redirect_to('/foo')
       end
     end
