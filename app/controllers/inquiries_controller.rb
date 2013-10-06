@@ -1,5 +1,19 @@
 class InquiriesController < ApplicationController
 
+  # Internal: A testable class for use with strong_parameters.
+  class InquiryParams
+
+    # Internal: Build params for creating/updating an Inquiry.
+    #
+    # Examples
+    #
+    #   InquiryParams.build(inquiry: { name: 'Andrew' })
+    #   # => { 'name' => 'Andrew' }
+    def self.build(params)
+      params.require(:inquiry).permit(:name, :email, :subject, :body)
+    end
+  end
+
   def new
     @inquiry = Inquiry.new
 
@@ -12,7 +26,7 @@ class InquiriesController < ApplicationController
   end
 
   def create
-    @inquiry = Inquiry.new(params[:inquiry])
+    @inquiry = Inquiry.new(InquiryParams.build(params))
 
     if @inquiry.save
       set_headers 'flash', { 'Flash-Message' => 'Successfully sent message!',

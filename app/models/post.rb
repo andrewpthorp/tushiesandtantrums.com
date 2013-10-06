@@ -5,13 +5,10 @@ class Post < ActiveRecord::Base
   extend FriendlyId
 
   # Internal: Slug the :title of Products using FriendlyId.
-  friendly_id :title, use: :slugged
+  friendly_id :title, use: [:slugged, :finders]
 
   # Internal: Only show 5 per page, by default.
   paginates_per 5
-
-  # Internal: Allow mass-assignment.
-  attr_accessible :title, :body, :published
 
   # Internal: Validate presence of specific attributes.
   validates :title, :body, presence: true
@@ -19,24 +16,24 @@ class Post < ActiveRecord::Base
   # Public: Get all Posts that have published set to true.
   #
   # Returns a Post::FriendlyIdActiveRecordRelation.
-  scope :published, where(published: true)
+  scope :published, -> { where(published: true) }
 
   # Public: Get all Posts that are in draft form.
   #
   # Returns a Post::FriendlyIdActiveRecordRelation.
-  scope :drafted, where(published: false)
+  scope :drafted, -> { where(published: false) }
 
   # Public: Get all Posts ordered by when they were created.
   #
   # Returns a Post::FriendlyIdActiveRecordRelation.
-  scope :ordered, order('created_at DESC')
+  scope :ordered, -> { order('created_at DESC') }
 
   # Public: Get all Posts except the Post with the given :id.
   #
   # id - The id of the Post to exclude from results.
   #
   # Returns a Post::FriendlyIdActiveRecordRelation.
-  scope :exclude, lambda { |id| where('id != ?', id) }
+  scope :exclude, -> (id) { where('id != ?', id) }
 
   # Public: Get the most recent Post, ordered by created_at.
   #

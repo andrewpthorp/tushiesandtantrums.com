@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe ProductsController do
-
   before do
     @product = FactoryGirl.create(:product)
   end

@@ -1,7 +1,8 @@
 # A sample Gemfile
 source "https://rubygems.org"
+ruby '2.0.0'
 
-gem 'rails', '3.2.13'
+gem 'rails', '4.0.0'
 gem 'carrierwave'
 gem 'devise'
 gem 'pg', require: 'pg'
@@ -19,19 +20,21 @@ gem 'bourbon'
 gem 'money-rails'
 gem 'acts-as-taggable-on'
 gem 'stripe'
-gem 'carmen-rails'
-gem 'friendly_id'
+gem 'carmen-rails', git: 'https://github.com/jim/carmen-rails.git'
+gem 'friendly_id', git: 'https://github.com/norman/friendly_id.git'
 gem 'redcarpet'
 gem 'kaminari'
 gem 'newrelic_rpm'
 gem 'nested_form'
 gem 'dalli'
 gem 'memcachier'
+gem 'sass-rails', '~> 4.0.0'
+gem 'coffee-rails', '~> 4.0.0'
+gem 'uglifier'
+gem 'actionpack-action_caching'
 
-group :assets do
-  gem 'sass-rails', '~> 3.2.5'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
+group :production do
+  gem 'rails_12factor' # heroku!
 end
 
 group :development do

@@ -1,28 +1,49 @@
 require 'spec_helper'
 
 describe Admin::PostsController do
+  before do
+    @post = FactoryGirl.create(:post)
+    @draft = FactoryGirl.create(:draft)
+    sign_in_admin
+  end
 
+  # Internal: Get a valid parameter Hash for a Post.
+  #
+  # Returns a Hash.
   def valid_params
     @valid_params ||= FactoryGirl.attributes_for(:post).stringify_keys
   end
 
+  # Internal: Reusable method to perform the HTTP PATCH.
   def do_update
     Post.stub(:find).and_return(@post)
     put :update, id: @post.id, post: valid_params
   end
 
+  # Internal: Reusable method to perform the HTTP POST.
   def do_create
     post :create, post: valid_params
   end
 
+  # Internal: Reusable method to perform the HTTP DELETE.
   def do_destroy
     delete :destroy, id: @post.id
   end
 
-  before do
-    @post = FactoryGirl.create(:post)
-    @draft = FactoryGirl.create(:draft)
-    sign_in_admin
+  describe Admin::PostsController::PostParams do
+    let (:params) { ActionController::Parameters.new(post: { title: 'A' }) }
+    let (:blank_params) { ActionController::Parameters.new({}) }
+
+    it 'scrubs the parameters' do
+      post_params = Admin::PostsController::PostParams.build(params)
+      expect(post_params).to eq({'title' => 'A'})
+    end
+
+    it 'requires a post' do
+      expect { Admin::PostsController::PostParams.build(blank_params) }.to(
+        raise_error(ActionController::ParameterMissing, /post/)
+      )
+    end
   end
 
   describe 'GET index' do

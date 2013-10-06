@@ -2,12 +2,6 @@ require 'spec_helper'
 
 describe Image do
 
-  describe '.mass-assignment' do
-    it { should allow_mass_assignment_of(:file) }
-    it { should allow_mass_assignment_of(:primary) }
-    it { should_not allow_mass_assignment_of(:product) }
-  end
-
   describe '.associations' do
     it { should belong_to(:product) }
   end

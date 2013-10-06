@@ -1,5 +1,19 @@
 class Admin::ProductsController < Admin::BaseController
 
+  # Internal: A testable class for use with strong_parameters.
+  class ProductParams
+
+    # Internal: Build params for creating/updating an Product.
+    #
+    # Examples
+    #
+    #   ProductParams.build(product: { name: 'Awesome Bedding' })
+    #   # => { 'name' => 'Awesome Bedding' }
+    def self.build(params)
+      params.require(:product).permit!
+    end
+  end
+
   def index
     @products = Product.page(params[:page])
   end
@@ -11,7 +25,7 @@ class Admin::ProductsController < Admin::BaseController
   def update
     @product = Product.find(params[:id])
 
-    if @product.update_attributes(params[:product])
+    if @product.update_attributes(ProductParams.build(params))
       redirect_to admin_products_path, notice: "Product successfully updated!"
     else
       flash[:error] = "There was a problem updating that product. Please make sure you filled out all of the fields"
@@ -25,7 +39,7 @@ class Admin::ProductsController < Admin::BaseController
   end
 
   def create
-    @product = Product.new(params[:product])
+    @product = Product.new(ProductParams.build(params))
 
     if @product.save
       expire_action controller: 'welcome', action: 'index'
@@ -46,5 +60,4 @@ class Admin::ProductsController < Admin::BaseController
       redirect_to admin_products_path
     end
   end
-
 end
