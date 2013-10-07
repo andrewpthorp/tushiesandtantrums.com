@@ -99,10 +99,10 @@
       width: 100%
       z-index: 2
       &.top
-        background: url('layout/curved-border.png') repeat-x
+        background: asset-url('layout/curved-border.png') repeat-x
         top: 10px
       &.bottom
-        background: url('layout/curved-border-bottom.png') repeat-x
+        background: asset-url('layout/curved-border-bottom.png') repeat-x
         top: -10px
 
 @media only screen and (max-width: #{$medium-screen})
@@ -155,12 +155,12 @@ header.with-arrow
       padding: 0px
       width: 99%
       &:before
-        content: url('layout/arrow-left.png')
+        content: asset-url('layout/arrow-left.png')
         left: -12px
         position: absolute
         top: -9px
       &:after
-        content: url('layout/arrow-right.png')
+        content: asset-url('layout/arrow-right.png')
         position: absolute
         right: 10px
         top: -9px

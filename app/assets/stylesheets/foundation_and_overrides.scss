@@ -51,7 +51,7 @@ $em-base: 16 !default;
 
 $default-float: left;
 
-$body-bg: url('layout/green-herringbone.png') 0px 0px repeat;
+$body-bg: asset-url('layout/green-herringbone.png') 0px 0px repeat;
 $body-font-color: $color_dark_gray;
 $body-font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
 // $body-font-weight: normal;
