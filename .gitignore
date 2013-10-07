@@ -21,7 +21,7 @@ vendor/bundle/ruby
 vendor/ruby
 
 ## Public
-public/assets
+# public/assets
 public/stylesheets/*
 public/system
 public/uploads
