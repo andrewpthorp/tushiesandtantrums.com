@@ -1,0 +1,20 @@
+#!/bin/sh
+
+while getopts ":a" opt; do
+
+  case $opt in
+
+    a)
+      echo 'Precompiling Assets...' >&2
+      RAILS_ENV=production foreman run bundle exec rake assets:precompile
+      echo 'Done.'
+
+      git add public/assets
+      git commit -m 'precompiled assets'
+      ;;
+
+  esac
+
+done
+
+git push heroku master
