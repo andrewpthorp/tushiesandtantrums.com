@@ -41,8 +41,6 @@ group :development do
   gem 'guard', git: 'https://github.com/guard/guard.git'
   gem 'guard-livereload'
   gem 'guard-rspec'
-  gem 'quiet_assets'
-  gem 'binding_of_caller'
 end
 
 group :development, :test do

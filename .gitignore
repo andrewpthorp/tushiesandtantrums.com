@@ -6,7 +6,6 @@
 .rbenv-version
 .rbenv-gemsets
 .ruby-version
-bin
 db/*.sqlite3
 db/sphinx
 db/structure.sql
