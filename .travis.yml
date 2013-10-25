@@ -6,3 +6,5 @@ before_script:
   - psql -c 'create database tushiesandtantrums_test;' -U postgres
   - rake db:migrate
   - export RUBY_GC_MALLOC_LIMIT=50000000
+env:
+  - SECRET_KEY=asdfkuasy3oiuafdnskaljn3lkaul778hoa973alihsudf
