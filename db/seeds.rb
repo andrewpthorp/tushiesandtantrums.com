@@ -25,7 +25,8 @@ if Rails.env.development? && !ENV['SKIP_PRODUCTS']
 
   puts "Creating 20 orders..."
   20.times do
-    charge = FactoryGirl.create(:charge, product: Product.random.first)
+    offset = rand(Product.count)
+    charge = FactoryGirl.create(:charge, product: Product.first(offset: offset))
     puts "  -> Created order for #{charge.product.name}."
   end
   puts "Done."
