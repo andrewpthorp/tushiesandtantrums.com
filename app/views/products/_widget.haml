@@ -1,16 +1,14 @@
-- cache(product) do
+.product-widget
 
-  .product-widget
+  .image
+    = image_tag product.primary_image.file.widget
 
-    .image
-      = image_tag product.primary_image.file.widget
+  .content
+    %h5.name= product.name
+    %p.small.description= truncate(product.description, length: 60)
+    .price.big= number_to_currency(product.price)
 
-    .content
-      %h5.name= product.name
-      %p.small.description= truncate(product.description, length: 60)
-      .price.big= number_to_currency(product.price)
-
-    .overlay.hide
-      = link_to 'View Product', product
+  .overlay.hide
+    = link_to 'View Product', product
 
 
