@@ -17,7 +17,7 @@ class Charge < ActiveRecord::Base
 
   # Internal: Validates presence of specific attributes.
   validates :stripe_charge_id, :email, :name, :product, :address_line_1,
-            :address_line_2, :city, :state, :zip, presence: true
+            :city, :state, :zip, presence: true
 
   # Internal: Validates format of email.
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
